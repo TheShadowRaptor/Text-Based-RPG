@@ -6,20 +6,11 @@ using System.Threading.Tasks;
 
 namespace Text_Based_RPG
 {
-    class Program
+    class Map
     {
-        // Declerations
-
-        static void Main(string[] args)
+        private void DrawMap()
         {
-            // Initialisation
-
-
-
-            // Gameplay Loop
-            // while loop
-
-
+            // nested for loop to draw map
         }
     }
 }
