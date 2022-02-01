@@ -12,7 +12,11 @@ namespace Text_Based_RPG
     {
         // Initialisation
         int health;
-        int shield;       
-        
-    }
+        int shield;
+
+        protected void TakeDamage()
+        {
+
+        }
+    }  
 }

@@ -14,11 +14,14 @@ namespace Text_Based_RPG
         {
             // Initialisation
 
-
+            Map map = new Map();
 
             // Gameplay Loop
             // while loop
 
+            map.DrawMap();
+
+            Console.ReadKey(true);
 
         }
     }
