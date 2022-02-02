@@ -18,5 +18,11 @@ namespace Text_Based_RPG
         {
 
         }
+
+        //protected void Draw()
+        //{
+
+        //}
+
     }  
 }

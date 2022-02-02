@@ -9,17 +9,28 @@ namespace Text_Based_RPG
     class Program
     {
         // Declerations
+       
 
         static void Main(string[] args)
         {
             // Initialisation
 
             Map map = new Map();
+            Player player = new Player();
 
             // Gameplay Loop
-            // while loop
+            while (player.isAlive)
+            {
+                map.Draw();
+                player.Draw();
+                // DrawEnemy();
 
-            map.DrawMap();
+                // UpdateMap();
+                player.Update();
+                // UpdateEnemy();
+            }
+
+
 
             Console.ReadKey(true);
 

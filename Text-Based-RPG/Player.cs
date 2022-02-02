@@ -11,6 +11,9 @@ namespace Text_Based_RPG
         // inherites from GameCharacter
         int EXP;
         int lives;
+        protected int playerX;
+        protected int playerY;
+        public bool isAlive = true;
 
         // healing
 
@@ -20,6 +23,70 @@ namespace Text_Based_RPG
 
         // Movement
 
+        public void Update()
+        {
+
+            ConsoleKey keyPress = Console.ReadKey(true).Key;
+            switch (keyPress)
+            {
+                // ----------------------- WASD --------------------------
+                case ConsoleKey.W:
+                    playerX -= 1;
+                    Console.WriteLine(playerX + "," + playerY);
+                    break;
+
+                case ConsoleKey.S:
+                    playerX += 1;
+                    Console.WriteLine(playerX + "," + playerY);
+                    break;
+
+                case ConsoleKey.D:
+                    playerY += 1;
+                    Console.WriteLine(playerX + "," + playerY);
+                    break;
+
+                case ConsoleKey.A:
+                    playerY -= 1;
+                    Console.WriteLine(playerX + "," + playerY);
+                    break;
+
+                // ----------------- Arrow Keys -------------------------
+                case ConsoleKey.UpArrow:
+                    playerX -= 1;
+                    Console.WriteLine(playerX + "," + playerY);
+                    break;
+
+                case ConsoleKey.DownArrow:
+                    playerX += 1;
+                    Console.WriteLine(playerX + "," + playerY);
+                    break;
+
+                case ConsoleKey.RightArrow:
+                    playerY += 1;
+                    Console.WriteLine(playerX + "," + playerY);
+                    break;
+
+                case ConsoleKey.LeftArrow:
+                    playerY -= 1;
+                    Console.WriteLine(playerX + "," + playerY);
+                    break;
+
+                default:
+
+                    break;
+            }
+        }
+
+        public void Draw()
+        {
+            char[,] movementZone = new char[Console.WindowWidth,Console.WindowHeight];
+            Console.SetCursorPosition(0, 0);
+            
+            // access map or something
+
+            movementZone[playerY, playerX] = '@';
+
+        }
 
     }
 }

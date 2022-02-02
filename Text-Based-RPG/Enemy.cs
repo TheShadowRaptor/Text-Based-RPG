@@ -8,6 +8,6 @@ namespace Text_Based_RPG
 {
     class Enemy : GameCharacter
     {
-        // enemy pathing
+        // Update
     }
 }

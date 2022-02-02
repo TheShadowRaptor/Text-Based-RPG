@@ -32,8 +32,10 @@ namespace Text_Based_RPG
         int columns = gameMap.GetLength(1);
         int scale = 3; // incase I want to make the map bigger in the future
 
-        public void DrawMap()
+        public void Draw()
         {
+            Console.SetCursorPosition(0, 0); // sets map to reload at 0,0
+
             for (int x = 0; x <= rows - 1; x++)
             {
                 for (int y = 0; y <= columns - 1; y++)
