@@ -23,11 +23,11 @@ namespace Text_Based_RPG
             {
                 map.Draw();
                 player.Draw();
-                // DrawEnemy();
+                // enemy.Draw();
 
-                // UpdateMap();
+               // map.Update();
                 player.Update();
-                // UpdateEnemy();
+                // enemy.Update();
             }
 
 

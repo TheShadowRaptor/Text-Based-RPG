@@ -32,43 +32,43 @@ namespace Text_Based_RPG
                 // ----------------------- WASD --------------------------
                 case ConsoleKey.W:
                     playerX -= 1;
-                    Console.WriteLine(playerX + "," + playerY);
+                  // Console.WriteLine(playerX + "," + playerY);
                     break;
 
                 case ConsoleKey.S:
                     playerX += 1;
-                    Console.WriteLine(playerX + "," + playerY);
+                   // Console.WriteLine(playerX + "," + playerY);
                     break;
 
                 case ConsoleKey.D:
                     playerY += 1;
-                    Console.WriteLine(playerX + "," + playerY);
+                   // Console.WriteLine(playerX + "," + playerY);
                     break;
 
                 case ConsoleKey.A:
                     playerY -= 1;
-                    Console.WriteLine(playerX + "," + playerY);
+                   // Console.WriteLine(playerX + "," + playerY);
                     break;
 
                 // ----------------- Arrow Keys -------------------------
                 case ConsoleKey.UpArrow:
                     playerX -= 1;
-                    Console.WriteLine(playerX + "," + playerY);
+                   // Console.WriteLine(playerX + "," + playerY);
                     break;
 
                 case ConsoleKey.DownArrow:
                     playerX += 1;
-                    Console.WriteLine(playerX + "," + playerY);
+                   // Console.WriteLine(playerX + "," + playerY);
                     break;
 
                 case ConsoleKey.RightArrow:
                     playerY += 1;
-                    Console.WriteLine(playerX + "," + playerY);
+                   // Console.WriteLine(playerX + "," + playerY);
                     break;
 
                 case ConsoleKey.LeftArrow:
                     playerY -= 1;
-                    Console.WriteLine(playerX + "," + playerY);
+                   // Console.WriteLine(playerX + "," + playerY);
                     break;
 
                 default:
@@ -80,11 +80,11 @@ namespace Text_Based_RPG
         public void Draw()
         {
             char[,] movementZone = new char[Console.WindowWidth,Console.WindowHeight];
-            Console.SetCursorPosition(0, 0);
+            Console.SetCursorPosition(playerY, playerX);   
             
             // access map or something
 
-            movementZone[playerY, playerX] = '@';
+            Console.Write(movementZone[playerY, playerX] = '@');
 
         }
 
