@@ -9,11 +9,13 @@ namespace Text_Based_RPG
     class Player : GameCharacter
     {
         // inherites from GameCharacter
+        public bool isAlive = true;
         int EXP;
         int lives;
-        protected int playerY;
-        protected int playerX;
-        public bool isAlive = true;
+
+        int playerY;
+        int playerX;
+        
 
         Map map = new Map();
 
@@ -67,6 +69,5 @@ namespace Text_Based_RPG
             Console.SetCursorPosition(playerX, playerY);  
             Console.Write(movementZone[playerY, playerX] = '@');
         }
-
     }
 }

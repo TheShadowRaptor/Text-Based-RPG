@@ -43,6 +43,9 @@ namespace Text_Based_RPG
 
         public int rows = gameMap.GetLength(0);
         public int columns = gameMap.GetLength(1);
+        int mapX;
+        int mapY;
+
         public char[,] printMap = gameMap;
         int scale = 3; // incase I want to make the map bigger in the future
 
@@ -54,11 +57,29 @@ namespace Text_Based_RPG
             {
                 for (int y = 0; y <= columns - 1; y++)
                 {
+                    mapX = x;
+                    mapY = y;                   
+
                     Console.Write(printMap[x, y]);
+                    // ColorMap(x, y);
                 }
 
                 Console.WriteLine();
             }
+        }
+
+        private void ColorMap(int x, int y)
+        {
+            if (printMap[mapX, mapY] == '.')
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+            }
+            else if (printMap[x, y] == '^')
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+            }
+
+            
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Text_Based_RPG
 {
-    // Declerations
+    // Declerations    
 
     class GameCharacter
     {
@@ -14,15 +14,20 @@ namespace Text_Based_RPG
         int health;
         int shield;
 
+        Map map = new Map();
+
         protected void TakeDamage()
         {
 
         }
 
-        //protected void Draw()
-        //{
+        protected void Collision(int x, int y)
+        {
+            if (map.printMap[x, y] == '^')
+            {
 
-        //}
+            }
+        }
 
     }  
 }
