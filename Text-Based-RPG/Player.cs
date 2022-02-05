@@ -11,9 +11,11 @@ namespace Text_Based_RPG
         // inherites from GameCharacter
         int EXP;
         int lives;
-        protected int playerX;
         protected int playerY;
+        protected int playerX;
         public bool isAlive = true;
+
+        Map map = new Map();
 
         // healing
 
@@ -24,68 +26,46 @@ namespace Text_Based_RPG
         // Movement
 
         public void Update()
-        {
-
+        {    
             ConsoleKey keyPress = Console.ReadKey(true).Key;
             switch (keyPress)
             {
                 // ----------------------- WASD --------------------------
                 case ConsoleKey.W:
-                    playerX -= 1;
-                  // Console.WriteLine(playerX + "," + playerY);
+                    playerY -= 1;                                  
+
                     break;
 
                 case ConsoleKey.S:
-                    playerX += 1;
-                   // Console.WriteLine(playerX + "," + playerY);
+                    playerY += 1;
+
                     break;
 
                 case ConsoleKey.D:
-                    playerY += 1;
-                   // Console.WriteLine(playerX + "," + playerY);
+                    playerX += 1;                        
+
                     break;
 
                 case ConsoleKey.A:
-                    playerY -= 1;
-                   // Console.WriteLine(playerX + "," + playerY);
-                    break;
-
-                // ----------------- Arrow Keys -------------------------
-                case ConsoleKey.UpArrow:
                     playerX -= 1;
-                   // Console.WriteLine(playerX + "," + playerY);
-                    break;
 
-                case ConsoleKey.DownArrow:
-                    playerX += 1;
-                   // Console.WriteLine(playerX + "," + playerY);
-                    break;
-
-                case ConsoleKey.RightArrow:
-                    playerY += 1;
-                   // Console.WriteLine(playerX + "," + playerY);
-                    break;
-
-                case ConsoleKey.LeftArrow:
-                    playerY -= 1;
-                   // Console.WriteLine(playerX + "," + playerY);
                     break;
 
                 default:
 
                     break;
             }
+
+            Console.SetCursorPosition(0, 27);
+            Console.WriteLine(playerX + "," + playerY);
+            Console.WriteLine(map.rows + "," + map.columns);
         }
 
         public void Draw()
         {
-            char[,] movementZone = new char[Console.WindowWidth,Console.WindowHeight];
-            Console.SetCursorPosition(playerY, playerX);   
-            
-            // access map or something
-
+            char[,] movementZone = new char[map.rows, map.columns];
+            Console.SetCursorPosition(playerX, playerY);  
             Console.Write(movementZone[playerY, playerX] = '@');
-
         }
 
     }
