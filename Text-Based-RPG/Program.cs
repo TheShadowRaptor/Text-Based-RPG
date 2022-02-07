@@ -22,16 +22,14 @@ namespace Text_Based_RPG
             // Gameplay Loop
             while (player.isAlive)
             {
-                map.Draw();
-                player.Draw();
-                enemy.Draw();
+                map.Draw();               
+                enemy.Draw(map);
+                player.Draw(map);
 
-               // map.Update();
-                player.Update();
+                map.Update();                
                 enemy.Update();
+                player.Update();
             }
-
-
 
             Console.ReadKey(true);
 

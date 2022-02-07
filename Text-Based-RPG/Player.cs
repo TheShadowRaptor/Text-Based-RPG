@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace Text_Based_RPG
 {
@@ -13,11 +14,8 @@ namespace Text_Based_RPG
         int EXP;
         int lives;
 
-        int playerY;
-        int playerX;
-        
-
-        Map map = new Map();
+        int playerY = 1;
+        int playerX = 1;
 
         // healing
 
@@ -25,49 +23,37 @@ namespace Text_Based_RPG
 
         // level up
 
-        // Movement
-
         public void Update()
         {    
             ConsoleKey keyPress = Console.ReadKey(true).Key;
-            switch (keyPress)
-            {
+
                 // ----------------------- WASD --------------------------
-                case ConsoleKey.W:
-                    playerY -= 1;                                  
 
-                    break;
-
-                case ConsoleKey.S:
-                    playerY += 1;
-
-                    break;
-
-                case ConsoleKey.D:
-                    playerX += 1;                        
-
-                    break;
-
-                case ConsoleKey.A:
-                    playerX -= 1;
-
-                    break;
-
-                default:
-
-                    break;
+            if (keyPress == ConsoleKey.W)
+            {
+                    playerY -= 1;                      
+            }
+            else if (keyPress == ConsoleKey.S) // decision to move
+            {
+                    playerY += 1; // actual move                          
+            }
+            else if (keyPress == ConsoleKey.D)
+            {
+                    playerX += 1;                            
+            }
+            else if (keyPress == ConsoleKey.A)
+            {
+                    playerX -= 1;                      
             }
 
-            Console.SetCursorPosition(0, 27);
-            Console.WriteLine(playerX + "," + playerY);
-            Console.WriteLine(map.rows + "," + map.columns);
+            // combat check?
         }
 
-        public void Draw()
+        public void Draw(Map map)
         {
-            char[,] movementZone = new char[map.rows, map.columns];
-            Console.SetCursorPosition(playerX, playerY);  
-            Console.Write(movementZone[playerY, playerX] = '@');
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.SetCursorPosition(playerX, playerY);            
+            Console.Write(map.printMap[playerY + 1, playerX + 1] = '@');
         }
     }
 }

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Text_Based_RPG
 {
@@ -11,23 +7,51 @@ namespace Text_Based_RPG
     class GameCharacter
     {
         // Initialisation
-        int health;
-        int shield;
+        protected int randNum;
+        protected bool canMove;
 
-        Map map = new Map();
-
-        protected void TakeDamage()
+        protected void TakeDamage(int damage, int health, int shield)
         {
+            shield -= damage;
 
+            if (shield <= 0)
+            {
+                health += shield;
+                shield = 0;
+            }                    
         }
 
-        protected void Collision(int x, int y)
+        protected void RandomInt(int min, int max)
         {
-            if (map.printMap[x, y] == '^')
-            {
+            Random random = new Random();
+            randNum = random.Next(min, max);
+        }
 
+        protected void DetectCollision(Map map, int x, int y)
+        {    
+            if (map.printMap[x,y] == '^')
+            {
+                canMove = false;
+            }
+            else if (map.printMap[x,y] == '~')
+            {
+                canMove = false;
             }
         }
+
+        protected int Clamp(int value, int min, int max)
+        {
+            if (value > max)
+            {
+                value = max;
+            }
+            if (value < min)
+            {
+                value = min;
+            }
+
+            return value;
+        }       
 
     }  
 }

@@ -8,9 +8,7 @@ namespace Text_Based_RPG
 {
     class Map
     {
-
-        // nested for loop to draw map
-
+        // init
         static char[,] gameMap = new char[,]
         {
                 {'.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.'},
@@ -52,20 +50,25 @@ namespace Text_Based_RPG
         public void Draw()
         {
             Console.SetCursorPosition(0, 0); // sets map to reload at 0,0
-
-            for (int x = 0; x <= rows - 1; x++)
+            
+            for (int x = 1; x <= rows - 1; x++)
             {
-                for (int y = 0; y <= columns - 1; y++)
+                for (int y = 1; y <= columns - 1; y++)
                 {
                     mapX = x;
-                    mapY = y;                   
+                    mapY = y;
 
-                    Console.Write(printMap[x, y]);
-                    // ColorMap(x, y);
+                    ColorMap(mapX, mapY);
+                    Console.Write(printMap[x, y]);                   
                 }
-
+               
                 Console.WriteLine();
             }
+        }
+
+        public void Update()
+        {
+            gameMap = printMap;
         }
 
         private void ColorMap(int x, int y)
@@ -77,6 +80,10 @@ namespace Text_Based_RPG
             else if (printMap[x, y] == '^')
             {
                 Console.ForegroundColor = ConsoleColor.Red;
+            }
+            else if (printMap[x, y] == '~')
+            {
+                Console.ForegroundColor = ConsoleColor.Blue;
             }
 
             

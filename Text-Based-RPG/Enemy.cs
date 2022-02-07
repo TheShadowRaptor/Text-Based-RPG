@@ -8,48 +8,38 @@ namespace Text_Based_RPG
 {
     class Enemy : GameCharacter
     {
-        int EnemyX = 20;
-        int EnemyY = 20;
-
-        int direction;
-
-        Map map = new Map();
+        int EnemyX = 15;
+        int EnemyY = 15;
 
         public void Update()
         {
-            RandomSelect();
-            if (direction == 1)
+            // temp random movement? || non-agro state?
+            RandomInt(1, 5);
+            if (randNum == 1)
             {
                 EnemyY -= 1;
             }
-            else if (direction == 2)
+            else if (randNum == 2)
             {
                 EnemyY += 1;
             }
-            else if (direction == 3)
+            else if (randNum == 3)
             {
                 EnemyX -= 1;
             }
-            else if (direction == 4)
+            else if (randNum == 4)
             {
                 EnemyX += 1;
             }
 
-            Console.SetCursorPosition(5, 27);
-            Console.WriteLine(EnemyX + "," + EnemyY);
+            // combat check?
         }
 
-        public void Draw()
+        public void Draw(Map map)
         {
-            char[,] movementZone = new char[map.rows, map.columns];
             Console.SetCursorPosition(EnemyX, EnemyY);
-            Console.Write(movementZone[EnemyX, EnemyY] = 'E');
-        }
-
-        private void RandomSelect()
-        {
-            Random random = new Random();
-            direction = random.Next(1, 5);
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.Write(map.printMap[EnemyY + 1, EnemyX + 1] = 'E');
         }
     }
 }
