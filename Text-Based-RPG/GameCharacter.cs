@@ -37,14 +37,18 @@ namespace Text_Based_RPG
             {
                 canMove = false;
             }
-            else if (map.printMap[y,x] == '^')
+            else if (map.printMap[y, x] == '^')
             {
                 canMove = false;
             }
-            else if (map.printMap[y,x] == '~')
+            else if (map.printMap[y, x] == '~')
             {
                 canMove = false;
-            }           
+            }
+            else if (map.printMap[y, x] == 'E')
+            {
+                canMove = false;               
+            }
             else
             {
                 canMove = true;

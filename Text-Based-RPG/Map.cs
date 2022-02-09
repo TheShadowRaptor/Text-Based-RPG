@@ -86,9 +86,7 @@ namespace Text_Based_RPG
             else if (printMap[x, y] == '~')
             {
                 Console.ForegroundColor = ConsoleColor.Blue;
-            }
-
-            
+            }           
         }
     }
 }
