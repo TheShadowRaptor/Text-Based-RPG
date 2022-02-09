@@ -10,26 +10,47 @@ namespace Text_Based_RPG
     {
         int EnemyX = 15;
         int EnemyY = 15;
+        int newEnemyX;
+        int newEnemyY;
 
-        public void Update()
+        public void Update(Map map)
         {
+            newEnemyX = EnemyX;
+            newEnemyY = EnemyY;
+            
             // temp random movement? || non-agro state?
-            RandomInt(1, 5);
+            RandomiseInt(1, 5);
             if (randNum == 1)
             {
-                EnemyY -= 1;
+                OnCollision(map, newEnemyX, newEnemyY -= 1);
+                if (canMove)
+                {
+                    EnemyY -= 1;
+                }              
             }
             else if (randNum == 2)
             {
-                EnemyY += 1;
+                OnCollision(map, newEnemyX, newEnemyY += 1);
+                if (canMove)
+                {
+                    EnemyY += 1;
+                }               
             }
             else if (randNum == 3)
             {
-                EnemyX -= 1;
+                OnCollision(map, newEnemyX -= 1, newEnemyY);
+                if (canMove)
+                {
+                    EnemyX -= 1;
+                }              
             }
             else if (randNum == 4)
             {
-                EnemyX += 1;
+                OnCollision(map, newEnemyX += 1, newEnemyY);
+                if (canMove)
+                {
+                    EnemyX += 1;
+                }              
             }
 
             // combat check?
@@ -37,9 +58,10 @@ namespace Text_Based_RPG
 
         public void Draw(Map map)
         {
+            char[,] movementArea = new char[map.rows, map.columns];
             Console.SetCursorPosition(EnemyX, EnemyY);
             Console.ForegroundColor = ConsoleColor.DarkRed;
-            Console.Write(map.printMap[EnemyY + 1, EnemyX + 1] = 'E');
+            Console.Write(movementArea[EnemyY, EnemyX] = 'E');
         }
     }
 }

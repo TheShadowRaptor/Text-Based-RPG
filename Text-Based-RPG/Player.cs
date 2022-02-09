@@ -16,6 +16,8 @@ namespace Text_Based_RPG
 
         int playerY = 1;
         int playerX = 1;
+        int newPlayerX;
+        int newPlayerY;
 
         // healing
 
@@ -23,27 +25,46 @@ namespace Text_Based_RPG
 
         // level up
 
-        public void Update()
-        {    
+        public void Update(Map map)
+        {
+            newPlayerX = playerX;
+            newPlayerY = playerY;
+
             ConsoleKey keyPress = Console.ReadKey(true).Key;
 
-                // ----------------------- WASD --------------------------
+            // ----------------------- WASD --------------------------
 
             if (keyPress == ConsoleKey.W)
             {
-                    playerY -= 1;                      
+                OnCollision(map, newPlayerX, newPlayerY -=1);
+                if (canMove)
+                {
+                    playerY -= 1;
+                }              
             }
             else if (keyPress == ConsoleKey.S) // decision to move
             {
-                    playerY += 1; // actual move                          
+                OnCollision(map, newPlayerX, newPlayerY +=1);
+                if (canMove)
+                {
+                    playerY += 1; // actual move   
+                }                                                        
             }
             else if (keyPress == ConsoleKey.D)
             {
-                    playerX += 1;                            
+                OnCollision(map, newPlayerX +=1, newPlayerY);
+                if (canMove)
+                {
+                    playerX += 1;
+                }               
             }
             else if (keyPress == ConsoleKey.A)
             {
-                    playerX -= 1;                      
+                OnCollision(map, newPlayerX -=1, newPlayerY);
+                if (canMove)
+                {
+                    playerX -= 1;
+                }               
             }
 
             // combat check?
@@ -51,9 +72,13 @@ namespace Text_Based_RPG
 
         public void Draw(Map map)
         {
+            char[,] movementArea = new char[map.rows, map.columns];
             Console.ForegroundColor = ConsoleColor.Magenta;
-            Console.SetCursorPosition(playerX, playerY);            
-            Console.Write(map.printMap[playerY + 1, playerX + 1] = '@');
+            Console.SetCursorPosition(playerX, playerY);
+            Console.Write(movementArea[playerY, playerX] = '@');
+
+            Console.SetCursorPosition(2, 27);
+            Console.WriteLine(playerX + "," + playerY);
         }
     }
 }

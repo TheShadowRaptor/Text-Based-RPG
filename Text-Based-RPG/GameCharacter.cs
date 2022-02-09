@@ -21,25 +21,37 @@ namespace Text_Based_RPG
             }                    
         }
 
-        protected void RandomInt(int min, int max)
+        protected void RandomiseInt(int min, int max)
         {
             Random random = new Random();
             randNum = random.Next(min, max);
         }
 
-        protected void DetectCollision(Map map, int x, int y)
-        {    
-            if (map.printMap[x,y] == '^')
+        protected void OnCollision(Map map, int x, int y)
+        {
+            if (x < 0 || y < 0)
             {
                 canMove = false;
             }
-            else if (map.printMap[x,y] == '~')
+            else if (x > map.columns - 1 || y > map.rows - 1)
             {
                 canMove = false;
+            }
+            else if (map.printMap[y,x] == '^')
+            {
+                canMove = false;
+            }
+            else if (map.printMap[y,x] == '~')
+            {
+                canMove = false;
+            }           
+            else
+            {
+                canMove = true;
             }
         }
 
-        protected int Clamp(int value, int min, int max)
+        protected int Clamp(int value, int min, int max) // important for Health and whatnot
         {
             if (value > max)
             {

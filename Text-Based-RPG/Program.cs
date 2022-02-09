@@ -27,8 +27,8 @@ namespace Text_Based_RPG
                 player.Draw(map);
 
                 map.Update();                
-                enemy.Update();
-                player.Update();
+                enemy.Update(map);
+                player.Update(map);
             }
 
             Console.ReadKey(true);
