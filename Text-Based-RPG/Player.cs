@@ -14,10 +14,10 @@ namespace Text_Based_RPG
         int EXP;
         int lives;
 
-        int playerY = 1;
-        int playerX = 1;
-        int newPlayerX;
-        int newPlayerY;
+        public int playerY = 1;
+        public int playerX = 1;
+        public int newPlayerX;
+        public int newPlayerY;
 
         // healing
 
@@ -42,7 +42,8 @@ namespace Text_Based_RPG
 
             if (keyPress == ConsoleKey.W)
             {
-                OnCollision(map, newPlayerX, newPlayerY -= 1);
+                newPlayerY -= 1;
+                OnCollision(map, newPlayerX, newPlayerY); // check if future space can be moved into
                 if (canMove)
                 {
                     playerY -= 1;
@@ -50,15 +51,17 @@ namespace Text_Based_RPG
             }
             else if (keyPress == ConsoleKey.S) // decision to move
             {
-                OnCollision(map, newPlayerX, newPlayerY += 1);
+                newPlayerY += 1;
+                OnCollision(map, newPlayerX, newPlayerY);
                 if (canMove)
                 {
-                    playerY += 1; // actual move   
+                    playerY += 1; // actual move      ----->         Matt wants this seperate
                 }
             }
             else if (keyPress == ConsoleKey.D)
             {
-                OnCollision(map, newPlayerX += 1, newPlayerY);
+                newPlayerX += 1;
+                OnCollision(map, newPlayerX, newPlayerY);
                 if (canMove)
                 {
                     playerX += 1;
@@ -66,7 +69,8 @@ namespace Text_Based_RPG
             }
             else if (keyPress == ConsoleKey.A)
             {
-                OnCollision(map, newPlayerX -= 1, newPlayerY);
+                newPlayerX -= 1;
+                OnCollision(map, newPlayerX, newPlayerY);
                 if (canMove)
                 {
                     playerX -= 1;
@@ -79,15 +83,12 @@ namespace Text_Based_RPG
             }
         }
 
-        public void Draw(Map map)
+        public void Draw()
         {
-            movementArea = new char[map.rows, map.columns];
-            Console.ForegroundColor = ConsoleColor.Magenta;
             Console.SetCursorPosition(playerX, playerY);
-            Console.Write(movementArea[playerY, playerX] = '@');
-
-            Console.SetCursorPosition(2, 27);
-            Console.WriteLine(playerX + "," + playerY);
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.Write('@');
+            Console.SetCursorPosition(0, 0);
         }
     }
 }

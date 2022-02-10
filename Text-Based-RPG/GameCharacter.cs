@@ -16,15 +16,11 @@ namespace Text_Based_RPG
 
         protected char[,] movementArea;
 
-        protected void TakeDamage(int damage, int health, int shield)
+        protected void TakeDamage(int damage, int health)
         {
-            shield -= damage;
+            health -= damage;
 
-            if (shield <= 0)
-            {
-                health += shield;
-                shield = 0;
-            }                    
+                
         }
 
         protected void RandomiseInt(int min, int max)
@@ -37,6 +33,7 @@ namespace Text_Based_RPG
         {
             Player player = new Player(); // this feels gross, but it'll do for now.
             Enemy enemy = new Enemy();
+            canDamage = false;
 
             if (x < 0 || y < 0)
             {
@@ -58,7 +55,12 @@ namespace Text_Based_RPG
                 canMove = false;
                 canDamage = false;
             }
-            else if (player.movementArea[y, x] == 'E' || enemy.movementArea[y, x] == '@') // doesn't work / null refrence
+            else if (map.printMap[y, x] == 'E')
+            {
+                canMove = false;
+                canDamage = true;
+            }
+            else if (map.printMap[y, x] == '@')
             {
                 canMove = false;
                 canDamage = true;
@@ -76,7 +78,7 @@ namespace Text_Based_RPG
         {
             if (canDamage)
             {
-
+               Console.Beep();
             }
             else
             {

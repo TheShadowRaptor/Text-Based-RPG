@@ -8,10 +8,10 @@ namespace Text_Based_RPG
 {
     class Enemy : GameCharacter
     {
-        int EnemyX = 15;
-        int EnemyY = 15;
-        int newEnemyX;
-        int newEnemyY;
+        public int EnemyX = 15;
+        public int EnemyY = 15;
+        public int newEnemyX;
+        public int newEnemyY;
 
         public void Update(Map map)
         {
@@ -22,7 +22,8 @@ namespace Text_Based_RPG
             RandomiseInt(1, 5);
             if (randNum == 1)
             {
-                OnCollision(map, newEnemyX, newEnemyY -= 1);
+                newEnemyY -= 1;
+                OnCollision(map, newEnemyX, newEnemyY);
                 if (canMove)
                 {
                     EnemyY -= 1;
@@ -30,7 +31,8 @@ namespace Text_Based_RPG
             }
             else if (randNum == 2)
             {
-                OnCollision(map, newEnemyX, newEnemyY += 1);
+                newEnemyY += 1;
+                OnCollision(map, newEnemyX, newEnemyY);
                 if (canMove)
                 {
                     EnemyY += 1;
@@ -38,7 +40,8 @@ namespace Text_Based_RPG
             }
             else if (randNum == 3)
             {
-                OnCollision(map, newEnemyX -= 1, newEnemyY);
+                newEnemyX -= 1;
+                OnCollision(map, newEnemyX, newEnemyY);
                 if (canMove)
                 {
                     EnemyX -= 1;
@@ -46,7 +49,8 @@ namespace Text_Based_RPG
             }
             else if (randNum == 4)
             {
-                OnCollision(map, newEnemyX += 1, newEnemyY);
+                newEnemyX += 1;
+                OnCollision(map, newEnemyX, newEnemyY);
                 if (canMove)
                 {
                     EnemyX += 1;
@@ -59,12 +63,13 @@ namespace Text_Based_RPG
             }           
         }
 
-        public void Draw(Map map)
+        public void Draw()
         {
-            movementArea = new char[map.rows, map.columns];
-            Console.SetCursorPosition(EnemyX, EnemyY);
+            
+            Console.SetCursorPosition(EnemyX, EnemyY);           
             Console.ForegroundColor = ConsoleColor.DarkRed;
-            Console.Write(movementArea[EnemyY, EnemyX] = 'E');
+            Console.Write('E');
+            Console.SetCursorPosition(0, 0);
         }
     }
 }

@@ -26,13 +26,13 @@ namespace Text_Based_RPG
             while (player.isAlive)
             {
                 hud.Draw();
-                map.Draw();               
-                enemy.Draw(map);
-                player.Draw(map);
+                map.Draw();
+                player.Draw();
+                enemy.Draw();              
 
-                map.Update();                
-                enemy.Update(map);
+                map.Update();
                 player.Update(map);
+                enemy.Update(map);             
             }
 
             Console.ReadKey(true);
