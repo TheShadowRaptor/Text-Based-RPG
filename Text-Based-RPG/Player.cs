@@ -25,54 +25,63 @@ namespace Text_Based_RPG
 
         // level up
 
+        public void Start()
+        {
+            health = 100;
+            maxHealth = 100;
+        }
+
         public void Update(Map map)
         {
             newPlayerX = playerX;
             newPlayerY = playerY;
-
+        
             ConsoleKey keyPress = Console.ReadKey(true).Key;
 
             // ----------------------- WASD --------------------------
 
             if (keyPress == ConsoleKey.W)
             {
-                OnCollision(map, newPlayerX, newPlayerY -=1);
+                OnCollision(map, newPlayerX, newPlayerY -= 1);
                 if (canMove)
                 {
                     playerY -= 1;
-                }              
+                }
             }
             else if (keyPress == ConsoleKey.S) // decision to move
             {
-                OnCollision(map, newPlayerX, newPlayerY +=1);
+                OnCollision(map, newPlayerX, newPlayerY += 1);
                 if (canMove)
                 {
                     playerY += 1; // actual move   
-                }                                                        
+                }
             }
             else if (keyPress == ConsoleKey.D)
             {
-                OnCollision(map, newPlayerX +=1, newPlayerY);
+                OnCollision(map, newPlayerX += 1, newPlayerY);
                 if (canMove)
                 {
                     playerX += 1;
-                }               
+                }
             }
             else if (keyPress == ConsoleKey.A)
             {
-                OnCollision(map, newPlayerX -=1, newPlayerY);
+                OnCollision(map, newPlayerX -= 1, newPlayerY);
                 if (canMove)
                 {
                     playerX -= 1;
-                }               
+                }
             }
 
-            // combat check?
+            if (canDamage) // combat check
+            {
+                
+            }
         }
 
         public void Draw(Map map)
         {
-            char[,] movementArea = new char[map.rows, map.columns];
+            movementArea = new char[map.rows, map.columns];
             Console.ForegroundColor = ConsoleColor.Magenta;
             Console.SetCursorPosition(playerX, playerY);
             Console.Write(movementArea[playerY, playerX] = '@');

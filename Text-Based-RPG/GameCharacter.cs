@@ -9,6 +9,12 @@ namespace Text_Based_RPG
         // Initialisation
         protected int randNum;
         protected bool canMove;
+        protected bool canDamage;
+
+        protected int health;
+        protected int maxHealth;
+
+        protected char[,] movementArea;
 
         protected void TakeDamage(int damage, int health, int shield)
         {
@@ -29,29 +35,52 @@ namespace Text_Based_RPG
 
         protected void OnCollision(Map map, int x, int y)
         {
+            Player player = new Player(); // this feels gross, but it'll do for now.
+            Enemy enemy = new Enemy();
+
             if (x < 0 || y < 0)
             {
                 canMove = false;
+                canDamage = false;
             }
             else if (x > map.columns - 1 || y > map.rows - 1)
             {
                 canMove = false;
+                canDamage = false;
             }
             else if (map.printMap[y, x] == '^')
             {
                 canMove = false;
+                canDamage = false;
             }
             else if (map.printMap[y, x] == '~')
             {
                 canMove = false;
+                canDamage = false;
             }
-            else if (map.printMap[y, x] == 'E')
+            else if (player.movementArea[y, x] == 'E' || enemy.movementArea[y, x] == '@') // doesn't work / null refrence
             {
-                canMove = false;               
+                canMove = false;
+                canDamage = true;
             }
             else
             {
                 canMove = true;
+                canDamage = false;
+            }
+
+            checkDamage();
+        }
+
+        private void checkDamage()
+        {
+            if (canDamage)
+            {
+
+            }
+            else
+            {
+                return;
             }
         }
 

@@ -53,12 +53,15 @@ namespace Text_Based_RPG
                 }              
             }
 
-            // combat check?
+            if (canDamage) // combat check
+            {
+
+            }           
         }
 
         public void Draw(Map map)
         {
-            char[,] movementArea = new char[map.rows, map.columns];
+            movementArea = new char[map.rows, map.columns];
             Console.SetCursorPosition(EnemyX, EnemyY);
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.Write(movementArea[EnemyY, EnemyX] = 'E');

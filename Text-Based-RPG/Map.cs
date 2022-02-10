@@ -46,7 +46,7 @@ namespace Text_Based_RPG
         int mapY;
 
         public char[,] printMap = gameMap;
-        int scale = 3; // incase I want to make the map bigger in the future
+        int scale = 3; // in case I want to make the map bigger in the future
 
         public void Draw()
         {
@@ -81,11 +81,11 @@ namespace Text_Based_RPG
             }
             else if (printMap[x, y] == '^')
             {
-                Console.ForegroundColor = ConsoleColor.Red;
+                Console.ForegroundColor = ConsoleColor.DarkGray;
             }
             else if (printMap[x, y] == '~')
             {
-                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.ForegroundColor = ConsoleColor.DarkBlue;
             }           
         }
     }

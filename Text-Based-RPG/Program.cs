@@ -18,10 +18,14 @@ namespace Text_Based_RPG
             Map map = new Map();
             Player player = new Player();
             Enemy enemy = new Enemy();
+            HUD hud = new HUD();
+
+            player.Start();
 
             // Gameplay Loop
             while (player.isAlive)
             {
+                hud.Draw();
                 map.Draw();               
                 enemy.Draw(map);
                 player.Draw(map);
