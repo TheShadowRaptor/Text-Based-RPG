@@ -11,10 +11,8 @@ namespace Text_Based_RPG
         protected bool canMove;
         protected bool canDamage;
 
-        protected int health;
-        protected int maxHealth;
-
-        protected char[,] movementArea;
+        public int health;
+        public int maxHealth;
 
         protected void TakeDamage(int damage, int health)
         {
@@ -32,7 +30,8 @@ namespace Text_Based_RPG
         protected void OnCollision(Map map, int x, int y)
         {
             Player player = new Player(); // this feels gross, but it'll do for now.
-            Enemy enemy = new Enemy();
+            Enemy enemy = new Enemy();          
+
             canDamage = false;
 
             if (x < 0 || y < 0)
@@ -55,16 +54,6 @@ namespace Text_Based_RPG
                 canMove = false;
                 canDamage = false;
             }
-            else if (map.printMap[y, x] == 'E')
-            {
-                canMove = false;
-                canDamage = true;
-            }
-            else if (map.printMap[y, x] == '@')
-            {
-                canMove = false;
-                canDamage = true;
-            }
             else
             {
                 canMove = true;
@@ -79,10 +68,6 @@ namespace Text_Based_RPG
             if (canDamage)
             {
                Console.Beep();
-            }
-            else
-            {
-                return;
             }
         }
 
