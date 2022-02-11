@@ -13,10 +13,6 @@ namespace Text_Based_RPG
 
         public int health;
         public int maxHealth;
-<<<<<<< HEAD
-
-=======
->>>>>>> 99834c8ac3e46f8900afb3cd2ff233a9860fb7e7
 
         protected void TakeDamage(int damage, int health)
         {
@@ -32,11 +28,10 @@ namespace Text_Based_RPG
         protected void OnCollision(Map map, int x, int y)
         {
             Player player = new Player(); // this feels gross, but it'll do for now.
-<<<<<<< HEAD
             Enemy enemy = new Enemy();
-=======
             Enemy enemy = new Enemy();          
->>>>>>> 99834c8ac3e46f8900afb3cd2ff233a9860fb7e7
+            Enemy enemy = new Enemy();          
+
 
             canDamage = false;
 
@@ -60,13 +55,10 @@ namespace Text_Based_RPG
                 canMove = false;
                 canDamage = false;
             }
-<<<<<<< HEAD
            // else if (player.newPlayerX == enemy.enemyX && player.newPlayerY == enemy.enemyY) // currently reads orgin point
            // {
            //     Console.Beep();       // having issues with this, this is the best idea I have to get this to work
            // }                         // however it only recognises it's initial values of 0, 0,
-=======
->>>>>>> 99834c8ac3e46f8900afb3cd2ff233a9860fb7e7
             else
             {
                 canMove = true;
