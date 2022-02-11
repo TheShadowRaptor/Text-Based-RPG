@@ -10,7 +10,6 @@ namespace Text_Based_RPG
     class Player : GameCharacter
     {
         // inherites from GameCharacter
-        public bool isAlive = true;
         int EXP;
         int lives;
 
@@ -29,13 +28,15 @@ namespace Text_Based_RPG
         {
             playerX = 1;
             playerY = 1;
+            isAlive = true;
 
             health = 100;
             maxHealth = 100;
         }
 
+        // ---------------------------------- Update ----------------------------------
         public void Update(Map map)
-        {
+        {             
             newPlayerX = playerX;
             newPlayerY = playerY;
         
@@ -80,13 +81,18 @@ namespace Text_Based_RPG
                 }
             }
 
+           // if (dealDmg)
+           // {
+           //     TakeDamage(damage, enemy.health);
+           // }
         }
 
+        // -------------------------------- Draw -------------------------------
         public void Draw()
         {
             Console.SetCursorPosition(playerX, playerY);
             Console.ForegroundColor = ConsoleColor.Magenta;
-            Console.Write('@');
+            Console.Write('@'); // might be able to write these directly to the map and use them for collision?
             Console.SetCursorPosition(0, 0);
         }
     }

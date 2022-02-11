@@ -19,6 +19,7 @@ namespace Text_Based_RPG
             enemyY = 15;
         }
 
+        // ---------------------------------------- Update --------------------------------
         public void Update(Map map)
         {
             newEnemyX = enemyX;
@@ -63,12 +64,13 @@ namespace Text_Based_RPG
                 }              
             }
 
-            if (canDamage) // combat check
-            {
-
-            }           
+            // if (dealDmg)
+            // {
+            //     TakeDamage(damage, player.health);
+            // }
         }
 
+        // ------------------------- Draw --------------------------------------
         public void Draw()
         {
             

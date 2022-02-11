@@ -9,14 +9,24 @@ namespace Text_Based_RPG
         // Initialisation
         protected int randNum;
         protected bool canMove;
-        protected bool canDamage;
+        protected bool dealDmg;
 
+        public bool isAlive;
         public int health;
         public int maxHealth;
 
+      //  Enemy enemy = new Enemy();    // causes a stack-overflow... why?
+      //  Player player = new Player();
+
         protected void TakeDamage(int damage, int health)
         {
-            health -= damage;              
+            health -= damage;  
+
+            if (health <= 0)
+            {
+                health = 0;
+                isAlive = false;
+            }           
         }
 
         protected void RandomiseInt(int min, int max)
@@ -27,53 +37,43 @@ namespace Text_Based_RPG
 
         protected void OnCollision(Map map, int x, int y)
         {
-            Player player = new Player(); // this feels gross, but it'll do for now.
-            Enemy enemy = new Enemy();
-            Enemy enemy = new Enemy();          
-            Enemy enemy = new Enemy();          
+            Enemy enemy = new Enemy();      // doesn't work. Yes, I know why.
+            Player player = new Player();   // No, I don't know how to fix it.
 
-
-            canDamage = false;
+            dealDmg = false;
 
             if (x < 0 || y < 0)
             {
                 canMove = false;
-                canDamage = false;
             }
             else if (x > map.columns - 1 || y > map.rows - 1)
             {
                 canMove = false;
-                canDamage = false;
             }
             else if (map.printMap[y, x] == '^')
             {
                 canMove = false;
-                canDamage = false;
             }
             else if (map.printMap[y, x] == '~')
             {
                 canMove = false;
-                canDamage = false;
             }
-           // else if (player.newPlayerX == enemy.enemyX && player.newPlayerY == enemy.enemyY) // currently reads orgin point
-           // {
-           //     Console.Beep();       // having issues with this, this is the best idea I have to get this to work
-           // }                         // however it only recognises it's initial values of 0, 0,
+            else if (map.printMap[y, x] == map.printMap[enemy.enemyY, enemy.enemyX])
+            {
+                canMove = false;
+                Console.Beep();
+                dealDmg = true;
+            }
+            else if (map.printMap[y,x] == map.printMap[player.playerY, player.playerX])
+            {
+                canMove = false;
+                Console.Beep();
+                dealDmg = true;
+            }
             else
             {
-                canMove = true;
-                canDamage = false;
-            }
-
-            checkDamage();
-        }
-
-        private void checkDamage()
-        {
-            if (canDamage)
-            {
-               Console.Beep();
-            }
+                canMove = true;               
+            }                    
         }
 
         protected int Clamp(int value, int min, int max) // important for Health and whatnot
