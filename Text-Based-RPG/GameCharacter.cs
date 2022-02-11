@@ -58,7 +58,7 @@ namespace Text_Based_RPG
             {
                 canMove = false;
             }
-            else if (map.printMap[y, x] == map.printMap[enemy.enemyY, enemy.enemyX])
+          /*  else if (map.printMap[y, x] == map.printMap[enemy.enemyY, enemy.enemyX])
             {
                 canMove = false;
                 Console.Beep();
@@ -69,7 +69,7 @@ namespace Text_Based_RPG
                 canMove = false;
                 Console.Beep();
                 dealDmg = true;
-            }
+            } */
             else
             {
                 canMove = true;               
