@@ -48,10 +48,10 @@ namespace Text_Based_RPG
         public char[,] printMap = gameMap;
         int scale = 3; // in case I want to make the map bigger in the future
 
-        public void Draw()
+        public void Draw() // creates the map
         {
-            printMap = gameMap; // map print is off, prints weird...
-            Console.SetCursorPosition(0, 0); // sets map to reload at 0,0
+            printMap = gameMap;
+            Console.SetCursorPosition(0, 0);
 
             for (int x = 0; x <= rows - 1; x++)
             {

@@ -20,12 +20,14 @@ namespace Text_Based_RPG
             Enemy enemy = new Enemy();
             HUD hud = new HUD();
 
+            // Game Start
             player.Start();
+            enemy.Start();
 
             // Gameplay Loop
             while (player.isAlive)
             {
-                hud.Draw();
+                hud.Draw(player);
                 map.Draw();
                 player.Draw();
                 enemy.Draw();              

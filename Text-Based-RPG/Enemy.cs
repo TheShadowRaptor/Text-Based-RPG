@@ -8,15 +8,21 @@ namespace Text_Based_RPG
 {
     class Enemy : GameCharacter
     {
-        public int EnemyX = 15;
-        public int EnemyY = 15;
+        public int enemyX;
+        public int enemyY;
         public int newEnemyX;
         public int newEnemyY;
 
+        public void Start()
+        {
+            enemyX = 15;
+            enemyY = 15;
+        }
+
         public void Update(Map map)
         {
-            newEnemyX = EnemyX;
-            newEnemyY = EnemyY;
+            newEnemyX = enemyX;
+            newEnemyY = enemyY;
             
             // temp random movement? || non-agro state?
             RandomiseInt(1, 5);
@@ -26,7 +32,7 @@ namespace Text_Based_RPG
                 OnCollision(map, newEnemyX, newEnemyY);
                 if (canMove)
                 {
-                    EnemyY -= 1;
+                    enemyY -= 1;
                 }              
             }
             else if (randNum == 2)
@@ -35,7 +41,7 @@ namespace Text_Based_RPG
                 OnCollision(map, newEnemyX, newEnemyY);
                 if (canMove)
                 {
-                    EnemyY += 1;
+                    enemyY += 1;
                 }               
             }
             else if (randNum == 3)
@@ -44,7 +50,7 @@ namespace Text_Based_RPG
                 OnCollision(map, newEnemyX, newEnemyY);
                 if (canMove)
                 {
-                    EnemyX -= 1;
+                    enemyX -= 1;
                 }              
             }
             else if (randNum == 4)
@@ -53,7 +59,7 @@ namespace Text_Based_RPG
                 OnCollision(map, newEnemyX, newEnemyY);
                 if (canMove)
                 {
-                    EnemyX += 1;
+                    enemyX += 1;
                 }              
             }
 
@@ -66,7 +72,7 @@ namespace Text_Based_RPG
         public void Draw()
         {
             
-            Console.SetCursorPosition(EnemyX, EnemyY);           
+            Console.SetCursorPosition(enemyX, enemyY);           
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.Write('E');
             Console.SetCursorPosition(0, 0);

@@ -8,15 +8,13 @@ namespace Text_Based_RPG
 {
     class HUD
     {
-        Player player = new Player();
-
-        public void Draw() // TEMP
+        public void Draw(Player player) // TEMP
         {
             Console.ForegroundColor = ConsoleColor.White;
             Console.SetCursorPosition(45, 0);
             Console.WriteLine("Player Stats:");
             Console.SetCursorPosition(45, 1);
-            Console.WriteLine("Health: ");
+            Console.WriteLine("Health: " + player.health + "/" + player.maxHealth);
             Console.SetCursorPosition(45, 2);
 
         }

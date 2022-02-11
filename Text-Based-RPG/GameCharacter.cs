@@ -11,16 +11,16 @@ namespace Text_Based_RPG
         protected bool canMove;
         protected bool canDamage;
 
-        protected int health;
-        protected int maxHealth;
+        public int health;
+        public int maxHealth;
+<<<<<<< HEAD
 
-        protected char[,] movementArea;
+=======
+>>>>>>> 99834c8ac3e46f8900afb3cd2ff233a9860fb7e7
 
         protected void TakeDamage(int damage, int health)
         {
-            health -= damage;
-
-                
+            health -= damage;              
         }
 
         protected void RandomiseInt(int min, int max)
@@ -32,7 +32,12 @@ namespace Text_Based_RPG
         protected void OnCollision(Map map, int x, int y)
         {
             Player player = new Player(); // this feels gross, but it'll do for now.
+<<<<<<< HEAD
             Enemy enemy = new Enemy();
+=======
+            Enemy enemy = new Enemy();          
+>>>>>>> 99834c8ac3e46f8900afb3cd2ff233a9860fb7e7
+
             canDamage = false;
 
             if (x < 0 || y < 0)
@@ -55,16 +60,13 @@ namespace Text_Based_RPG
                 canMove = false;
                 canDamage = false;
             }
-            else if (map.printMap[y, x] == 'E')
-            {
-                canMove = false;
-                canDamage = true;
-            }
-            else if (map.printMap[y, x] == '@')
-            {
-                canMove = false;
-                canDamage = true;
-            }
+<<<<<<< HEAD
+           // else if (player.newPlayerX == enemy.enemyX && player.newPlayerY == enemy.enemyY) // currently reads orgin point
+           // {
+           //     Console.Beep();       // having issues with this, this is the best idea I have to get this to work
+           // }                         // however it only recognises it's initial values of 0, 0,
+=======
+>>>>>>> 99834c8ac3e46f8900afb3cd2ff233a9860fb7e7
             else
             {
                 canMove = true;
@@ -79,10 +81,6 @@ namespace Text_Based_RPG
             if (canDamage)
             {
                Console.Beep();
-            }
-            else
-            {
-                return;
             }
         }
 

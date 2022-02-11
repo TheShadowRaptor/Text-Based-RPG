@@ -14,8 +14,8 @@ namespace Text_Based_RPG
         int EXP;
         int lives;
 
-        public int playerY = 1;
-        public int playerX = 1;
+        public int playerY;
+        public int playerX;
         public int newPlayerX;
         public int newPlayerY;
 
@@ -27,6 +27,9 @@ namespace Text_Based_RPG
 
         public void Start()
         {
+            playerX = 1;
+            playerY = 1;
+
             health = 100;
             maxHealth = 100;
         }
@@ -77,10 +80,6 @@ namespace Text_Based_RPG
                 }
             }
 
-            if (canDamage) // combat check
-            {
-                
-            }
         }
 
         public void Draw()
