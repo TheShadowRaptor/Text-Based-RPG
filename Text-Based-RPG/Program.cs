@@ -33,8 +33,8 @@ namespace Text_Based_RPG
                 enemy.Draw();              
 
                 map.Update();
-                player.Update(map);
-                enemy.Update(map);             
+                player.Update(map, enemy);
+                enemy.Update(map, player);             
             }
 
             Console.ReadKey(true);

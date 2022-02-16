@@ -70,7 +70,7 @@ namespace Text_Based_RPG
 
         public void Update()
         {
-
+            
         }
 
         private void ColorMap(int x, int y)
@@ -88,5 +88,7 @@ namespace Text_Based_RPG
                 Console.ForegroundColor = ConsoleColor.DarkBlue;
             }           
         }
+
+        // map  bool IsWallAt(map[x,y])  determins walls 
     }
 }

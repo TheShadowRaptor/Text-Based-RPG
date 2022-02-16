@@ -15,7 +15,7 @@ namespace Text_Based_RPG
             Console.SetCursorPosition(45, 0);
             Console.WriteLine("Player Stats:");
             Console.SetCursorPosition(45, 1);
-            Console.WriteLine("Position: " + player.playerX + "/" + player.playerY);
+            Console.WriteLine("Position: " + player.playerX + "," + player.playerY);
             Console.SetCursorPosition(45, 2);
             Console.WriteLine("Health: " + player.health + "/" + player.maxHealth);
 

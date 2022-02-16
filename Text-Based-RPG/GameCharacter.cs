@@ -57,19 +57,7 @@ namespace Text_Based_RPG
             else if (map.printMap[y, x] == '~')
             {
                 canMove = false;
-            }
-          /*  else if (map.printMap[y, x] == map.printMap[enemy.enemyY, enemy.enemyX])
-            {
-                canMove = false;
-                Console.Beep();
-                dealDmg = true;
-            }
-            else if (map.printMap[y,x] == map.printMap[player.playerY, player.playerX])
-            {
-                canMove = false;
-                Console.Beep();
-                dealDmg = true;
-            } */
+            }         
             else
             {
                 canMove = true;               

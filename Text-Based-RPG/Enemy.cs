@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Text_Based_RPG
 {
-    class Enemy : GameCharacter
+    class Enemy : GameCharacter // add enemy array for multiple enemies
     {
         public int enemyX;
         public int enemyY;
@@ -20,7 +20,7 @@ namespace Text_Based_RPG
         }
 
         // ---------------------------------------- Update --------------------------------
-        public void Update(Map map)
+        public void Update(Map map, Player player)
         {
             newEnemyX = enemyX;
             newEnemyY = enemyY;
@@ -31,6 +31,7 @@ namespace Text_Based_RPG
             {
                 newEnemyY -= 1;
                 OnCollision(map, newEnemyX, newEnemyY);
+                EnemyCollision(player);
                 if (canMove)
                 {
                     enemyY -= 1;
@@ -40,6 +41,7 @@ namespace Text_Based_RPG
             {
                 newEnemyY += 1;
                 OnCollision(map, newEnemyX, newEnemyY);
+                EnemyCollision(player);
                 if (canMove)
                 {
                     enemyY += 1;
@@ -49,6 +51,7 @@ namespace Text_Based_RPG
             {
                 newEnemyX -= 1;
                 OnCollision(map, newEnemyX, newEnemyY);
+                EnemyCollision(player);
                 if (canMove)
                 {
                     enemyX -= 1;
@@ -58,16 +61,23 @@ namespace Text_Based_RPG
             {
                 newEnemyX += 1;
                 OnCollision(map, newEnemyX, newEnemyY);
+                EnemyCollision(player);
                 if (canMove)
                 {
                     enemyX += 1;
                 }              
-            }
+            }          
+        }
 
-            // if (dealDmg)
-            // {
-            //     TakeDamage(damage, player.health);
-            // }
+        void EnemyCollision(Player player)
+        {
+            // collision with player
+            if (newEnemyX == player.playerX && newEnemyY == player.playerY)
+            {
+                canMove = false;
+                Console.Beep();
+            }
+            else canMove = true;
         }
 
         // ------------------------- Draw --------------------------------------

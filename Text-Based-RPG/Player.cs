@@ -35,7 +35,7 @@ namespace Text_Based_RPG
         }
 
         // ---------------------------------- Update ----------------------------------
-        public void Update(Map map)
+        public void Update(Map map, Enemy enemy)
         {             
             newPlayerX = playerX;
             newPlayerY = playerY;
@@ -48,6 +48,7 @@ namespace Text_Based_RPG
             {
                 newPlayerY -= 1;
                 OnCollision(map, newPlayerX, newPlayerY); // check if future space can be moved into
+                EnemyCollision(enemy);   
                 if (canMove)
                 {
                     playerY -= 1;
@@ -57,6 +58,7 @@ namespace Text_Based_RPG
             {
                 newPlayerY += 1;
                 OnCollision(map, newPlayerX, newPlayerY);
+                EnemyCollision(enemy);
                 if (canMove)
                 {
                     playerY += 1; // actual move      ----->         Matt wants this seperate
@@ -66,6 +68,7 @@ namespace Text_Based_RPG
             {
                 newPlayerX += 1;
                 OnCollision(map, newPlayerX, newPlayerY);
+                EnemyCollision(enemy);
                 if (canMove)
                 {
                     playerX += 1;
@@ -75,6 +78,7 @@ namespace Text_Based_RPG
             {
                 newPlayerX -= 1;
                 OnCollision(map, newPlayerX, newPlayerY);
+                EnemyCollision(enemy);
                 if (canMove)
                 {
                     playerX -= 1;
@@ -85,6 +89,17 @@ namespace Text_Based_RPG
            // {
            //     TakeDamage(damage, enemy.health);
            // }
+        }
+
+        void EnemyCollision(Enemy enemy)
+        {
+            // player collision
+            if (newPlayerX == enemy.enemyX && newPlayerY == enemy.enemyY)
+            {
+                canMove = false;
+                Console.Beep();
+            }
+            else canMove = true;
         }
 
         // -------------------------------- Draw -------------------------------
