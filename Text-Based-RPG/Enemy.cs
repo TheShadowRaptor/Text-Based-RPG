@@ -8,6 +8,9 @@ namespace Text_Based_RPG
 {
     class Enemy : GameCharacter // add enemy array for multiple enemies
     {
+        public int enemyHealth;
+        public int damageDelt;
+
         public int enemyX;
         public int enemyY;
         public int newEnemyX;
@@ -30,42 +33,35 @@ namespace Text_Based_RPG
             if (randNum == 1)
             {
                 newEnemyY -= 1;
-                OnCollision(map, newEnemyX, newEnemyY);
-                EnemyCollision(player);
-                if (canMove)
-                {
-                    enemyY -= 1;
-                }              
+                OnCollision(map, newEnemyX, newEnemyY);               
+
+                if (canMove) EnemyCollision(player);
+                if (canMove) enemyY -= 1;
+           
             }
             else if (randNum == 2)
             {
                 newEnemyY += 1;
                 OnCollision(map, newEnemyX, newEnemyY);
-                EnemyCollision(player);
-                if (canMove)
-                {
-                    enemyY += 1;
-                }               
+
+                if (canMove) EnemyCollision(player);
+                if (canMove) enemyY += 1;
             }
             else if (randNum == 3)
             {
                 newEnemyX -= 1;
                 OnCollision(map, newEnemyX, newEnemyY);
-                EnemyCollision(player);
-                if (canMove)
-                {
-                    enemyX -= 1;
-                }              
+
+                if (canMove) EnemyCollision(player);
+                if (canMove) enemyX -= 1;
             }
             else if (randNum == 4)
             {
                 newEnemyX += 1;
                 OnCollision(map, newEnemyX, newEnemyY);
-                EnemyCollision(player);
-                if (canMove)
-                {
-                    enemyX += 1;
-                }              
+
+                if (canMove) EnemyCollision(player);
+                if (canMove) enemyX += 1;
             }          
         }
 

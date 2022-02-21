@@ -13,10 +13,6 @@ namespace Text_Based_RPG
         int EXP;
         int lives;
 
-        public int health;
-        public int maxHealth;
-        int damageDelt;
-
         public int playerY;
         public int playerX;
         public int newPlayerX;
@@ -52,34 +48,47 @@ namespace Text_Based_RPG
             {
                 newPlayerY -= 1;
                 OnCollision(map, newPlayerX, newPlayerY); // check if future space can be moved into
-
-                if (canMove) EnemyCollision(enemy);
-                if (canMove) playerY -= 1;
+                EnemyCollision(enemy);   
+                if (canMove)
+                {
+                    playerY -= 1;
+                }
             }
             else if (keyPress == ConsoleKey.S) // decision to move
             {
                 newPlayerY += 1;
                 OnCollision(map, newPlayerX, newPlayerY);
-
-                if (canMove) EnemyCollision(enemy);
-                if (canMove) playerY += 1;
+                EnemyCollision(enemy);
+                if (canMove)
+                {
+                    playerY += 1; // actual move      ----->         Matt wants this seperate
+                }
             }
             else if (keyPress == ConsoleKey.D)
             {
                 newPlayerX += 1;
                 OnCollision(map, newPlayerX, newPlayerY);
-
-                if (canMove) EnemyCollision(enemy);
-                if (canMove) playerX += 1;
+                EnemyCollision(enemy);
+                if (canMove)
+                {
+                    playerX += 1;
+                }
             }
             else if (keyPress == ConsoleKey.A)
             {
                 newPlayerX -= 1;
                 OnCollision(map, newPlayerX, newPlayerY);
-
-                if (canMove) EnemyCollision(enemy);
-                if (canMove) playerX -= 1;
+                EnemyCollision(enemy);
+                if (canMove)
+                {
+                    playerX -= 1;
+                }
             }
+
+           // if (dealDmg)
+           // {
+           //     TakeDamage(damage, enemy.health);
+           // }
         }
 
         void EnemyCollision(Enemy enemy)
@@ -88,7 +97,7 @@ namespace Text_Based_RPG
             if (newPlayerX == enemy.enemyX && newPlayerY == enemy.enemyY)
             {
                 canMove = false;
-                DealDamage(damageDelt, health);
+                Console.Beep();
             }
             else canMove = true;
         }

@@ -12,13 +12,11 @@ namespace Text_Based_RPG
         protected bool dealDmg;
 
         public bool isAlive;
-        public int health;
-        public int maxHealth;
 
       //  Enemy enemy = new Enemy();    // causes a stack-overflow... why?
       //  Player player = new Player();
 
-        protected void TakeDamage(int damage, int health)
+        protected void DealDamage(int damage, int health)
         {
             health -= damage;  
 
@@ -26,7 +24,7 @@ namespace Text_Based_RPG
             {
                 health = 0;
                 isAlive = false;
-            }           
+            }
         }
 
         protected void RandomiseInt(int min, int max)
@@ -37,8 +35,8 @@ namespace Text_Based_RPG
 
         protected void OnCollision(Map map, int x, int y)
         {
-            Enemy enemy = new Enemy();      // doesn't work. Yes, I know why.
-            Player player = new Player();   // No, I don't know how to fix it.
+            Enemy enemy = new Enemy();
+            Player player = new Player();
 
             dealDmg = false;
 

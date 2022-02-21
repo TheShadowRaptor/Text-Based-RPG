@@ -8,6 +8,7 @@ namespace Text_Based_RPG
 {
     class HUD
     {
+
         public void Draw(Player player) // TEMP
         {
 
