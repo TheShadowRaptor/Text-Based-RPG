@@ -8,8 +8,8 @@ namespace Text_Based_RPG
 {
     class Enemy : GameCharacter // add enemy array for multiple enemies
     {
-        public int enemyHealth;
-        public int damageDelt;
+        public int health;
+        public int damageDelt = 10;
 
         public int enemyX;
         public int enemyY;
@@ -72,6 +72,7 @@ namespace Text_Based_RPG
             {
                 canMove = false;
                 Console.Beep();
+                player.health = DealDamage(damageDelt, player.health);
             }
             else canMove = true;
         }

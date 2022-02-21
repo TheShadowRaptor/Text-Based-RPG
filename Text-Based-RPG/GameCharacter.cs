@@ -9,6 +9,7 @@ namespace Text_Based_RPG
         // Initialisation
         protected int randNum;
         protected bool canMove;
+        protected bool canAttack;
         protected bool dealDmg;
 
         public bool isAlive;
@@ -16,15 +17,16 @@ namespace Text_Based_RPG
       //  Enemy enemy = new Enemy();    // causes a stack-overflow... why?
       //  Player player = new Player();
 
-        protected void DealDamage(int damage, int health)
+        protected int DealDamage(int damage, int health)
         {
             health -= damage;  
 
             if (health <= 0)
             {
                 health = 0;
-                isAlive = false;
             }
+
+            return health;
         }
 
         protected void RandomiseInt(int min, int max)
@@ -35,8 +37,6 @@ namespace Text_Based_RPG
 
         protected void OnCollision(Map map, int x, int y)
         {
-            Enemy enemy = new Enemy();
-            Player player = new Player();
 
             dealDmg = false;
 

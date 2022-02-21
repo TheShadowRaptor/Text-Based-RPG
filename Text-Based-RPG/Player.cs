@@ -16,6 +16,7 @@ namespace Text_Based_RPG
         public int health;
         public int maxHealth;
         int damageDelt;
+        public bool playerIsAlive;
 
         public int playerY;
         public int playerX;
@@ -43,7 +44,8 @@ namespace Text_Based_RPG
         {             
             newPlayerX = playerX;
             newPlayerY = playerY;
-        
+            canAttack = false;
+
             ConsoleKey keyPress = Console.ReadKey(true).Key;
 
             // ----------------------- WASD --------------------------
@@ -87,10 +89,17 @@ namespace Text_Based_RPG
             // player collision
             if (newPlayerX == enemy.enemyX && newPlayerY == enemy.enemyY)
             {
+                canAttack = true;
                 canMove = false;
-                DealDamage(damageDelt, health);
+                Console.Beep(1000, 500);
+                enemy.health = DealDamage(damageDelt, enemy.health);
             }
             else canMove = true;
+
+            if (health <= 0)
+            {
+                isAlive = false;
+            }
         }
 
         // -------------------------------- Draw -------------------------------

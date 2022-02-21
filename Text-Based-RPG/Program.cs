@@ -28,7 +28,7 @@ namespace Text_Based_RPG
             while (player.isAlive)
             {
                 hud.Draw(player);
-                map.Draw();
+                map.Draw();d
                 player.Draw();
                 enemy.Draw();              
 
