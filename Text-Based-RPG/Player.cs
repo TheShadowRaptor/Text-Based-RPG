@@ -15,7 +15,7 @@ namespace Text_Based_RPG
 
         public int health;
         public int maxHealth;
-        int damageDelt;
+        int damageDelt = 50;
         public bool playerIsAlive;
 
         public int playerY;
