@@ -8,37 +8,13 @@ namespace Text_Based_RPG
 {
     class Program
     {
-        // Declerations
-       
-
         static void Main(string[] args)
         {
-            // Initialisation
+            GameManager gameManager = new GameManager();
 
-            Map map = new Map();
-            Player player = new Player();
-            Enemy enemy = new Enemy();
-            HUD hud = new HUD();
-
-            // Game Start
-            player.Start();
-            enemy.Start();
-
-            // Gameplay Loop
-            while (player.isAlive)
-            {
-                hud.Draw(player);
-                map.Draw();
-                player.Draw();
-                enemy.Draw();              
-
-                map.Update();
-                player.Update(map, enemy);
-                enemy.Update(map, player);             
-            }
+            gameManager.GameLoop();
 
             Console.ReadKey(true);
-
         }
     }
 }

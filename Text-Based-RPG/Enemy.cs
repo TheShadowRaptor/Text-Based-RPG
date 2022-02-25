@@ -16,13 +16,16 @@ namespace Text_Based_RPG
         public int newEnemyX;
         public int newEnemyY;
 
+        private int enemyType; // 0 - 2, sort of like a State manager, but determins type of enemy
+                               // 0 = normal "E", 1 = stationary until close "S", 2 = extra damage & health "T"
         bool isAlive;
 
-        public void Start()
+        public void Start(int x, int y)
         {
             isAlive = true;
-            enemyX = 15;
-            enemyY = 15;
+            enemyX = x;
+            enemyY = y;
+            enemyType = 0;
         }
 
         // ---------------------------------------- Update --------------------------------

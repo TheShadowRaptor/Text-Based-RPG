@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Text_Based_RPG
 {
@@ -39,14 +40,23 @@ namespace Text_Based_RPG
                 {'.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.'}
         };
 
+        static string mapPath = @"map.txt";
+        static string[] newMap;
 
         public int rows = gameMap.GetLength(0);
         public int columns = gameMap.GetLength(1);
         int mapX;
         int mapY;
 
-        public char[,] printMap = gameMap;
-        int scale = 3; // in case I want to make the map bigger in the future
+        public char[,] printMap;
+
+        public void Start()
+        {
+            if (File.Exists(mapPath))
+            {
+                newMap = File.ReadAllLines(mapPath);
+            }
+        }
 
         public void Draw() // creates the map
         {
@@ -71,6 +81,12 @@ namespace Text_Based_RPG
         public void Update()
         {
             
+        }
+
+        private void SplitText()
+        {
+            // split strings into chars after each ","
+            // new line on ";"
         }
 
         private void ColorMap(int x, int y)
