@@ -14,6 +14,7 @@ namespace Text_Based_RPG
         protected int objectType;
 
         protected bool isPickedUp = false;
+        protected bool isDoorOpen = false;
 
         public void Draw(char itemIcon)
         {

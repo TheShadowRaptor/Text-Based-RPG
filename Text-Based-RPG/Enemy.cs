@@ -19,6 +19,7 @@ namespace Text_Based_RPG
         private int enemyType; // 0 - 2, sort of like a State manager, but determins type of enemy
                                // 0 = normal "E", 1 = stationary until close "S", 2 = extra damage & health "T"
         bool isAlive;
+        bool isTimeStopped;
 
         public void Start(int x, int y)
         {
@@ -37,7 +38,7 @@ namespace Text_Based_RPG
             newEnemyX = enemyX;
             newEnemyY = enemyY;
 
-            if (isAlive)
+            if (isAlive || isTimeStopped)
             {
                 // temp random movement? || non-agro state?
                 RandomiseInt(1, 5);
