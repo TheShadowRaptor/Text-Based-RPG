@@ -13,22 +13,14 @@ namespace Text_Based_RPG
 
         protected int objectType;
 
-        protected char itemIcon;
+        protected bool isPickedUp = false;
 
-        protected bool isPickedUp;
-
-        void Start(int x, int y)
-        {
-            x = objectX;
-            y = objectY;
-        }
-
-        void Draw(char icon)
+        public void Draw(char itemIcon)
         {
             Console.SetCursorPosition(objectX, objectY);
             Console.ForegroundColor = ConsoleColor.Cyan;
-            if (isPickedUp) Console.Write(itemIcon);
-            if (!isPickedUp)
+            if (!isPickedUp) Console.Write(itemIcon);
+            if (isPickedUp)
             {
                 objectX = 2;
                 objectY = 4;

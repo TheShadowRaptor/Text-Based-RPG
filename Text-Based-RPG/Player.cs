@@ -107,7 +107,7 @@ namespace Text_Based_RPG
         {
             Console.SetCursorPosition(playerX, playerY);
             Console.ForegroundColor = ConsoleColor.Magenta;
-            Console.Write('@'); // might be able to write these directly to the map and use them for collision?
+            Console.Write('@');
             Console.SetCursorPosition(0, 0);
         }
     }
