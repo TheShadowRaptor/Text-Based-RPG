@@ -8,11 +8,5 @@ namespace Text_Based_RPG
 {
     class Door : GameObject
     {
-        public void Start(int x, int y)
-        {
-            countDownTimer = 0;
-            objectX = x;
-            objectY = y;
-        }
     }
 }

@@ -15,7 +15,7 @@ namespace Text_Based_RPG
             Map map = new Map();
             Player player = new Player();
             Enemy enemy = new Enemy();
-            GameObject game = new GameObject();
+            GameObject gameObject = new GameObject();
             HealthPotion healthPotion = new HealthPotion();
             KeyItem keyItem = new KeyItem();
             PowerUp powerUp = new PowerUp();
@@ -26,8 +26,8 @@ namespace Text_Based_RPG
             player.Start();
             enemy.Start(15, 15);
             healthPotion.Start(5, 5);
-            keyItem.Start(13, 12);
-            powerUp.Start(16, 16);
+            keyItem.Start(50, 12);
+            powerUp.Start(35, 10);
             door.Start(21, 10);
 
 
@@ -42,7 +42,6 @@ namespace Text_Based_RPG
                 keyItem.Draw('k');
                 powerUp.Draw('#');
                 door.Draw('▓');
-
 
                 map.Update();
                 player.Update(map, enemy, door);

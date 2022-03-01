@@ -23,11 +23,11 @@ namespace Text_Based_RPG
         void PlayerHUD(Player player)
         {
             Console.ForegroundColor = ConsoleColor.White;
-            Console.SetCursorPosition(45, 0);
+            Console.SetCursorPosition(65, 0);
             Console.WriteLine("Player Stats:");
-            Console.SetCursorPosition(45, 1);
+            Console.SetCursorPosition(65, 1);
             Console.WriteLine("Position: " + player.playerX + "," + player.playerY);
-            Console.SetCursorPosition(45, 2);
+            Console.SetCursorPosition(65, 2);
             Console.WriteLine("Health: " + player.health + "/" + player.maxHealth);
         }
     }

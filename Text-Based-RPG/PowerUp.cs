@@ -14,9 +14,9 @@ namespace Text_Based_RPG
             {
                 isPickedUp = true;
                 enemy.isTimeStopped = true;
-                countDownTimer = 3;
+                countDownTimer = 5;
             }
-            if (enemy.isTimeStopped = true)
+            if (enemy.isTimeStopped == true)
             {
                 if (countDownTimer <= 0)
                 {
