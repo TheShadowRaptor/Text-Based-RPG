@@ -8,7 +8,7 @@ namespace Text_Based_RPG
     {
         // Initialisation
         protected int randNum;
-        protected bool canMove;
+        public bool canMove;
         protected bool canAttack;
         protected bool dealDmg;
 

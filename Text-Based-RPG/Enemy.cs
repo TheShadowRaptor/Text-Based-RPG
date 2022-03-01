@@ -30,7 +30,7 @@ namespace Text_Based_RPG
         }
 
         // ---------------------------------------- Update --------------------------------
-        public void Update(Map map, Player player)
+        public void Update(Map map, Player player, Door door)
         {
             // alive check
             if (health <= 0) isAlive = false;

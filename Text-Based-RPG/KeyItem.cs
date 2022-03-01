@@ -14,11 +14,12 @@ namespace Text_Based_RPG
             objectY = keyY;
         }
 
-        public void Update(Player player)
+        public void Update(Player player, Door door)
         {
             if (player.playerX == objectX && player.playerY == objectY)
             {
                 isPickedUp = true;
+                door.isPickedUp = true;
                 isDoorOpen = true;
             }
         }

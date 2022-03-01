@@ -26,8 +26,6 @@ namespace Text_Based_RPG
 
         public void Draw() // creates the map
         {
-
-            printMap = newMap[rows][columns];
             Console.SetCursorPosition(0, 0);
 
             for (int x = 0; x <= rows - 1; x++)

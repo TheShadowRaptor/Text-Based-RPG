@@ -40,7 +40,7 @@ namespace Text_Based_RPG
         }
 
         // ---------------------------------- Update ----------------------------------
-        public void Update(Map map, Enemy enemy)
+        public void Update(Map map, Enemy enemy, Door door)
         {             
             newPlayerX = playerX;
             newPlayerY = playerY;
@@ -55,7 +55,7 @@ namespace Text_Based_RPG
                 newPlayerY -= 1;
                 OnCollision(map, newPlayerX, newPlayerY); // check if future space can be moved into
 
-                if (canMove) EnemyCollision(enemy);
+                if (canMove) EnemyCollision(enemy, door);
                 if (canMove) playerY -= 1;
             }
             else if (keyPress == ConsoleKey.S) // decision to move
@@ -63,7 +63,7 @@ namespace Text_Based_RPG
                 newPlayerY += 1;
                 OnCollision(map, newPlayerX, newPlayerY);
 
-                if (canMove) EnemyCollision(enemy);
+                if (canMove) EnemyCollision(enemy, door);
                 if (canMove) playerY += 1;
             }
             else if (keyPress == ConsoleKey.D)
@@ -71,7 +71,7 @@ namespace Text_Based_RPG
                 newPlayerX += 1;
                 OnCollision(map, newPlayerX, newPlayerY);
 
-                if (canMove) EnemyCollision(enemy);
+                if (canMove) EnemyCollision(enemy, door);
                 if (canMove) playerX += 1;
             }
             else if (keyPress == ConsoleKey.A)
@@ -79,12 +79,12 @@ namespace Text_Based_RPG
                 newPlayerX -= 1;
                 OnCollision(map, newPlayerX, newPlayerY);
 
-                if (canMove) EnemyCollision(enemy);
+                if (canMove) EnemyCollision(enemy, door);
                 if (canMove) playerX -= 1;
             }
         }
 
-        void EnemyCollision(Enemy enemy)
+        void EnemyCollision(Enemy enemy,Door door)
         {
             // player collision
             if (newPlayerX == enemy.enemyX && newPlayerY == enemy.enemyY)
@@ -93,6 +93,11 @@ namespace Text_Based_RPG
                 canMove = false;
                 Console.Beep(1000, 500);
                 enemy.health = DealDamage(damageDelt, enemy.health);
+            }
+            else if (newPlayerX == door.objectX && newPlayerY == door.objectY)
+            {
+                canMove = false;
+                Console.Beep();
             }
             else canMove = true;
 

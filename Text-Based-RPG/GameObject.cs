@@ -8,13 +8,22 @@ namespace Text_Based_RPG
 {
     class GameObject
     {
-        protected int objectX;
-        protected int objectY;
+        public int objectX;
+        public int objectY;
+
+        protected int countDownTimer;
 
         protected int objectType;
 
-        protected bool isPickedUp = false;
+        public bool isPickedUp = false;
         protected bool isDoorOpen = false;
+
+        public void Start(int x, int y)
+        {
+            countDownTimer = 0;
+            objectX = x;
+            objectY = y;
+        }
 
         public void Draw(char itemIcon)
         {

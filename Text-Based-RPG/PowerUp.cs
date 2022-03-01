@@ -8,15 +8,6 @@ namespace Text_Based_RPG
 {
     class PowerUp : GameObject
     {
-        int countDownTimer;
-
-        public void Start(int x, int y)
-        {
-            countDownTimer = 0;
-            objectX = x;
-            objectY = y;           
-        }
-
         public void Update(Player player, Enemy enemy)
         {
             if (player.playerX == objectX && player.playerY == objectY)
@@ -30,6 +21,7 @@ namespace Text_Based_RPG
                 if (countDownTimer <= 0)
                 {
                     enemy.isTimeStopped = false;
+                    countDownTimer = 0;
                 }
 
                 countDownTimer--;
