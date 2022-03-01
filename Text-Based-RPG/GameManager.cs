@@ -18,6 +18,7 @@ namespace Text_Based_RPG
             GameObject game = new GameObject();
             HealthPotion healthPotion = new HealthPotion();
             KeyItem keyItem = new KeyItem();
+            PowerUp powerUp = new PowerUp();
             HUD hud = new HUD();
 
             // Game Start
@@ -25,6 +26,7 @@ namespace Text_Based_RPG
             enemy.Start(15, 15);
             healthPotion.Start(5, 5);
             keyItem.Start(13, 12);
+            powerUp.Start(16, 16);
 
             // Gameplay Loop
             while (player.isAlive)
@@ -35,6 +37,7 @@ namespace Text_Based_RPG
                 enemy.Draw();
                 healthPotion.Draw('P');
                 keyItem.Draw('k');
+                powerUp.Draw('#');
 
 
                 map.Update();
@@ -42,6 +45,7 @@ namespace Text_Based_RPG
                 enemy.Update(map, player);
                 healthPotion.Update(player);
                 keyItem.Update(player);
+                powerUp.Update(player, enemy);
             }
         }
     }

@@ -37,7 +37,6 @@ namespace Text_Based_RPG
 
         protected void OnCollision(Map map, int x, int y)
         {
-
             dealDmg = false;
 
             if (x < 0 || y < 0)
@@ -48,14 +47,14 @@ namespace Text_Based_RPG
             {
                 canMove = false;
             }
-            else if (map.printMap[y, x] == '^')
+/*            else if (map.newMap[y][x] == '^')
             {
                 canMove = false;
             }
-            else if (map.printMap[y, x] == '~')
+            else if (map.newMap[y][x] == '~')
             {
                 canMove = false;
-            }         
+            }      */   
             else
             {
                 canMove = true;               
