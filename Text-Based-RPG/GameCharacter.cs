@@ -47,14 +47,14 @@ namespace Text_Based_RPG
             {
                 canMove = false;
             }
-/*            else if (map.newMap[y][x] == '^')
+            else if (map.collisionMap[y][x] == '^')
             {
                 canMove = false;
             }
-            else if (map.newMap[y][x] == '~')
+            else if (map.collisionMap[y][x] == '~')
             {
                 canMove = false;
-            }      */   
+            }        
             else
             {
                 canMove = true;               

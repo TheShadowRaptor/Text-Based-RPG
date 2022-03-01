@@ -12,6 +12,7 @@ namespace Text_Based_RPG
         // init         // string[i] // map[x,y] = mapData[y][x]
         static string mapPath = @"map.txt";
         static string[] newMap = File.ReadAllLines(mapPath);
+        public string[] collisionMap;
 
         public int rows = newMap.Length;
         public int columns = newMap[0].Length;
@@ -41,6 +42,7 @@ namespace Text_Based_RPG
                
                 Console.WriteLine();
             }
+            collisionMap = newMap;
         }
 
         public void Update()
