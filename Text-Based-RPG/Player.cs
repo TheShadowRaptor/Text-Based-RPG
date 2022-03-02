@@ -53,7 +53,7 @@ namespace Text_Based_RPG
             if (keyPress == ConsoleKey.W)
             {
                 newPlayerY -= 1;
-                OnCollision(map, newPlayerX, newPlayerY); // check if future space can be moved into
+                OnCollision(map, newPlayerX, newPlayerY, this, enemy, door); // check if future space can be moved into
 
                 if (canMove) EnemyCollision(enemy, door);
                 if (canMove) playerY -= 1;
@@ -61,7 +61,7 @@ namespace Text_Based_RPG
             else if (keyPress == ConsoleKey.S) // decision to move
             {
                 newPlayerY += 1;
-                OnCollision(map, newPlayerX, newPlayerY);
+                OnCollision(map, newPlayerX, newPlayerY, this, enemy, door);
 
                 if (canMove) EnemyCollision(enemy, door);
                 if (canMove) playerY += 1;
@@ -69,7 +69,7 @@ namespace Text_Based_RPG
             else if (keyPress == ConsoleKey.D)
             {
                 newPlayerX += 1;
-                OnCollision(map, newPlayerX, newPlayerY);
+                OnCollision(map, newPlayerX, newPlayerY, this, enemy, door);
 
                 if (canMove) EnemyCollision(enemy, door);
                 if (canMove) playerX += 1;
@@ -77,7 +77,7 @@ namespace Text_Based_RPG
             else if (keyPress == ConsoleKey.A)
             {
                 newPlayerX -= 1;
-                OnCollision(map, newPlayerX, newPlayerY);
+                OnCollision(map, newPlayerX, newPlayerY, this, enemy, door);
 
                 if (canMove) EnemyCollision(enemy, door);
                 if (canMove) playerX -= 1;
@@ -93,11 +93,6 @@ namespace Text_Based_RPG
                 canMove = false;
                 Console.Beep(1000, 500);
                 enemy.health = DealDamage(damageDelt, enemy.health);
-            }
-            else if (newPlayerX == door.objectX && newPlayerY == door.objectY)
-            {
-                canMove = false;
-                Console.Beep();
             }
             else canMove = true;
 

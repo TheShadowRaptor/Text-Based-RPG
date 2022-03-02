@@ -35,7 +35,33 @@ namespace Text_Based_RPG
             randNum = random.Next(min, max);
         }
 
-        protected void OnCollision(Map map, int x, int y)
+        protected void Movement(int x, int y, int state)
+        {
+            switch (state)
+            {
+                case 1:
+
+                    break;
+
+                case 2:
+
+                    break;
+
+                case 3:
+
+                    break;
+
+                case 4:
+
+                    break;
+
+                default:
+
+                    break;
+            }
+        }
+
+        protected void OnCollision(Map map, int x, int y, Player player, Enemy enemy, Door door)
         {
             dealDmg = false;
 
@@ -54,7 +80,16 @@ namespace Text_Based_RPG
             else if (map.collisionMap[y][x] == '~')
             {
                 canMove = false;
-            }        
+            }
+            else if (player.newPlayerX == door.objectX && player.newPlayerY == door.objectY)
+            {
+                canMove = false;
+                Console.Beep();
+            }
+            else if (enemy.newEnemyX == door.objectX && player.newPlayerY == door.objectY)
+            {
+                canMove = false;
+            }
             else
             {
                 canMove = true;               

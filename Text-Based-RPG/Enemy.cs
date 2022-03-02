@@ -45,40 +45,40 @@ namespace Text_Based_RPG
                 if (randNum == 1)
                 {
                     newEnemyY -= 1;
-                    OnCollision(map, newEnemyX, newEnemyY);
+                    OnCollision(map, newEnemyX, newEnemyY, player, this, door);
 
-                    if (canMove) EnemyCollision(player);
+                    if (canMove) PlayerCollision(player);
                     if (canMove) enemyY -= 1;
 
                 }
                 else if (randNum == 2)
                 {
                     newEnemyY += 1;
-                    OnCollision(map, newEnemyX, newEnemyY);
+                    OnCollision(map, newEnemyX, newEnemyY, player, this, door);
 
-                    if (canMove) EnemyCollision(player);
+                    if (canMove) PlayerCollision(player);
                     if (canMove) enemyY += 1;
                 }
                 else if (randNum == 3)
                 {
                     newEnemyX -= 1;
-                    OnCollision(map, newEnemyX, newEnemyY);
+                    OnCollision(map, newEnemyX, newEnemyY, player, this, door);
 
-                    if (canMove) EnemyCollision(player);
+                    if (canMove) PlayerCollision(player);
                     if (canMove) enemyX -= 1;
                 }
                 else if (randNum == 4)
                 {
                     newEnemyX += 1;
-                    OnCollision(map, newEnemyX, newEnemyY);
+                    OnCollision(map, newEnemyX, newEnemyY, player, this, door);
 
-                    if (canMove) EnemyCollision(player);
+                    if (canMove) PlayerCollision(player);
                     if (canMove) enemyX += 1;
                 }
             }                
         }
 
-        void EnemyCollision(Player player)
+        void PlayerCollision(Player player)
         {
             // collision with player
             if (newEnemyX == player.playerX && newEnemyY == player.playerY)
