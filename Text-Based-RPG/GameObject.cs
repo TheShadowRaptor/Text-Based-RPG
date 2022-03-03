@@ -12,7 +12,6 @@ namespace Text_Based_RPG
         public int objectY;
 
         protected int countDownTimer;
-        protected int objectType;
 
         public bool isPickedUp = false;
         protected bool isDoorOpen = false;
@@ -36,10 +35,5 @@ namespace Text_Based_RPG
             }
             Console.SetCursorPosition(0, 0);
         }
-
-        // Health potion
-        // greater health potion
-        // key item
-        // door object
     }
 }

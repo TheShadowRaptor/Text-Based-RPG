@@ -8,15 +8,19 @@ namespace Text_Based_RPG
     {
         // Initialisation
         protected int randNum;
+
+        protected int characterX;
+        protected int characterY;
+
         public bool canMove;
         protected bool canAttack;
         protected bool dealDmg;
 
         public bool isAlive;
 
-      //  Enemy enemy = new Enemy();    // causes a stack-overflow... why?
-      //  Player player = new Player();
+        Random random = new Random();
 
+        // meathod that is called on enemy-player collision
         protected int DealDamage(int damage, int health)
         {
             health -= damage;  
@@ -29,38 +33,13 @@ namespace Text_Based_RPG
             return health;
         }
 
+        // generates random int
         protected void RandomiseInt(int min, int max)
         {
-            Random random = new Random();
             randNum = random.Next(min, max);
         }
 
-        protected void Movement(int x, int y, int state)
-        {
-            switch (state)
-            {
-                case 1:
-
-                    break;
-
-                case 2:
-
-                    break;
-
-                case 3:
-
-                    break;
-
-                case 4:
-
-                    break;
-
-                default:
-
-                    break;
-            }
-        }
-
+        // collision that all game characters adbide by
         protected void OnCollision(Map map, int x, int y, Player player, Enemy enemy, Door door)
         {
             dealDmg = false;
@@ -81,12 +60,12 @@ namespace Text_Based_RPG
             {
                 canMove = false;
             }
-            else if (player.newPlayerX == door.objectX && player.newPlayerY == door.objectY)
+            else if (player.newPlayerX == door.objectX && player.newPlayerY == door.objectY) // player-door collison
             {
                 canMove = false;
                 Console.Beep();
             }
-            else if (enemy.newEnemyX == door.objectX && player.newPlayerY == door.objectY)
+            else if (enemy.newEnemyX == door.objectX && player.newPlayerY == door.objectY) // enemy-door collision
             {
                 canMove = false;
             }

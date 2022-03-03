@@ -15,7 +15,7 @@ namespace Text_Based_RPG
 
         public int health;
         public int maxHealth;
-        int damageDelt = 50;
+        int damageDelt = 25;
         public bool playerIsAlive;
 
         public int playerY;
@@ -40,7 +40,7 @@ namespace Text_Based_RPG
         }
 
         // ---------------------------------- Update ----------------------------------
-        public void Update(Map map, Enemy enemy, Door door)
+        public void Update(Map map, Enemy enemy, Door door, Enemy enemy2, Enemy enemy3)
         {             
             newPlayerX = playerX;
             newPlayerY = playerY;
@@ -55,7 +55,7 @@ namespace Text_Based_RPG
                 newPlayerY -= 1;
                 OnCollision(map, newPlayerX, newPlayerY, this, enemy, door); // check if future space can be moved into
 
-                if (canMove) EnemyCollision(enemy, door);
+                if (canMove) EnemyCollision(enemy, enemy2, enemy3);
                 if (canMove) playerY -= 1;
             }
             else if (keyPress == ConsoleKey.S) // decision to move
@@ -63,7 +63,7 @@ namespace Text_Based_RPG
                 newPlayerY += 1;
                 OnCollision(map, newPlayerX, newPlayerY, this, enemy, door);
 
-                if (canMove) EnemyCollision(enemy, door);
+                if (canMove) EnemyCollision(enemy, enemy2, enemy3);
                 if (canMove) playerY += 1;
             }
             else if (keyPress == ConsoleKey.D)
@@ -71,7 +71,7 @@ namespace Text_Based_RPG
                 newPlayerX += 1;
                 OnCollision(map, newPlayerX, newPlayerY, this, enemy, door);
 
-                if (canMove) EnemyCollision(enemy, door);
+                if (canMove) EnemyCollision(enemy, enemy2, enemy3);
                 if (canMove) playerX += 1;
             }
             else if (keyPress == ConsoleKey.A)
@@ -79,12 +79,12 @@ namespace Text_Based_RPG
                 newPlayerX -= 1;
                 OnCollision(map, newPlayerX, newPlayerY, this, enemy, door);
 
-                if (canMove) EnemyCollision(enemy, door);
+                if (canMove) EnemyCollision(enemy, enemy2, enemy3);
                 if (canMove) playerX -= 1;
             }
         }
 
-        void EnemyCollision(Enemy enemy,Door door)
+        void EnemyCollision(Enemy enemy, Enemy enemy2, Enemy enemy3)
         {
             // player collision
             if (newPlayerX == enemy.enemyX && newPlayerY == enemy.enemyY)
@@ -93,6 +93,20 @@ namespace Text_Based_RPG
                 canMove = false;
                 Console.Beep(1000, 500);
                 enemy.health = DealDamage(damageDelt, enemy.health);
+            }
+            else if (newPlayerX == enemy2.enemyX && newPlayerY == enemy2.enemyY)
+            {
+                canAttack = true;
+                canMove = false;
+                Console.Beep(1000, 500);
+                enemy2.health = DealDamage(damageDelt, enemy2.health);
+            }
+            else if (newPlayerX == enemy3.enemyX && newPlayerY == enemy3.enemyY)
+            {
+                canAttack = true;
+                canMove = false;
+                Console.Beep(1000, 500);
+                enemy3.health = DealDamage(damageDelt, enemy3.health);
             }
             else canMove = true;
 

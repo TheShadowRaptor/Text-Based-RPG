@@ -10,12 +10,6 @@ namespace Text_Based_RPG
     {
         int healing = 30;
 
-        public void Start(int x, int y)
-        {
-            objectX = x;
-            objectY = y;
-        }
-
         public void Update(Player player)
         {
             // check if player is on Item

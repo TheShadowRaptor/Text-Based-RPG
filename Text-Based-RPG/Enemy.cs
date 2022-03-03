@@ -8,25 +8,28 @@ namespace Text_Based_RPG
 {
     class Enemy : GameCharacter // add enemy array for multiple enemies
     {
-        public int health = 100;
-        public int damageDelt = 10;
+        public int health;
+        public int damageDelt;
 
         public int enemyX;
         public int enemyY;
         public int newEnemyX;
         public int newEnemyY;
+        public int speed;
 
-        private int enemyType; // 0 - 2, sort of like a State manager, but determins type of enemy
-                               // 0 = normal "E", 1 = stationary until close "S", 2 = extra damage & health "T"
         bool isAlive;
         public bool isTimeStopped;
 
-        public void Start(int x, int y)
+        // ----------------------------------- Start ---------------------------------------
+        public void Start(int x, int y, int maxHealth, int damage, int speedMod)
         {
-            isAlive = true;
             enemyX = x;
             enemyY = y;
-            enemyType = 0;
+
+            health = maxHealth;
+            damageDelt = damage;
+            isAlive = true;
+            speed = speedMod;
         }
 
         // ---------------------------------------- Update --------------------------------
@@ -44,41 +47,41 @@ namespace Text_Based_RPG
                 RandomiseInt(1, 5);
                 if (randNum == 1)
                 {
-                    newEnemyY -= 1;
+                    newEnemyY -= speed;
                     OnCollision(map, newEnemyX, newEnemyY, player, this, door);
 
                     if (canMove) PlayerCollision(player);
-                    if (canMove) enemyY -= 1;
+                    if (canMove) enemyY -= speed;
 
                 }
                 else if (randNum == 2)
                 {
-                    newEnemyY += 1;
+                    newEnemyY += speed;
                     OnCollision(map, newEnemyX, newEnemyY, player, this, door);
 
                     if (canMove) PlayerCollision(player);
-                    if (canMove) enemyY += 1;
+                    if (canMove) enemyY += speed;
                 }
                 else if (randNum == 3)
                 {
-                    newEnemyX -= 1;
+                    newEnemyX -= speed;
                     OnCollision(map, newEnemyX, newEnemyY, player, this, door);
 
                     if (canMove) PlayerCollision(player);
-                    if (canMove) enemyX -= 1;
+                    if (canMove) enemyX -= speed;
                 }
                 else if (randNum == 4)
                 {
-                    newEnemyX += 1;
+                    newEnemyX += speed;
                     OnCollision(map, newEnemyX, newEnemyY, player, this, door);
 
                     if (canMove) PlayerCollision(player);
-                    if (canMove) enemyX += 1;
+                    if (canMove) enemyX += speed;
                 }
-            }                
+            }
         }
 
-        void PlayerCollision(Player player)
+        protected void PlayerCollision(Player player)
         {
             // collision with player
             if (newEnemyX == player.playerX && newEnemyY == player.playerY)
@@ -91,12 +94,12 @@ namespace Text_Based_RPG
         }
 
         // ------------------------- Draw --------------------------------------
-        public void Draw()
+        public void Draw(char icon)
         {
             
             Console.SetCursorPosition(enemyX, enemyY);           
             Console.ForegroundColor = ConsoleColor.DarkRed;
-            if (isAlive) Console.Write('E');
+            if (isAlive) Console.Write(icon);
             if (!isAlive)
             {
                 enemyX = 2;
