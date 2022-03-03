@@ -15,21 +15,32 @@ namespace Text_Based_RPG
         public int enemyY;
         public int newEnemyX;
         public int newEnemyY;
-        public int speed;
+
+        private int speed;
+        private int waitTime;
+        private int waitTimeMax;
 
         bool isAlive;
         public bool isTimeStopped;
 
         // ----------------------------------- Start ---------------------------------------
-        public void Start(int x, int y, int maxHealth, int damage, int speedMod)
+        public void Start(int x, int y, int maxHealth, int damage, int speedMod, int maxWaitTime)
         {
+            // establish enemy's world position
             enemyX = x;
             enemyY = y;
 
+            // Health related variables
             health = maxHealth;
             damageDelt = damage;
             isAlive = true;
+            
+            // Establish enemy speed / skip distance
             speed = speedMod;
+
+            // Establish how often enemy moves
+            waitTime = 0;
+            waitTimeMax = maxWaitTime;
         }
 
         // ---------------------------------------- Update --------------------------------
@@ -38,10 +49,14 @@ namespace Text_Based_RPG
             // alive check
             if (health <= 0) isAlive = false;
 
+            // wait checks
+            waitTime++;
+            if (waitTime > waitTimeMax) waitTime = 0;
+
             newEnemyX = enemyX;
             newEnemyY = enemyY;
 
-            if (isAlive && !isTimeStopped)
+            if (isAlive && !isTimeStopped && waitTime == 0)
             {
                 // temp random movement? || non-agro state?
                 RandomiseInt(1, 5);

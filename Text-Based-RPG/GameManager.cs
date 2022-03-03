@@ -34,9 +34,9 @@ namespace Text_Based_RPG
 
             // Game Start
             player.Start();
-            enemy.Start(15, 15, 100, 10, 1); // can create a new enemy by simply altering the Start parameters...
-            enemy2.Start(12, 10, 50, 5, 2);  // ...and I'm not sure if its smart or stupid
-            enemy3.Start(45, 20, 150, 25, 1);
+            enemy.Start(15, 15, 100, 10, 1, 0); // can create a new enemy by simply altering the Start parameters...
+            enemy2.Start(12, 10, 50, 5, 2, 0);  // ...and I'm not sure if its smart or stupid
+            enemy3.Start(45, 20, 150, 25, 1, 2);
             healthPotion.Start(16, 18);
             keyItem.Start(50, 12);
             powerUp.Start(35, 10);
