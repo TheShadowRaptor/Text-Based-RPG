@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,10 +9,10 @@ namespace Text_Based_RPG
     class HUD
     {
 
-        public void Draw(Player player) // TEMP
+        public void Draw(Player player, Enemy enemy, Enemy enemy2, Enemy enemy3, Enemy enemy4, Enemy enemy5) // TEMP
         {
             PlayerHUD(player);
-
+            EnemyHUD(enemy, enemy2, enemy3, enemy4, enemy5, player);
         }
 
         void Update()
@@ -29,6 +29,40 @@ namespace Text_Based_RPG
             Console.WriteLine("Position: " + player.playerX + "," + player.playerY);
             Console.SetCursorPosition(65, 2);
             Console.WriteLine("Health: " + player.health + "/" + player.maxHealth);
+        }
+
+        void EnemyHUD(Enemy enemy, Enemy enemy2, Enemy enemy3, Enemy enemy4, Enemy enemy5, Player player)
+        {
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.SetCursorPosition(65, 4);
+            Console.WriteLine("Enemy Stats:");
+            Console.SetCursorPosition(65, 6);
+            if (player.playerX < enemy.enemyX + 5 && player.playerX > enemy.enemyX - 5
+                && player.playerY < enemy.enemyX + 5 && player.playerY > enemy.enemyY - 5)
+            {
+                Console.WriteLine("Health: " + enemy.health);
+            }
+            else if (player.playerX < enemy2.enemyX + 5 && player.playerX > enemy2.enemyX - 5
+                && player.playerY < enemy2.enemyX + 5 && player.playerY > enemy2.enemyY - 5)
+            {
+                Console.WriteLine("Health: " + enemy2.health);
+            }
+            else if (player.playerX < enemy3.enemyX + 5 && player.playerX > enemy3.enemyX - 5
+                && player.playerY < enemy3.enemyX + 5 && player.playerY > enemy3.enemyY - 5)
+            {
+                Console.WriteLine("Health: " + enemy3.health);
+            }
+            else if (player.playerX < enemy4.enemyX + 5 && player.playerX > enemy4.enemyX - 5
+                && player.playerY < enemy4.enemyX + 5 && player.playerY > enemy4.enemyY - 5)
+            {
+                Console.WriteLine("Health: " + enemy4.health);
+            }
+            else if (player.playerX < enemy5.enemyX + 5 && player.playerX > enemy5.enemyX - 5
+                && player.playerY < enemy5.enemyX + 5 && player.playerY > enemy5.enemyY - 5)
+            {
+                Console.WriteLine("Health: " + enemy5.health);
+            }
+            else Console.WriteLine("              ");
         }
     }
 }

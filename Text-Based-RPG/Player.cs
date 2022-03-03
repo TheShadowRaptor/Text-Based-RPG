@@ -40,7 +40,7 @@ namespace Text_Based_RPG
         }
 
         // ---------------------------------- Update ----------------------------------
-        public void Update(Map map, Enemy enemy, Door door, Enemy enemy2, Enemy enemy3)
+        public void Update(Map map, Enemy enemy, Door door, Enemy enemy2, Enemy enemy3, Enemy enemy4, Enemy enemy5)
         {             
             newPlayerX = playerX;
             newPlayerY = playerY;
@@ -55,7 +55,7 @@ namespace Text_Based_RPG
                 newPlayerY -= 1;
                 OnCollision(map, newPlayerX, newPlayerY, this, enemy, door); // check if future space can be moved into
 
-                if (canMove) EnemyCollision(enemy, enemy2, enemy3);
+                if (canMove) EnemyCollision(enemy, enemy2, enemy3, enemy4, enemy5);
                 if (canMove) playerY -= 1;
             }
             else if (keyPress == ConsoleKey.S) // decision to move
@@ -63,7 +63,7 @@ namespace Text_Based_RPG
                 newPlayerY += 1;
                 OnCollision(map, newPlayerX, newPlayerY, this, enemy, door);
 
-                if (canMove) EnemyCollision(enemy, enemy2, enemy3);
+                if (canMove) EnemyCollision(enemy, enemy2, enemy3, enemy4, enemy5);
                 if (canMove) playerY += 1;
             }
             else if (keyPress == ConsoleKey.D)
@@ -71,7 +71,7 @@ namespace Text_Based_RPG
                 newPlayerX += 1;
                 OnCollision(map, newPlayerX, newPlayerY, this, enemy, door);
 
-                if (canMove) EnemyCollision(enemy, enemy2, enemy3);
+                if (canMove) EnemyCollision(enemy, enemy2, enemy3, enemy4, enemy5);
                 if (canMove) playerX += 1;
             }
             else if (keyPress == ConsoleKey.A)
@@ -79,12 +79,12 @@ namespace Text_Based_RPG
                 newPlayerX -= 1;
                 OnCollision(map, newPlayerX, newPlayerY, this, enemy, door);
 
-                if (canMove) EnemyCollision(enemy, enemy2, enemy3);
+                if (canMove) EnemyCollision(enemy, enemy2, enemy3, enemy4, enemy5);
                 if (canMove) playerX -= 1;
             }
         }
 
-        void EnemyCollision(Enemy enemy, Enemy enemy2, Enemy enemy3)
+        void EnemyCollision(Enemy enemy, Enemy enemy2, Enemy enemy3, Enemy enemy4, Enemy enemy5)
         {
             // player collision
             if (newPlayerX == enemy.enemyX && newPlayerY == enemy.enemyY)
@@ -107,6 +107,20 @@ namespace Text_Based_RPG
                 canMove = false;
                 Console.Beep(1000, 500);
                 enemy3.health = DealDamage(damageDelt, enemy3.health);
+            }
+            else if (newPlayerX == enemy4.enemyX && newPlayerY == enemy4.enemyY)
+            {
+                canAttack = true;
+                canMove = false;
+                Console.Beep(1000, 500);
+                enemy4.health = DealDamage(damageDelt, enemy4.health);
+            }
+            else if (newPlayerX == enemy5.enemyX && newPlayerY == enemy5.enemyY)
+            {
+                canAttack = true;
+                canMove = false;
+                Console.Beep(1000, 500);
+                enemy5.health = DealDamage(damageDelt, enemy5.health);
             }
             else canMove = true;
 
