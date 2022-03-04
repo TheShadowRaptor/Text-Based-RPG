@@ -22,7 +22,6 @@ namespace Text_Based_RPG
             Enemy enemy2 = new Enemy();
             Enemy enemy3 = new Enemy();
             Enemy enemy4 = new Enemy();
-            Enemy enemy5 = new Enemy();
 
             // GameObjects
             GameObject gameObject = new GameObject();
@@ -40,7 +39,6 @@ namespace Text_Based_RPG
             enemy2.Start(12, 10, 50, 5, 2, 0);  // ...and I'm not sure if its smart or stupid
             enemy3.Start(45, 20, 150, 25, 1, 2);
             enemy4.Start(35, 12, 75, 10, 1, 0);
-            enemy5.Start(35, 8, 75, 10, 1, 0);
             healthPotion.Start(16, 18);
             keyItem.Start(50, 12);
             powerUp.Start(9, 10);
@@ -50,26 +48,24 @@ namespace Text_Based_RPG
 
             while (player.isAlive)
             {
-                hud.Draw(player, enemy, enemy2, enemy3, enemy4, enemy5);
+                hud.Draw(player, enemy, enemy2, enemy3, enemy4);
                 map.Draw();
                 player.Draw();
                 enemy.Draw('E');
                 enemy2.Draw('T');
                 enemy3.Draw('B');
                 enemy4.Draw('E');
-                enemy5.Draw('E');
                 healthPotion.Draw('P');
                 keyItem.Draw('k');
                 powerUp.Draw('#');
                 door.Draw('▓');
 
                 map.Update();
-                player.Update(map, enemy, door, enemy2, enemy3, enemy4, enemy5);
+                player.Update(map, enemy, door, enemy2, enemy3, enemy4);
                 enemy.Update(map, player, door);
                 enemy2.Update(map, player, door);
                 enemy3.Update(map, player, door);
                 enemy4.Update(map, player, door);
-                enemy5.Update(map, player, door);
                 healthPotion.Update(player);
                 keyItem.Update(player, door);
                 powerUp.Update(player, enemy);
