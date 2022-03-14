@@ -53,38 +53,30 @@ namespace Text_Based_RPG
             if (keyPress == ConsoleKey.W)
             {
                 newPlayerY -= 1;
-                OnCollision(map, newPlayerX, newPlayerY, this, enemy, door); // check if future space can be moved into
-
-                if (canMove) EnemyCollision(enemy, enemy2, enemy3, enemy4);
-                if (canMove) playerY -= 1;
             }
             else if (keyPress == ConsoleKey.S) // decision to move
             {
                 newPlayerY += 1;
-                OnCollision(map, newPlayerX, newPlayerY, this, enemy, door);
-
-                if (canMove) EnemyCollision(enemy, enemy2, enemy3, enemy4);
-                if (canMove) playerY += 1;
             }
             else if (keyPress == ConsoleKey.D)
             {
                 newPlayerX += 1;
-                OnCollision(map, newPlayerX, newPlayerY, this, enemy, door);
-
-                if (canMove) EnemyCollision(enemy, enemy2, enemy3, enemy4);
-                if (canMove) playerX += 1;
             }
             else if (keyPress == ConsoleKey.A)
             {
                 newPlayerX -= 1;
-                OnCollision(map, newPlayerX, newPlayerY, this, enemy, door);
+            }
 
-                if (canMove) EnemyCollision(enemy, enemy2, enemy3, enemy4);
-                if (canMove) playerX -= 1;
+            OnCollision(map, newPlayerX, newPlayerY, this, enemy, door);
+            if (canMove) DetectEnemyCollision(enemy, enemy2, enemy3, enemy4);
+            if (canMove)
+            {
+                playerX = newPlayerX;
+                playerY = newPlayerY;
             }
         }
 
-        void EnemyCollision(Enemy enemy, Enemy enemy2, Enemy enemy3, Enemy enemy4)
+        void DetectEnemyCollision(Enemy enemy, Enemy enemy2, Enemy enemy3, Enemy enemy4)
         {
             // player collision
             if (newPlayerX == enemy.enemyX && newPlayerY == enemy.enemyY)
