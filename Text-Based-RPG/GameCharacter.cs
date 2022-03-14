@@ -9,9 +9,6 @@ namespace Text_Based_RPG
         // Initialisation
         protected int randNum;
 
-        protected int characterX;
-        protected int characterY;
-
         public bool canMove;
         protected bool canAttack;
         protected bool dealDmg;
@@ -36,6 +33,12 @@ namespace Text_Based_RPG
         {
             Random random = new Random();
             randNum = random.Next(1, 5);
+        }
+
+        protected void MoveCharacter(int newX, int newY, int X, int Y)
+        {
+            X = newX;
+            Y = newY;
         }
 
         // collision that all game characters adbide by

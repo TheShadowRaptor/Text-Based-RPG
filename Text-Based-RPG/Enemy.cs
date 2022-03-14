@@ -11,17 +11,18 @@ namespace Text_Based_RPG
         public int health;
         public int damageDelt;
 
-        public int enemyX;
-        public int enemyY;
-        public int newEnemyX;
-        public int newEnemyY;
-
         private int speed;
         private int waitTime;
         private int waitTimeMax;
 
+        public int enemyX;
+        public int enemyY;
+        public int newEnemyX;
+        public int newEnemyY;    
+
         bool isAlive;
         public bool isTimeStopped;
+
 
         // ----------------------------------- Start ---------------------------------------
         public void Start(int x, int y, int maxHealth, int damage, int speedMod, int maxWaitTime)
@@ -63,40 +64,31 @@ namespace Text_Based_RPG
                 if (randNum == 1)
                 {
                     newEnemyY -= speed;
-                    OnCollision(map, newEnemyX, newEnemyY, player, this, door);
-
-                    if (canMove) PlayerCollision(player);
-                    if (canMove) enemyY -= speed;
-
                 }
                 else if (randNum == 2)
                 {
                     newEnemyY += speed;
-                    OnCollision(map, newEnemyX, newEnemyY, player, this, door);
-
-                    if (canMove) PlayerCollision(player);
-                    if (canMove) enemyY += speed;
                 }
                 else if (randNum == 3)
                 {
                     newEnemyX -= speed;
-                    OnCollision(map, newEnemyX, newEnemyY, player, this, door);
-
-                    if (canMove) PlayerCollision(player);
-                    if (canMove) enemyX -= speed;
                 }
                 else if (randNum == 4)
                 {
                     newEnemyX += speed;
-                    OnCollision(map, newEnemyX, newEnemyY, player, this, door);
+                }
 
-                    if (canMove) PlayerCollision(player);
-                    if (canMove) enemyX += speed;
+                OnCollision(map, newEnemyX, newEnemyY, player, this, door);
+                if (canMove) DetectPlayerChar(player);
+                if (canMove)
+                {
+                    enemyX = newEnemyX;
+                    enemyY = newEnemyY;
                 }
             }
         }
 
-        protected void PlayerCollision(Player player)
+        protected void DetectPlayerChar(Player player)
         {
             // collision with player
             if (newEnemyX == player.playerX && newEnemyY == player.playerY)

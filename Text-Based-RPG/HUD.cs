@@ -12,7 +12,7 @@ namespace Text_Based_RPG
         public void Draw(Player player, Enemy enemy, Enemy enemy2, Enemy enemy3, Enemy enemy4) // TEMP
         {
             PlayerHUD(player);
-            EnemyHUD(enemy, enemy2, enemy3, enemy4, player);
+            //EnemyHUD(enemy, enemy2, enemy3, enemy4, player);
         }
 
         void Update()

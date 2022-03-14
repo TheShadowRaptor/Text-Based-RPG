@@ -36,7 +36,7 @@ namespace Text_Based_RPG
                     mapX = x;
                     mapY = y;
 
-                    ColorMap(mapX, mapY);
+                    SetMapColor(mapX, mapY);
                     Console.Write(newMap[x][y]);                  
                 }
                
@@ -50,7 +50,7 @@ namespace Text_Based_RPG
             
         }
 
-        private void ColorMap(int x, int y)
+        private void SetMapColor(int x, int y)
         {
             if (newMap[mapX][mapY] == '.')
             {
