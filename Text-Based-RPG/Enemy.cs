@@ -11,38 +11,18 @@ namespace Text_Based_RPG
         public int health;
         public int damageDelt;
 
-        private int speed;
-        private int waitTime;
-        private int waitTimeMax;
+        protected int speed;
+        protected int waitTime;
+        protected int waitTimeMax;
 
         public int enemyX;
         public int enemyY;
         public int newEnemyX;
-        public int newEnemyY;    
+        public int newEnemyY;
 
-        bool isAlive;
+        protected bool isAlive;
         public bool isTimeStopped;
 
-
-        // ----------------------------------- Start ---------------------------------------
-        public void Start(int x, int y, int maxHealth, int damage, int speedMod, int maxWaitTime)
-        {
-            // establish enemy's world position
-            enemyX = x;
-            enemyY = y;
-
-            // Health related variables
-            health = maxHealth;
-            damageDelt = damage;
-            isAlive = true;
-            
-            // Establish enemy speed / skip distance
-            speed = speedMod;
-
-            // Establish how often enemy moves
-            waitTime = 0;
-            waitTimeMax = maxWaitTime;
-        }
 
         // ---------------------------------------- Update --------------------------------
         public void Update(Map map, Player player, Door door)
@@ -102,8 +82,7 @@ namespace Text_Based_RPG
 
         // ------------------------- Draw --------------------------------------
         public void Draw(char icon)
-        {
-            
+        {          
             Console.SetCursorPosition(enemyX, enemyY);           
             Console.ForegroundColor = ConsoleColor.DarkRed;
             if (isAlive) Console.Write(icon);

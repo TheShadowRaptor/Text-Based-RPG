@@ -40,7 +40,7 @@ namespace Text_Based_RPG
         }
 
         // ---------------------------------- Update ----------------------------------
-        public void Update(Map map, Enemy enemy, Door door, Enemy enemy2, Enemy enemy3, Enemy enemy4)
+        public void Update(Map map, Enemy enemy, Door door)
         {             
             newPlayerX = playerX;
             newPlayerY = playerY;
@@ -68,7 +68,7 @@ namespace Text_Based_RPG
             }
 
             OnCollision(map, newPlayerX, newPlayerY, this, enemy, door);
-            if (canMove) DetectEnemyCollision(enemy, enemy2, enemy3, enemy4);
+            if (canMove) DetectEnemyCollision(enemy);
             if (canMove)
             {
                 playerX = newPlayerX;
@@ -76,7 +76,7 @@ namespace Text_Based_RPG
             }
         }
 
-        void DetectEnemyCollision(Enemy enemy, Enemy enemy2, Enemy enemy3, Enemy enemy4)
+        void DetectEnemyCollision(Enemy enemy)
         {
             // player collision
             if (newPlayerX == enemy.enemyX && newPlayerY == enemy.enemyY)
@@ -85,27 +85,6 @@ namespace Text_Based_RPG
                 canMove = false;
                 Console.Beep(1000, 500);
                 enemy.health = DealDamage(damageDelt, enemy.health);
-            }
-            else if (newPlayerX == enemy2.enemyX && newPlayerY == enemy2.enemyY)
-            {
-                canAttack = true;
-                canMove = false;
-                Console.Beep(1000, 500);
-                enemy2.health = DealDamage(damageDelt, enemy2.health);
-            }
-            else if (newPlayerX == enemy3.enemyX && newPlayerY == enemy3.enemyY)
-            {
-                canAttack = true;
-                canMove = false;
-                Console.Beep(1000, 500);
-                enemy3.health = DealDamage(damageDelt, enemy3.health);
-            }
-            else if (newPlayerX == enemy4.enemyX && newPlayerY == enemy4.enemyY)
-            {
-                canAttack = true;
-                canMove = false;
-                Console.Beep(1000, 500);
-                enemy4.health = DealDamage(damageDelt, enemy4.health);
             }
             else canMove = true;
 

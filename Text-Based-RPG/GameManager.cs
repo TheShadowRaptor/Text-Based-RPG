@@ -18,10 +18,9 @@ namespace Text_Based_RPG
             // Game Characters
             GameCharacter gameCharacter = new GameCharacter();
             Player player = new Player();
-            Enemy enemy = new Enemy();
-            Enemy enemy2 = new Enemy();
-            Enemy enemy3 = new Enemy();
-            Enemy enemy4 = new Enemy();
+            WeakEnemy weakEnemy = new WeakEnemy();
+            NormalEnemy normalEnemy = new NormalEnemy();
+            ToughEnemy toughEnemy = new ToughEnemy();
 
             // GameObjects
             GameObject gameObject = new GameObject();
@@ -35,10 +34,9 @@ namespace Text_Based_RPG
 
             // Game Start
             player.Start();
-            enemy.Start(15, 15, 100, 10, 1, 0); // can create a new enemy by simply altering the Start parameters...
-            enemy2.Start(12, 10, 50, 5, 2, 0);  // ...and I'm not sure if its smart or stupid
-            enemy3.Start(45, 20, 150, 25, 1, 2);
-            enemy4.Start(35, 12, 75, 10, 1, 0);
+            weakEnemy.Start(15, 15);
+            normalEnemy.Start(15, 10);
+            toughEnemy.Start(45, 20);
             healthPotion.Start(16, 18);
             keyItem.Start(50, 12);
             powerUp.Start(9, 10);
@@ -48,27 +46,25 @@ namespace Text_Based_RPG
 
             while (player.isAlive)
             {
-                hud.Draw(player, enemy, enemy2, enemy3, enemy4);
+                hud.Draw(player, weakEnemy);
                 map.Draw();
                 player.Draw();
-                enemy.Draw('E');
-                enemy2.Draw('T');
-                enemy3.Draw('B');
-                enemy4.Draw('E');
+                weakEnemy.Draw('w');
+                normalEnemy.Draw('E');
+                toughEnemy.Draw('T');
                 healthPotion.Draw('P');
                 keyItem.Draw('k');
                 powerUp.Draw('#');
                 door.Draw('▓');
 
                 map.Update();
-                player.Update(map, enemy, door, enemy2, enemy3, enemy4);
-                enemy.Update(map, player, door);
-                enemy2.Update(map, player, door);
-                enemy3.Update(map, player, door);
-                enemy4.Update(map, player, door);
+                player.Update(map, weakEnemy, door);
+                weakEnemy.Update(map, player, door);
+                normalEnemy.Update(map, player, door);
+                toughEnemy.Update(map, player, door);
                 healthPotion.Update(player);
                 keyItem.Update(player, door);
-                powerUp.Update(player, enemy);
+                powerUp.Update(player, weakEnemy);
             }
 
             // ---------------------------------------------------------------
