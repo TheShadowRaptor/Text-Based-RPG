@@ -11,7 +11,7 @@ namespace Text_Based_RPG
         public int health;
         public int damageDelt;
 
-        protected int speed;
+        public int speed;
         protected int waitTime;
         protected int waitTimeMax;
 
@@ -38,24 +38,7 @@ namespace Text_Based_RPG
 
             if (isAlive && !isTimeStopped && waitTime == 0)
             {
-                // temp random movement? || non-agro state?
-                RandomiseInt(1, 5);
-                if (randNum == 1)
-                {
-                    newEnemyY -= speed;
-                }
-                else if (randNum == 2)
-                {
-                    newEnemyY += speed;
-                }
-                else if (randNum == 3)
-                {
-                    newEnemyX -= speed;
-                }
-                else if (randNum == 4)
-                {
-                    newEnemyX += speed;
-                }
+                EnemyMovement(this);
 
                 OnCollision(map, newEnemyX, newEnemyY, player, this, door);
                 if (canMove) DetectPlayerChar(player);

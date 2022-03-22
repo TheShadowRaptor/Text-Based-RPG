@@ -35,6 +35,27 @@ namespace Text_Based_RPG
             randNum = random.Next(1, 5);
         }
 
+        protected void EnemyMovement(Enemy enemy)
+        {
+            RandomiseInt(1, 5);
+            if (randNum == 1)
+            {
+                enemy.newEnemyY -= enemy.speed;
+            }
+            else if (randNum == 2)
+            {
+                enemy.newEnemyY += enemy.speed;
+            }
+            else if (randNum == 3)
+            {
+                enemy.newEnemyX -= enemy.speed;
+            }
+            else if (randNum == 4)
+            {
+                enemy.newEnemyX += enemy.speed;
+            }
+        }
+
         // collision that all game characters adbide by
         protected void OnCollision(Map map, int x, int y, Player player, Enemy enemy, Door door)
         {

@@ -8,6 +8,10 @@ namespace Text_Based_RPG
 {
     class EnemyManager
     {
+       public void InitializeEnemies()
+        {
+
+        }
 
     }
 }
