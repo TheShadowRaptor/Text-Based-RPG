@@ -45,9 +45,9 @@ namespace Text_Based_RPG
             // ---------------------- Gameplay Loop -------------------------
 
             while (player.isAlive)
-            {
-                hud.Draw(player, weakEnemy);
-                map.Draw();
+            {                
+                map.Draw(player);
+                hud.Draw(player, weakEnemy, normalEnemy, toughEnemy);
                 player.Draw();
                 weakEnemy.Draw('w');
                 normalEnemy.Draw('E');
@@ -58,7 +58,7 @@ namespace Text_Based_RPG
                 door.Draw('▓');
 
                 map.Update();
-                player.Update(map, weakEnemy, door);
+                player.Update(map, weakEnemy, door, normalEnemy, toughEnemy);
                 weakEnemy.Update(map, player, door);
                 normalEnemy.Update(map, player, door);
                 toughEnemy.Update(map, player, door);

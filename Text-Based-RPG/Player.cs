@@ -9,10 +9,6 @@ namespace Text_Based_RPG
 {
     class Player : GameCharacter
     {
-        // inherites from GameCharacter
-        int EXP;
-        int lives;
-
         public int health;
         public int maxHealth;
         int damageDelt = 25;
@@ -22,12 +18,6 @@ namespace Text_Based_RPG
         public int playerX;
         public int newPlayerX;
         public int newPlayerY;
-
-        // healing
-
-        // lives
-
-        // level up
 
         public void Start()
         {
@@ -40,7 +30,7 @@ namespace Text_Based_RPG
         }
 
         // ---------------------------------- Update ----------------------------------
-        public void Update(Map map, Enemy enemy, Door door)
+        public void Update(Map map, WeakEnemy weakEnemy, Door door, NormalEnemy normalEnemy, ToughEnemy toughEnemy)
         {             
             newPlayerX = playerX;
             newPlayerY = playerY;
@@ -67,8 +57,8 @@ namespace Text_Based_RPG
                 newPlayerX -= 1;
             }
 
-            OnCollision(map, newPlayerX, newPlayerY, this, enemy, door);
-            if (canMove) DetectEnemyCollision(enemy);
+            OnCollision(map, newPlayerX, newPlayerY, this, weakEnemy, door);
+            if (canMove) DetectEnemyCollision(weakEnemy, normalEnemy, toughEnemy);
             if (canMove)
             {
                 playerX = newPlayerX;
@@ -76,15 +66,29 @@ namespace Text_Based_RPG
             }
         }
 
-        void DetectEnemyCollision(Enemy enemy)
+        void DetectEnemyCollision(WeakEnemy weakEnemy, NormalEnemy normalEnemy, ToughEnemy toughEnemy)
         {
             // player collision
-            if (newPlayerX == enemy.enemyX && newPlayerY == enemy.enemyY)
+            if (newPlayerX == weakEnemy.enemyX && newPlayerY == weakEnemy.enemyY)
             {
                 canAttack = true;
                 canMove = false;
                 Console.Beep(1000, 500);
-                enemy.health = DealDamage(damageDelt, enemy.health);
+                weakEnemy.health = DealDamage(damageDelt, weakEnemy.health);
+            }
+            else if (newPlayerX == normalEnemy.enemyX && newPlayerY == normalEnemy.enemyY)
+            {
+                canAttack = true;
+                canMove = false;
+                Console.Beep(1000, 500);
+                normalEnemy.health = DealDamage(damageDelt, normalEnemy.health);
+            }
+            else if (newPlayerX == weakEnemy.enemyX && newPlayerY == weakEnemy.enemyY)
+            {
+                canAttack = true;
+                canMove = false;
+                Console.Beep(1000, 500);
+                toughEnemy.health = DealDamage(damageDelt, toughEnemy.health);
             }
             else canMove = true;
 

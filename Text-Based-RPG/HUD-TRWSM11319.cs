@@ -8,10 +8,6 @@ namespace Text_Based_RPG
 {
     class HUD
     {
-        // use a string variable for health and whatnot
-        // set enemy function
-
-        string enemeyHealth;
         public void Draw(Player player, WeakEnemy weakEnemy, NormalEnemy normalEnemy, ToughEnemy toughEnemy) // TEMP
         {
             PlayerHUD(player);
@@ -42,18 +38,17 @@ namespace Text_Based_RPG
             Console.SetCursorPosition(65, 6);
             if (player.newPlayerX == weakEnemy.enemyX && player.newPlayerY == weakEnemy.enemyY)
             {
-                enemeyHealth = weakEnemy.health.ToString();
+                Console.WriteLine("Health: " + weakEnemy.health);
             }
             else if (player.newPlayerX == normalEnemy.enemyX && player.newPlayerY == normalEnemy.enemyY)
             {
-                enemeyHealth = normalEnemy.health.ToString();
+                Console.WriteLine("Health: " + normalEnemy.health);
             }
             else if (player.newPlayerX == toughEnemy.enemyX && player.newPlayerY == toughEnemy.enemyY)
             {
-                enemeyHealth = toughEnemy.health.ToString();
-                
+                Console.WriteLine("Health: " + toughEnemy.health);
             }
-            Console.WriteLine("Health: " + enemeyHealth);
+            else Console.WriteLine(" ");
         }
     }
 }

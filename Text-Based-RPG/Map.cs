@@ -17,30 +17,36 @@ namespace Text_Based_RPG
         public int rows = newMap.Length;
         public int columns = newMap[0].Length;
 
-        int mapX;
-        int mapY;
+        public int mapX;
+        public int mapY;
+        public int screenX;
+        public int screenY;
 
         public void Start()
         {
 
         }
 
-        public void Draw() // creates the map
+        public void Draw(Player player) // creates the map
         {
-            Console.SetCursorPosition(0, 0);
-
+            //Console.Clear();
             for (int x = 0; x <= rows - 1; x++)
             {
                 for (int y = 0; y <= columns - 1; y++)
                 {
                     mapX = x;
                     mapY = y;
+                    screenX = mapX - player.playerY;
+                    screenY = mapY - player.playerX;
 
-                    SetMapColor(mapX, mapY);
-                    Console.Write(newMap[x][y]);                  
-                }
-               
-                Console.WriteLine();
+                    if (MapDrawCheck() == true)
+                    {
+                        Console.SetCursorPosition(mapY, mapX);
+                        SetMapColor(mapX, mapY);
+                        Console.Write(newMap[x][y]);
+                    }                                                                   
+                }              
+               // Console.WriteLine();
             }
             collisionMap = newMap;
         }
@@ -48,6 +54,14 @@ namespace Text_Based_RPG
         public void Update()
         {
             
+        }
+
+        private bool MapDrawCheck()
+        {
+            // checks screen for drawing map
+            if (mapX < 0 || mapY < 0) return false;
+            else if (mapX >= rows - 1 || mapY >= columns - 1) return false;
+            else return true;
         }
 
         private void SetMapColor(int x, int y)

@@ -20,7 +20,6 @@ namespace Text_Based_RPG
         public int newEnemyX;
         public int newEnemyY;
 
-        protected bool isAlive;
         public bool isTimeStopped;
 
 

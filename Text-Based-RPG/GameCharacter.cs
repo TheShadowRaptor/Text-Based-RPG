@@ -35,12 +35,6 @@ namespace Text_Based_RPG
             randNum = random.Next(1, 5);
         }
 
-        protected void MoveCharacter(int newX, int newY, int X, int Y)
-        {
-            X = newX;
-            Y = newY;
-        }
-
         // collision that all game characters adbide by
         protected void OnCollision(Map map, int x, int y, Player player, Enemy enemy, Door door)
         {
