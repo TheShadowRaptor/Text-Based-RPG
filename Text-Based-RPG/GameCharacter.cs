@@ -15,6 +15,8 @@ namespace Text_Based_RPG
 
         public bool isAlive;
 
+        public static Random random = new Random();
+
         // meathod that is called on enemy-player collision
         protected int DealDamage(int damage, int health)
         {
@@ -31,7 +33,7 @@ namespace Text_Based_RPG
         // generates random int
         protected void RandomiseInt(int min, int max)
         {
-            Random random = new Random();
+            
             randNum = random.Next(1, 5);
         }
 

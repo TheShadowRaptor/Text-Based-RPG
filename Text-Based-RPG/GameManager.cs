@@ -21,6 +21,7 @@ namespace Text_Based_RPG
             WeakEnemy weakEnemy = new WeakEnemy();
             NormalEnemy normalEnemy = new NormalEnemy();
             ToughEnemy toughEnemy = new ToughEnemy();
+            EnemyManager enemyManager = new EnemyManager();
 
             // GameObjects
             GameObject gameObject = new GameObject();
@@ -34,7 +35,7 @@ namespace Text_Based_RPG
 
             // Game Start
             player.Start();
-            weakEnemy.Start(15, 15);
+            enemyManager.Start();
             normalEnemy.Start(15, 10);
             toughEnemy.Start(45, 20);
             healthPotion.Start(16, 18);

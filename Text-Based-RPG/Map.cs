@@ -39,12 +39,10 @@ namespace Text_Based_RPG
                     screenX = mapX - player.playerY;
                     screenY = mapY - player.playerX;
 
-                    if (MapDrawCheck() == true)
-                    {
-                        Console.SetCursorPosition(mapY, mapX);
-                        SetMapColor(mapX, mapY);
-                        Console.Write(newMap[x][y]);
-                    }                                                                   
+                    Console.SetCursorPosition(mapY, mapX);
+                    SetMapColor(mapX, mapY);
+                    Console.Write(newMap[x][y]);
+                                                                                     
                 }              
                // Console.WriteLine();
             }
