@@ -50,9 +50,7 @@ namespace Text_Based_RPG
                 map.Draw(player);
                 hud.Draw(player, weakEnemy, normalEnemy, toughEnemy);
                 player.Draw();
-                weakEnemy.Draw('w');
-                normalEnemy.Draw('E');
-                toughEnemy.Draw('T');
+                enemyManager.Draw();
                 healthPotion.Draw('P');
                 keyItem.Draw('k');
                 powerUp.Draw('#');
@@ -60,9 +58,7 @@ namespace Text_Based_RPG
 
                 map.Update();
                 player.Update(map, weakEnemy, door, normalEnemy, toughEnemy);
-                weakEnemy.Update(map, player, door);
-                normalEnemy.Update(map, player, door);
-                toughEnemy.Update(map, player, door);
+                enemyManager.Update(map, player, door);
                 healthPotion.Update(player);
                 keyItem.Update(player, door);
                 powerUp.Update(player, weakEnemy);

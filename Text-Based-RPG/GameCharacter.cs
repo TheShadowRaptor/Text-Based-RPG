@@ -32,8 +32,7 @@ namespace Text_Based_RPG
 
         // generates random int
         protected void RandomiseInt(int min, int max)
-        {
-            
+        {          
             randNum = random.Next(1, 5);
         }
 
