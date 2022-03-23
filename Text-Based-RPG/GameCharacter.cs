@@ -58,7 +58,7 @@ namespace Text_Based_RPG
         }
 
         // collision that all game characters adbide by
-        protected void OnCollision(Map map, int x, int y, Player player, Enemy enemy, Door door)
+        protected void OnCollision(Map map, int x, int y, Player player, Door door)
         {
             dealDmg = false;
 
@@ -83,14 +83,10 @@ namespace Text_Based_RPG
                 canMove = false;
                 Console.Beep();
             }
-            else if (enemy.newEnemyX == door.objectX && player.newPlayerY == door.objectY) // enemy-door collision
-            {
-                canMove = false;
-            }
             else
             {
-                canMove = true;               
-            }                    
+                canMove = true;
+            }
         }
 
         protected int Clamp(int value, int min, int max) // important for Health and whatnot

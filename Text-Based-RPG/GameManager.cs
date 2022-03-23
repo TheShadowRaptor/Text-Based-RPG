@@ -57,7 +57,7 @@ namespace Text_Based_RPG
                 door.Draw('▓');
 
                 map.Update();
-                player.Update(map, weakEnemy, door, normalEnemy, toughEnemy);
+                player.Update(map, door, enemyManager);
                 enemyManager.Update(map, player, door);
                 itemManager.Update(player);
                 keyItem.Update(player, door);

@@ -8,9 +8,9 @@ namespace Text_Based_RPG
 {
     class EnemyManager
     {
-        WeakEnemy[] weakEnemies = new WeakEnemy[25];
-        NormalEnemy[] normalEnemies = new NormalEnemy[10];
-        ToughEnemy[] toughEnemies = new ToughEnemy[2];
+        public WeakEnemy[] weakEnemies = new WeakEnemy[25];
+        public NormalEnemy[] normalEnemies = new NormalEnemy[10];
+        public ToughEnemy[] toughEnemies = new ToughEnemy[2];
 
         public void Start()
         {
@@ -39,15 +39,15 @@ namespace Text_Based_RPG
         {
             for (int i = 0; i < weakEnemies.Length; i++)
             {
-                weakEnemies[i].Update(map, player, door);
+                weakEnemies[i].Update(map, player, door, this);
             }
             for (int i = 0; i < normalEnemies.Length; i++)
             {
-                normalEnemies[i].Update(map, player, door);
+                normalEnemies[i].Update(map, player, door, this);
             }
             for (int i = 0; i < toughEnemies.Length; i++)
             {
-                toughEnemies[i].Update(map, player, door);
+                toughEnemies[i].Update(map, player, door, this);
             }
         }
 

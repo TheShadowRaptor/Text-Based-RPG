@@ -12,7 +12,6 @@ namespace Text_Based_RPG
         public int health;
         public int maxHealth;
         int damageDelt = 25;
-        public bool playerIsAlive;
 
         public int playerY;
         public int playerX;
@@ -30,7 +29,7 @@ namespace Text_Based_RPG
         }
 
         // ---------------------------------- Update ----------------------------------
-        public void Update(Map map, WeakEnemy weakEnemy, Door door, NormalEnemy normalEnemy, ToughEnemy toughEnemy)
+        public void Update(Map map, Door door, EnemyManager enemyManager)
         {             
             newPlayerX = playerX;
             newPlayerY = playerY;
@@ -57,8 +56,8 @@ namespace Text_Based_RPG
                 newPlayerX -= 1;
             }
 
-            OnCollision(map, newPlayerX, newPlayerY, this, weakEnemy, door);
-            if (canMove) DetectEnemyCollision(weakEnemy, normalEnemy, toughEnemy);
+            OnCollision(map, newPlayerX, newPlayerY, this, door);
+            if (canMove) DetectEnemyCollision(enemyManager);
             if (canMove)
             {
                 playerX = newPlayerX;
@@ -66,31 +65,44 @@ namespace Text_Based_RPG
             }
         }
 
-        void DetectEnemyCollision(WeakEnemy weakEnemy, NormalEnemy normalEnemy, ToughEnemy toughEnemy)
+        void DetectEnemyCollision(EnemyManager enemyManager)
         {
             // player collision
-            if (newPlayerX == weakEnemy.enemyX && newPlayerY == weakEnemy.enemyY)
+            for (int i = 0; i < enemyManager.weakEnemies.Length; i++)
             {
-                canAttack = true;
-                canMove = false;
-                Console.Beep(1000, 500);
-                weakEnemy.health = DealDamage(damageDelt, weakEnemy.health);
+                if (newPlayerX == enemyManager.weakEnemies[i].enemyX && newPlayerY == enemyManager.weakEnemies[i].enemyY)
+                {
+                    canAttack = true;
+                    canMove = false;
+                    Console.Beep(1000, 500);
+                    enemyManager.weakEnemies[i].health = DealDamage(damageDelt, enemyManager.weakEnemies[i].health);
+                }
+                else canMove = true;
             }
-            else if (newPlayerX == normalEnemy.enemyX && newPlayerY == normalEnemy.enemyY)
+
+            for (int i = 0; i < enemyManager.normalEnemies.Length; i++)
             {
-                canAttack = true;
-                canMove = false;
-                Console.Beep(1000, 500);
-                normalEnemy.health = DealDamage(damageDelt, normalEnemy.health);
+                if (newPlayerX == enemyManager.normalEnemies[i].enemyX && newPlayerY == enemyManager.normalEnemies[i].enemyY)
+                {
+                    canAttack = true;
+                    canMove = false;
+                    Console.Beep(1000, 500);
+                    enemyManager.normalEnemies[i].health = DealDamage(damageDelt, enemyManager.normalEnemies[i].health);
+                }
+                else canMove = true;
             }
-            else if (newPlayerX == weakEnemy.enemyX && newPlayerY == weakEnemy.enemyY)
+
+            for (int i = 0; i < enemyManager.toughEnemies.Length; i++)
             {
-                canAttack = true;
-                canMove = false;
-                Console.Beep(1000, 500);
-                toughEnemy.health = DealDamage(damageDelt, toughEnemy.health);
-            }
-            else canMove = true;
+                if (newPlayerX == enemyManager.toughEnemies[i].enemyX && newPlayerY == enemyManager.toughEnemies[i].enemyY)
+                {
+                    canAttack = true;
+                    canMove = false;
+                    Console.Beep(1000, 500);
+                    enemyManager.toughEnemies[i].health = DealDamage(damageDelt, enemyManager.toughEnemies[i].health);
+                }
+                else canMove = true;
+            }          
 
             if (health <= 0)
             {

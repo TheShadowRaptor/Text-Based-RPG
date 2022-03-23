@@ -24,7 +24,7 @@ namespace Text_Based_RPG
 
 
         // ---------------------------------------- Update --------------------------------
-        public void Update(Map map, Player player, Door door)
+        public void Update(Map map, Player player, Door door, EnemyManager enemyManager)
         {
             // alive check
             if (health <= 0) isAlive = false;
@@ -40,7 +40,8 @@ namespace Text_Based_RPG
             {
                 EnemyMovement(this);
 
-                OnCollision(map, newEnemyX, newEnemyY, player, this, door);
+                OnCollision(map, newEnemyX, newEnemyY, player, door);
+                DetectDoorCollision(door, enemyManager);
                 if (canMove) DetectPlayerChar(player);
                 if (canMove)
                 {
@@ -49,7 +50,7 @@ namespace Text_Based_RPG
                 }
             }
         }
-
+        // ------------------------- protected methods -------------------------------
         protected void DetectPlayerChar(Player player)
         {
             // collision with player
@@ -60,6 +61,30 @@ namespace Text_Based_RPG
                 player.health = DealDamage(damageDelt, player.health);
             }
             else canMove = true;
+        }
+        protected void DetectDoorCollision(Door door, EnemyManager enemyManager)
+        {
+            for (int i = 0; i < enemyManager.weakEnemies.Length; i++)
+            {
+                if (enemyManager.weakEnemies[i].newEnemyX == door.objectX && enemyManager.weakEnemies[i].newEnemyY == door.objectY) // enemy-door collision
+                {
+                    canMove = false;
+                }
+            }
+            for (int i = 0; i < enemyManager.normalEnemies.Length; i++)
+            {
+                if (enemyManager.normalEnemies[i].newEnemyX == door.objectX && enemyManager.normalEnemies[i].newEnemyY == door.objectY) // enemy-door collision
+                {
+                    canMove = false;
+                }
+            }
+            for (int i = 0; i < enemyManager.toughEnemies.Length; i++)
+            {
+                if (enemyManager.toughEnemies[i].newEnemyX == door.objectX && enemyManager.toughEnemies[i].newEnemyY == door.objectY) // enemy-door collision
+                {
+                    canMove = false;
+                }
+            }
         }
 
         // ------------------------- Draw --------------------------------------
