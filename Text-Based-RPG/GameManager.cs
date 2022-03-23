@@ -21,7 +21,9 @@ namespace Text_Based_RPG
             WeakEnemy weakEnemy = new WeakEnemy();
             NormalEnemy normalEnemy = new NormalEnemy();
             ToughEnemy toughEnemy = new ToughEnemy();
+
             EnemyManager enemyManager = new EnemyManager();
+            ItemManager itemManager = new ItemManager();
 
             // GameObjects
             GameObject gameObject = new GameObject();
@@ -36,9 +38,7 @@ namespace Text_Based_RPG
             // Game Start
             player.Start();
             enemyManager.Start();
-            normalEnemy.Start(15, 10);
-            toughEnemy.Start(45, 20);
-            healthPotion.Start(16, 18);
+            itemManager.Start();
             keyItem.Start(50, 12);
             powerUp.Start(9, 10);
             door.Start(21, 10);
@@ -51,7 +51,7 @@ namespace Text_Based_RPG
                 hud.Draw(player, weakEnemy, normalEnemy, toughEnemy);
                 player.Draw();
                 enemyManager.Draw();
-                healthPotion.Draw('P');
+                itemManager.Draw();
                 keyItem.Draw('k');
                 powerUp.Draw('#');
                 door.Draw('▓');
@@ -59,7 +59,7 @@ namespace Text_Based_RPG
                 map.Update();
                 player.Update(map, weakEnemy, door, normalEnemy, toughEnemy);
                 enemyManager.Update(map, player, door);
-                healthPotion.Update(player);
+                itemManager.Update(player);
                 keyItem.Update(player, door);
                 powerUp.Update(player, weakEnemy);
             }
