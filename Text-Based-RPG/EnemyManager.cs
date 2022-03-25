@@ -11,6 +11,7 @@ namespace Text_Based_RPG
         public WeakEnemy[] weakEnemies = new WeakEnemy[25];
         public NormalEnemy[] normalEnemies = new NormalEnemy[10];
         public ToughEnemy[] toughEnemies = new ToughEnemy[2];
+        public Boss_Enemy bossEnemy = new Boss_Enemy();
 
         public void Start()
         {
@@ -33,6 +34,10 @@ namespace Text_Based_RPG
                 toughEnemies[i] = new ToughEnemy();
                 toughEnemies[i].Start(45, 20 + i);
             }
+
+            bossEnemy.Start(33, 10);
+
+
         }
 
         public void Update(Map map, Player player, Door door)
@@ -49,6 +54,8 @@ namespace Text_Based_RPG
             {
                 toughEnemies[i].Update(map, player, door, this);
             }
+
+            bossEnemy.Update(map, player, door, this);
         }
 
         public void Draw()
@@ -65,6 +72,8 @@ namespace Text_Based_RPG
             {
                 toughEnemies[i].Draw('T');
             }
+
+            bossEnemy.Draw('B');
         }
 
     }

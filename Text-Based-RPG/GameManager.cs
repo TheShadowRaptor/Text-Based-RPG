@@ -21,10 +21,12 @@ namespace Text_Based_RPG
             WeakEnemy weakEnemy = new WeakEnemy();
             NormalEnemy normalEnemy = new NormalEnemy();
             ToughEnemy toughEnemy = new ToughEnemy();
+            Boss_Enemy bossEnemy = new Boss_Enemy();
 
             EnemyManager enemyManager = new EnemyManager();
             ItemManager itemManager = new ItemManager();
             Screen screen = new Screen();
+            EndGame endGame = new EndGame();
 
             // GameObjects
             GameObject gameObject = new GameObject();
@@ -47,10 +49,10 @@ namespace Text_Based_RPG
 
             // ---------------------- Gameplay Loop -------------------------
 
-            while (player.isAlive)
+            while (player.isAlive || bossEnemy.isAlive)
             {                
                 map.Draw(player);
-                hud.Draw(player, weakEnemy, normalEnemy, toughEnemy);
+               // hud.Draw(player, weakEnemy, normalEnemy, toughEnemy);
                 player.Draw();
                 enemyManager.Draw();
                 itemManager.Draw();
@@ -66,7 +68,8 @@ namespace Text_Based_RPG
                 powerUp.Update(player, weakEnemy);
             }
 
-            // ---------------------------------------------------------------
+            // -------------------- Game Over ----------------------------
+            endGame.GameOver(player, bossEnemy);
         }
     }
 }

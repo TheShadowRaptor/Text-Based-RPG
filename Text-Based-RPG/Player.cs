@@ -57,9 +57,9 @@ namespace Text_Based_RPG
             {
                 newPlayerX -= 1;
             }
-
-            screen.MoveCamera(keyPress);
+           
             OnCollision(map, newPlayerX, newPlayerY, this, door);
+            if (canMove) screen.MoveCamera(keyPress);
             if (canMove) DetectEnemyCollision(enemyManager);
             if (canMove)
             {
@@ -119,7 +119,6 @@ namespace Text_Based_RPG
             Console.SetCursorPosition(playerX, playerY);
             Console.ForegroundColor = ConsoleColor.Magenta;
             Console.Write('@');
-            Console.SetCursorPosition(0, 0);
         }
     }
 }

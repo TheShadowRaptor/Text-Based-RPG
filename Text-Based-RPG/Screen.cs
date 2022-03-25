@@ -11,8 +11,14 @@ namespace Text_Based_RPG
     {
         public void Start()
         {
+            // declaration
+           // saveBufferWidth = Console.BufferWidth;
+           // saveBufferHeight = Console.BufferHeight;
+           // saveWindowHeight = Console.WindowHeight;
+           // saveWindowWidth = Console.WindowWidth;
+
             Console.SetWindowSize(1, 1);
-            Console.SetBufferSize(100, 100);
+            Console.SetBufferSize(80, 80);
             Console.SetWindowSize(80, 30);
         }
 
@@ -20,21 +26,36 @@ namespace Text_Based_RPG
         public void MoveCamera(ConsoleKey keyPress)
         {
             // check inputs to move screen
-            if (keyPress == ConsoleKey.W && Console.WindowTop > 0)
+            switch (keyPress)
             {
-                Console.SetWindowPosition(Console.WindowLeft, Console.WindowTop - 1);
-            }
-            else if (keyPress == ConsoleKey.S && Console.WindowTop < (Console.BufferHeight - Console.WindowHeight))
-            {
-                Console.SetWindowPosition(Console.WindowLeft, Console.WindowTop + 1);
-            }
-            else if (keyPress == ConsoleKey.D && Console.WindowLeft < (Console.BufferWidth - Console.WindowWidth))
-            {
-                Console.SetWindowPosition(Console.WindowLeft + 1, Console.WindowTop);
-            }
-            else if (keyPress == ConsoleKey.A && Console.WindowLeft > 0)
-            {
-                Console.SetWindowPosition(Console.WindowLeft - 1, Console.WindowTop);
+                case ConsoleKey.W:
+                    if (Console.WindowTop > 0)
+                    {
+                        Console.SetWindowPosition(Console.WindowLeft, Console.WindowTop - 1);
+                    }
+                    break;
+
+                case ConsoleKey.S:
+                    if (Console.WindowTop < (Console.BufferHeight - Console.WindowHeight))
+                    {
+                        Console.SetWindowPosition(Console.WindowLeft, Console.WindowTop + 1);
+                    }                     
+                    break;
+
+                case ConsoleKey.A:
+                    if (Console.WindowLeft > 0) 
+                    {
+                        Console.SetWindowPosition(Console.WindowLeft - 1, Console.WindowTop);
+                    }
+                    break;  
+
+                case ConsoleKey.D:
+                    if (Console.WindowLeft < (Console.BufferWidth - Console.WindowWidth))
+                    {
+                        Console.SetWindowPosition(Console.WindowLeft + 1, Console.WindowTop);
+                    }
+                        
+                    break;
             }
         }
 
