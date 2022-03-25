@@ -39,7 +39,7 @@ namespace Text_Based_RPG
             HUD hud = new HUD();
 
             // Game Start
-            screen.Start();
+            // screen.Start();
             player.Start();
             enemyManager.Start();
             itemManager.Start();
@@ -50,9 +50,9 @@ namespace Text_Based_RPG
             // ---------------------- Gameplay Loop -------------------------
 
             while (player.isAlive || bossEnemy.isAlive)
-            {                
+            {
                 map.Draw(player);
-               // hud.Draw(player, weakEnemy, normalEnemy, toughEnemy);
+                hud.Draw(player, weakEnemy, normalEnemy, toughEnemy);
                 player.Draw();
                 enemyManager.Draw();
                 itemManager.Draw();
@@ -69,7 +69,7 @@ namespace Text_Based_RPG
             }
 
             // -------------------- Game Over ----------------------------
-            endGame.GameOver(player, bossEnemy);
+                endGame.GameOver(player, bossEnemy);                       
         }
     }
 }

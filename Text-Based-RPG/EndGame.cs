@@ -12,11 +12,11 @@ namespace Text_Based_RPG
         public void GameOver(Player player, Boss_Enemy bossEnemy)
         {
             Console.Clear();
-            if (player.isAlive != false)
+            if (!player.isAlive)
             {
                 LooseGame();
             }
-            else if (bossEnemy.isAlive != false)
+            else if (!bossEnemy.isAlive)
             {
                 WinGame();
             }
@@ -25,6 +25,7 @@ namespace Text_Based_RPG
         // --------------------- win / loose screen -----------------------------------
         private void LooseGame()
         {
+            Console.SetCursorPosition(0, 0);
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.WriteLine("                  ________                               ________                                       ");
             Console.WriteLine("                 /  _____/_____    ____   _____   ____   \\_____  \\___  __ ___________                   ");
@@ -35,10 +36,12 @@ namespace Text_Based_RPG
             Console.WriteLine(" ");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Press any key to exit...");
+            Console.ReadKey(true);
         }
 
         private void WinGame()
         {
+            Console.SetCursorPosition(0, 0);
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("____    ____  ______    __    __     ____    __    ____  __  .__   __.     __ ");
             Console.WriteLine("\\   \\  /   / /  __  \\  |  |  |  |    \\   \\  /  \\  /   / |  | |  \\ |  |    |  |");
@@ -50,6 +53,7 @@ namespace Text_Based_RPG
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("You've defeated the Big Bad Evil Guy and saved the day!");
             Console.WriteLine("Press any key to exit.");
+            Console.ReadKey(true);
         }
     }
 }

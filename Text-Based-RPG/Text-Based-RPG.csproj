@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Boss Enemy.cs" />
     <Compile Include="Door.cs" />
+    <Compile Include="EndGame.cs" />
     <Compile Include="Enemy.cs" />
     <Compile Include="EnemyManager.cs" />
     <Compile Include="GameCharacter.cs" />

@@ -59,5 +59,5 @@ namespace Text_Based_RPG
             }
         }
 
-    }
+    } 
 }

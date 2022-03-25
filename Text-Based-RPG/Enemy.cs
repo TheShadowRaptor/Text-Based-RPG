@@ -98,6 +98,7 @@ namespace Text_Based_RPG
                 enemyX = 2;
                 enemyY = 4;
             }
+            Console.SetCursorPosition(0, 0);
         }
     }
 }

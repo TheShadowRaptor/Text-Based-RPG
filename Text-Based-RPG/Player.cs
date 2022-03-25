@@ -59,7 +59,7 @@ namespace Text_Based_RPG
             }
            
             OnCollision(map, newPlayerX, newPlayerY, this, door);
-            if (canMove) screen.MoveCamera(keyPress);
+           // if (canMove) screen.MoveCamera(keyPress);
             if (canMove) DetectEnemyCollision(enemyManager);
             if (canMove)
             {
@@ -105,7 +105,15 @@ namespace Text_Based_RPG
                     enemyManager.toughEnemies[i].health = DealDamage(damageDelt, enemyManager.toughEnemies[i].health);
                 }
                 else canMove = true;
-            }          
+            }
+            
+            if (newPlayerX == enemyManager.bossEnemy.enemyX && newPlayerY == enemyManager.bossEnemy.enemyY)
+            {
+                canAttack = true;
+                canMove = false;
+                Console.Beep(1000, 500);
+                enemyManager.bossEnemy.health = DealDamage(damageDelt, enemyManager.bossEnemy.health);
+            }
 
             if (health <= 0)
             {
@@ -119,6 +127,7 @@ namespace Text_Based_RPG
             Console.SetCursorPosition(playerX, playerY);
             Console.ForegroundColor = ConsoleColor.Magenta;
             Console.Write('@');
+            Console.SetCursorPosition(0, 0);
         }
     }
 }
