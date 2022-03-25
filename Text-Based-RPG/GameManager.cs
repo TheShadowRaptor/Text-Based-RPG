@@ -24,6 +24,7 @@ namespace Text_Based_RPG
 
             EnemyManager enemyManager = new EnemyManager();
             ItemManager itemManager = new ItemManager();
+            Screen screen = new Screen();
 
             // GameObjects
             GameObject gameObject = new GameObject();
@@ -36,6 +37,7 @@ namespace Text_Based_RPG
             HUD hud = new HUD();
 
             // Game Start
+            screen.Start();
             player.Start();
             enemyManager.Start();
             itemManager.Start();

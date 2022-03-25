@@ -18,6 +18,8 @@ namespace Text_Based_RPG
         public int newPlayerX;
         public int newPlayerY;
 
+        Screen screen = new Screen();
+
         public void Start()
         {
             playerX = 1;
@@ -56,6 +58,7 @@ namespace Text_Based_RPG
                 newPlayerX -= 1;
             }
 
+            screen.MoveCamera(keyPress);
             OnCollision(map, newPlayerX, newPlayerY, this, door);
             if (canMove) DetectEnemyCollision(enemyManager);
             if (canMove)

@@ -18,14 +18,14 @@ namespace Text_Based_RPG
             for (int i = 0; i < weakEnemies.Length; i++)
             {
                 weakEnemies[i] = new WeakEnemy();
-                if (i > 12) weakEnemies[i].Start(0 + i, 10);
+                if (i > 12) weakEnemies[i].Start(-10 + i, 5);
                 else if (i <= 12) weakEnemies[i].Start(45 + i, 15);
             }
             for (int i = 0; i < normalEnemies.Length; i++)
             {
                 normalEnemies[i] = new NormalEnemy();
-                if (i > 5) normalEnemies[i].Start(5 + i, 20);
-                else if (i <= 5) normalEnemies[i].Start(40 + i, 20 + i);
+                if (i > 3) normalEnemies[i].Start(5 + i, 20);
+                else if (i <= 3) normalEnemies[i].Start(40 + i, 20 + i);
 
             }
             for (int i = 0; i < toughEnemies.Length; i++)
