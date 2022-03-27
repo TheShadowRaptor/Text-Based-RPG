@@ -32,12 +32,11 @@ namespace Text_Based_RPG
 
         // ---------------------------------- Update ----------------------------------
         public void Update(Map map, Door door, EnemyManager enemyManager)
-        {             
+        {
+            ConsoleKey keyPress = Console.ReadKey(true).Key;
             newPlayerX = playerX;
             newPlayerY = playerY;
             canAttack = false;
-
-            ConsoleKey keyPress = Console.ReadKey(true).Key;
 
             // ----------------------- WASD --------------------------
 
@@ -59,7 +58,7 @@ namespace Text_Based_RPG
             }
            
             OnCollision(map, newPlayerX, newPlayerY, this, door);
-           // if (canMove) screen.MoveCamera(keyPress);
+            if (canMove) screen.MoveCamera(keyPress);
             if (canMove) DetectEnemyCollision(enemyManager);
             if (canMove)
             {
@@ -127,7 +126,6 @@ namespace Text_Based_RPG
             Console.SetCursorPosition(playerX, playerY);
             Console.ForegroundColor = ConsoleColor.Magenta;
             Console.Write('@');
-            Console.SetCursorPosition(0, 0);
         }
     }
 }

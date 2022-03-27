@@ -17,8 +17,8 @@ namespace Text_Based_RPG
         public int rows = newMap.Length;
         public int columns = newMap[0].Length;
 
-        public int mapX;
-        public int mapY;
+        int mapX;
+        int mapY;
         public int screenX;
         public int screenY;
 
@@ -27,7 +27,7 @@ namespace Text_Based_RPG
 
         }
 
-        public void Draw(Player player) // creates the map
+        public void Draw() // creates the map
         {
             //Console.Clear();
             for (int x = 0; x <= rows - 1; x++)
@@ -36,16 +36,11 @@ namespace Text_Based_RPG
                 {
                     mapX = x;
                     mapY = y;
-                    screenX = mapX - player.playerX;
-                    screenY = mapY - player.playerY;
-
                     
-                   // if (MapDrawCheck())
-                   // {
-                        Console.SetCursorPosition(mapY, mapX);
-                        SetMapColor(mapX, mapY);
-                        Console.Write(newMap[x][y]);
-                   // }                                                                                                      
+                    Console.SetCursorPosition(mapY, mapX);
+                    SetMapColor(mapX, mapY);
+                    Console.Write(newMap[x][y]);
+                                                                                                   
                 }              
                // Console.WriteLine();
             }
@@ -57,26 +52,17 @@ namespace Text_Based_RPG
             
         }
 
-        private bool MapDrawCheck()
-        {
-            // checks screen for drawing map
-            if (mapX < 0 || mapY < 0) return false;
-            else if (mapX >= rows - 1 || mapY >= columns - 1) return false;
-            else if (mapX >= Console.WindowHeight || mapY >= Console.WindowWidth) return false;
-            else return true;
-        }
-
         private void SetMapColor(int x, int y)
         {
-            if (newMap[mapX][mapY] == '.')
+            if (newMap[x][y] == '.')
             {
                 Console.ForegroundColor = ConsoleColor.Green;
             }
-            else if (newMap[mapX][mapY] == '^')
+            else if (newMap[x][y] == '^')
             {
                 Console.ForegroundColor = ConsoleColor.DarkGray;
             }
-            else if (newMap[mapX][mapY] == '~')
+            else if (newMap[x][y] == '~')
             {
                 Console.ForegroundColor = ConsoleColor.DarkBlue;
             }           

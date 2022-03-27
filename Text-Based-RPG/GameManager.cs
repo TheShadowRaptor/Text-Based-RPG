@@ -52,19 +52,18 @@ namespace Text_Based_RPG
             door.Start(21, 10);
 
             // ---------------------- Gameplay Loop -------------------------
-
             while (player.isAlive || bossEnemy.isAlive)
             {
-                map.Draw(player);
+                map.Draw();
                 hud.Draw(player, weakEnemy, normalEnemy, toughEnemy);
                 player.Draw();
+                map.Update();
                 enemyManager.Draw();
                 itemManager.Draw();
                 keyItem.Draw('k');
                 powerUp.Draw('#');
                 door.Draw('▓');
 
-                map.Update();
                 player.Update(map, door, enemyManager);
                 enemyManager.Update(map, player, door);
                 itemManager.Update(player);

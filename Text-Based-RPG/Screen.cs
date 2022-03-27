@@ -9,55 +9,48 @@ namespace Text_Based_RPG
 {
     class Screen
     {
+        public static int saveBufferWidth;
+        public static int saveBufferHeight;
+        public static int saveWindowHeight;
+        public static int saveWindowWidth;
+
         public void Start()
         {
-            // declaration
-           // saveBufferWidth = Console.BufferWidth;
-           // saveBufferHeight = Console.BufferHeight;
-           // saveWindowHeight = Console.WindowHeight;
-           // saveWindowWidth = Console.WindowWidth;
-
             Console.SetWindowSize(1, 1);
             Console.SetBufferSize(80, 80);
-            Console.SetWindowSize(80, 30);
+            Console.SetWindowSize(100, 26);
         }
 
-        // -------------------------------- Camera ------------------------------
-        public void MoveCamera(ConsoleKey keyPress)
+        public void MoveCamera(ConsoleKey keypress)
         {
-            // check inputs to move screen
-            switch (keyPress)
+            saveBufferWidth = Console.BufferWidth;
+            saveBufferHeight = Console.BufferHeight;
+            saveWindowHeight = Console.WindowHeight;
+            saveWindowWidth = Console.WindowWidth;
+
+            
+            switch (keypress)
             {
                 case ConsoleKey.W:
-                    if (Console.WindowTop > 0)
-                    {
-                        Console.SetWindowPosition(Console.WindowLeft, Console.WindowTop - 1);
-                    }
+                    if (Console.WindowTop > 0) Console.SetWindowPosition(Console.WindowLeft, Console.WindowTop - 1);
                     break;
 
                 case ConsoleKey.S:
-                    if (Console.WindowTop < (Console.BufferHeight - Console.WindowHeight))
-                    {
-                        Console.SetWindowPosition(Console.WindowLeft, Console.WindowTop + 1);
-                    }                     
+                    if (Console.WindowTop < (Console.BufferHeight - Console.WindowHeight)) Console.SetWindowPosition(Console.WindowLeft, Console.WindowTop + 1);
                     break;
 
                 case ConsoleKey.A:
-                    if (Console.WindowLeft > 0) 
-                    {
-                        Console.SetWindowPosition(Console.WindowLeft - 1, Console.WindowTop);
-                    }
-                    break;  
+                    if (Console.WindowLeft > 0) Console.SetWindowPosition(Console.WindowLeft - 1, Console.WindowTop);
+                    break;
 
                 case ConsoleKey.D:
-                    if (Console.WindowLeft < (Console.BufferWidth - Console.WindowWidth))
-                    {
-                        Console.SetWindowPosition(Console.WindowLeft + 1, Console.WindowTop);
-                    }
-                        
+                    if (Console.WindowLeft < (Console.BufferWidth - Console.WindowWidth)) Console.SetWindowPosition(Console.WindowLeft + 1, Console.WindowTop);
                     break;
             }
-        }
 
-    } 
+            //Console.SetWindowSize(1, 1);
+            Console.SetBufferSize(saveBufferWidth, saveBufferHeight);
+            Console.SetWindowSize(saveWindowWidth, saveWindowHeight);
+        }
+    }
 }
