@@ -19,8 +19,6 @@ namespace Text_Based_RPG
 
         int mapX;
         int mapY;
-        public int screenX;
-        public int screenY;
 
         public void Start()
         {
@@ -29,7 +27,7 @@ namespace Text_Based_RPG
 
         public void Draw() // creates the map
         {
-            //Console.Clear();
+            Console.Clear();
             for (int x = 0; x <= rows - 1; x++)
             {
                 for (int y = 0; y <= columns - 1; y++)
@@ -37,12 +35,12 @@ namespace Text_Based_RPG
                     mapX = x;
                     mapY = y;
                     
-                    Console.SetCursorPosition(mapY, mapX);
+                    //Console.SetCursorPosition(mapY, mapX);
                     SetMapColor(mapX, mapY);
-                    Console.Write(newMap[x][y]);
+                    Console.Write(newMap[mapX][mapY]);
                                                                                                    
                 }              
-               // Console.WriteLine();
+                Console.WriteLine();
             }
             collisionMap = newMap;
         }

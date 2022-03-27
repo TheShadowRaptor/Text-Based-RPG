@@ -89,7 +89,8 @@ namespace Text_Based_RPG
 
         // ------------------------- Draw --------------------------------------
         public void Draw(char icon)
-        {          
+        {  
+            
             Console.SetCursorPosition(enemyX, enemyY);           
             Console.ForegroundColor = ConsoleColor.DarkRed;
             if (isAlive) Console.Write(icon);

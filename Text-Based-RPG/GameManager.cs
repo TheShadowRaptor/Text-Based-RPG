@@ -47,7 +47,7 @@ namespace Text_Based_RPG
             player.Start();
             enemyManager.Start();
             itemManager.Start();
-            keyItem.Start(50, 12);
+            keyItem.Start(67, 45);
             powerUp.Start(9, 10);
             door.Start(21, 10);
 
@@ -56,8 +56,7 @@ namespace Text_Based_RPG
             {
                 map.Draw();
                 hud.Draw(player, weakEnemy, normalEnemy, toughEnemy);
-                player.Draw();
-                map.Update();
+                player.Draw(map);
                 enemyManager.Draw();
                 itemManager.Draw();
                 keyItem.Draw('k');
@@ -69,6 +68,7 @@ namespace Text_Based_RPG
                 itemManager.Update(player);
                 keyItem.Update(player, door);
                 powerUp.Update(player, weakEnemy);
+                if (player.canMove) screen.MoveCamera(player.keyPressed);
             }
 
             // -------------------- Game Over ----------------------------

@@ -10,7 +10,7 @@ namespace Text_Based_RPG
     {
         public WeakEnemy[] weakEnemies = new WeakEnemy[25];
         public NormalEnemy[] normalEnemies = new NormalEnemy[10];
-        public ToughEnemy[] toughEnemies = new ToughEnemy[2];
+        public ToughEnemy[] toughEnemies = new ToughEnemy[3];
         public Boss_Enemy bossEnemy = new Boss_Enemy();
 
         public void Start()
@@ -32,7 +32,19 @@ namespace Text_Based_RPG
             for (int i = 0; i < toughEnemies.Length; i++)
             {
                 toughEnemies[i] = new ToughEnemy();
-                toughEnemies[i].Start(45, 20 + i);
+                if (i == 0)
+                {
+                    toughEnemies[i].Start(47, 48);
+                }
+                else if (i == 1)
+                {
+                    toughEnemies[i].Start(47, 45);
+                }
+                else if (i == 2)
+                {
+                    toughEnemies[i].Start(47, 42);
+                }
+                
             }
 
             bossEnemy.Start(33, 10);

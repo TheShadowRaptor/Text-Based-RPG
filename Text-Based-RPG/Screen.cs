@@ -17,8 +17,8 @@ namespace Text_Based_RPG
         public void Start()
         {
             Console.SetWindowSize(1, 1);
-            Console.SetBufferSize(80, 80);
-            Console.SetWindowSize(100, 26);
+            Console.SetBufferSize(200, 80);
+            Console.SetWindowSize(50, 26);
         }
 
         public void MoveCamera(ConsoleKey keypress)
@@ -48,7 +48,7 @@ namespace Text_Based_RPG
                     break;
             }
 
-            //Console.SetWindowSize(1, 1);
+            Console.SetWindowSize(1, 1);
             Console.SetBufferSize(saveBufferWidth, saveBufferHeight);
             Console.SetWindowSize(saveWindowWidth, saveWindowHeight);
         }

@@ -18,12 +18,12 @@ namespace Text_Based_RPG
         public int newPlayerX;
         public int newPlayerY;
 
-        Screen screen = new Screen();
+        public ConsoleKey keyPressed;
 
         public void Start()
         {
-            playerX = 1;
-            playerY = 1;
+            playerX = 35;
+            playerY = 24;
             isAlive = true;
 
             health = 100;
@@ -34,6 +34,7 @@ namespace Text_Based_RPG
         public void Update(Map map, Door door, EnemyManager enemyManager)
         {
             ConsoleKey keyPress = Console.ReadKey(true).Key;
+            keyPressed = keyPress;
             newPlayerX = playerX;
             newPlayerY = playerY;
             canAttack = false;
@@ -58,7 +59,6 @@ namespace Text_Based_RPG
             }
            
             OnCollision(map, newPlayerX, newPlayerY, this, door);
-            if (canMove) screen.MoveCamera(keyPress);
             if (canMove) DetectEnemyCollision(enemyManager);
             if (canMove)
             {
@@ -121,11 +121,26 @@ namespace Text_Based_RPG
         }
 
         // -------------------------------- Draw -------------------------------
-        public void Draw()
+        public void Draw(Map map)
         {
             Console.SetCursorPosition(playerX, playerY);
             Console.ForegroundColor = ConsoleColor.Magenta;
             Console.Write('@');
+
+            /* // map this will work as an alternative to SetCursorPosition?
+            for (int mapX = 0; mapX <= map.rows - 1; mapX++)
+            {
+                for (int mapY = 0; mapY <= map.columns - 1; mapY++)
+                {
+                    if (playerX == mapX && playerY == mapY)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Console.Write('@');
+                    }
+                }
+                Console.WriteLine();
+            }
+            */
         }
     }
 }

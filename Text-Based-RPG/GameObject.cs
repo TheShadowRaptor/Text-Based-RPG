@@ -33,7 +33,6 @@ namespace Text_Based_RPG
                 objectX = 2;
                 objectY = 4;
             }
-            Console.SetCursorPosition(0, 0);
         }
     }
 }

@@ -12,6 +12,7 @@ namespace Text_Based_RPG
 
         public void StartGame()
         {
+            Console.CursorVisible = false;
             while(startGame == false)
             {
                 Title();
@@ -35,6 +36,7 @@ namespace Text_Based_RPG
                         break;
                 }
             }
+            //Console.Clear();
         }
 
         public void Title()
