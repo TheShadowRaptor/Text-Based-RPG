@@ -19,14 +19,14 @@ namespace Text_Based_RPG
             for (int i = 0; i < weakEnemies.Length; i++)
             {
                 weakEnemies[i] = new WeakEnemy();
-                if (i > 12) weakEnemies[i].Start(-10 + i, 5);
-                else if (i <= 12) weakEnemies[i].Start(45 + i, 15);
+                if (i > 12) weakEnemies[i].Start(15 + i, 15);
+                else if (i <= 12) weakEnemies[i].Start(70 + i, 25);
             }
             for (int i = 0; i < normalEnemies.Length; i++)
             {
                 normalEnemies[i] = new NormalEnemy();
-                if (i > 3) normalEnemies[i].Start(5 + i, 20);
-                else if (i <= 3) normalEnemies[i].Start(40 + i, 20 + i);
+                if (i > 3) normalEnemies[i].Start(30 + i, 30);
+                else if (i <= 3) normalEnemies[i].Start(65 + i, 30 + i);
 
             }
             for (int i = 0; i < toughEnemies.Length; i++)
@@ -34,20 +34,20 @@ namespace Text_Based_RPG
                 toughEnemies[i] = new ToughEnemy();
                 if (i == 0)
                 {
-                    toughEnemies[i].Start(47, 48);
+                    toughEnemies[i].Start(72, 58);
                 }
                 else if (i == 1)
                 {
-                    toughEnemies[i].Start(47, 45);
+                    toughEnemies[i].Start(72, 55);
                 }
                 else if (i == 2)
                 {
-                    toughEnemies[i].Start(47, 42);
+                    toughEnemies[i].Start(72, 52);
                 }
                 
             }
 
-            bossEnemy.Start(33, 10);
+            bossEnemy.Start(58, 20);
 
 
         }

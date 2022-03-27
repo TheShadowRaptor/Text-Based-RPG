@@ -37,8 +37,7 @@ namespace Text_Based_RPG
                     
                     //Console.SetCursorPosition(mapY, mapX);
                     SetMapColor(mapX, mapY);
-                    Console.Write(newMap[mapX][mapY]);
-                                                                                                   
+                    Console.Write(newMap[mapX][mapY]);                                                                                                   
                 }              
                 Console.WriteLine();
             }
@@ -48,6 +47,15 @@ namespace Text_Based_RPG
         public void Update()
         {
             
+        }
+
+        private bool MapDrawCheck(Player player)
+        {
+            // checks screen for drawing map
+            if (mapX < 0 || mapY < 0) return false;
+            else if (mapX >= rows - 1 || mapY >= columns - 1) return false;
+            else if (mapX >= Console.WindowHeight || mapY >= Console.WindowWidth) return false;
+            else return true;
         }
 
         private void SetMapColor(int x, int y)

@@ -17,13 +17,18 @@ namespace Text_Based_RPG
         public int playerX;
         public int newPlayerX;
         public int newPlayerY;
+        private int oldPlayerX;
+        private int oldPlayerY;
+
+        public int xOffset = 25;
+        public int yOffset = 10;
 
         public ConsoleKey keyPressed;
 
         public void Start()
         {
-            playerX = 35;
-            playerY = 24;
+            playerX = 50;
+            playerY = 34;
             isAlive = true;
 
             health = 100;
@@ -57,11 +62,14 @@ namespace Text_Based_RPG
             {
                 newPlayerX -= 1;
             }
-           
+
             OnCollision(map, newPlayerX, newPlayerY, this, door);
             if (canMove) DetectEnemyCollision(enemyManager);
             if (canMove)
             {
+                oldPlayerX = playerX;
+                oldPlayerY = playerY;
+
                 playerX = newPlayerX;
                 playerY = newPlayerY;
             }
@@ -105,7 +113,7 @@ namespace Text_Based_RPG
                 }
                 else canMove = true;
             }
-            
+
             if (newPlayerX == enemyManager.bossEnemy.enemyX && newPlayerY == enemyManager.bossEnemy.enemyY)
             {
                 canAttack = true;
@@ -123,24 +131,20 @@ namespace Text_Based_RPG
         // -------------------------------- Draw -------------------------------
         public void Draw(Map map)
         {
+            ReDraw(oldPlayerX, oldPlayerY);
+
             Console.SetCursorPosition(playerX, playerY);
             Console.ForegroundColor = ConsoleColor.Magenta;
             Console.Write('@');
+        }
 
-            /* // map this will work as an alternative to SetCursorPosition?
-            for (int mapX = 0; mapX <= map.rows - 1; mapX++)
-            {
-                for (int mapY = 0; mapY <= map.columns - 1; mapY++)
-                {
-                    if (playerX == mapX && playerY == mapY)
-                    {
-                        Console.ForegroundColor = ConsoleColor.Magenta;
-                        Console.Write('@');
-                    }
-                }
-                Console.WriteLine();
-            }
-            */
+        // ----------------------------- Late Update ---------------------------
+
+        public void LateUpdate()
+        {
+            if (xOffset <= -13 || yOffset < 0) return;
+
+            Console.SetWindowPosition(playerX - xOffset, playerY - yOffset);
         }
     }
 }

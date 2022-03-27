@@ -17,7 +17,7 @@ namespace Text_Based_RPG
         public void Start()
         {
             Console.SetWindowSize(1, 1);
-            Console.SetBufferSize(200, 80);
+            Console.SetBufferSize(250, 90);
             Console.SetWindowSize(50, 26);
         }
 
@@ -51,6 +51,7 @@ namespace Text_Based_RPG
             Console.SetWindowSize(1, 1);
             Console.SetBufferSize(saveBufferWidth, saveBufferHeight);
             Console.SetWindowSize(saveWindowWidth, saveWindowHeight);
+            Console.SetCursorPosition(saveWindowWidth, saveWindowHeight);
         }
     }
 }

@@ -21,8 +21,8 @@ namespace Text_Based_RPG
             for (int i = 0; i < healthPotion.Length; i++)
             {
                 healthPotion[i] = new HealthPotion();
-                if (i < 12) healthPotion[i].Start(10 + i, 15);
-                else if (i >= 12) healthPotion[i].Start(35 + i, 16);
+                if (i < 12) healthPotion[i].Start(35 + i, 25);
+                else if (i >= 12) healthPotion[i].Start(60 + i, 26);
             }
         }
         public void Update(Player player)

@@ -89,6 +89,13 @@ namespace Text_Based_RPG
             }
         }
 
+        protected void ReDraw(int x, int y)
+        {
+            Console.SetCursorPosition(x, y);
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write('.');
+        }
+
         protected int Clamp(int value, int min, int max) // important for Health and whatnot
         {
             if (value > max)
