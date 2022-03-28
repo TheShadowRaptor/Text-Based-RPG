@@ -25,7 +25,7 @@ namespace Text_Based_RPG
 
         }
 
-        public void Draw() // creates the map
+        public void Draw(Player player) // creates the map
         {
             Console.Clear();
             for (int x = 0; x <= rows - 1; x++)
@@ -34,10 +34,12 @@ namespace Text_Based_RPG
                 {
                     mapX = x;
                     mapY = y;
-                    
+
+
                     //Console.SetCursorPosition(mapY, mapX);
                     SetMapColor(mapX, mapY);
-                    Console.Write(newMap[mapX][mapY]);                                                                                                   
+                    Console.Write(newMap[mapX][mapY]);
+                                                                                                                
                 }              
                 Console.WriteLine();
             }
@@ -52,8 +54,8 @@ namespace Text_Based_RPG
         private bool MapDrawCheck(Player player)
         {
             // checks screen for drawing map
-            if (mapX < 0 || mapY < 0) return false;
-            else if (mapX >= rows - 1 || mapY >= columns - 1) return false;
+            if (mapX < player.playerX - player.xOffset || mapY < player.playerY - player.yOffset) return false;
+            else if (mapX >= player.playerX + player.xOffset || mapY >= player.playerY + player.yOffset) return false;
             else if (mapX >= Console.WindowHeight || mapY >= Console.WindowWidth) return false;
             else return true;
         }

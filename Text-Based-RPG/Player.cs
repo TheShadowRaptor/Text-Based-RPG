@@ -17,8 +17,6 @@ namespace Text_Based_RPG
         public int playerX;
         public int newPlayerX;
         public int newPlayerY;
-        private int oldPlayerX;
-        private int oldPlayerY;
 
         public int xOffset = 25;
         public int yOffset = 10;
@@ -67,9 +65,6 @@ namespace Text_Based_RPG
             if (canMove) DetectEnemyCollision(enemyManager);
             if (canMove)
             {
-                oldPlayerX = playerX;
-                oldPlayerY = playerY;
-
                 playerX = newPlayerX;
                 playerY = newPlayerY;
             }
@@ -131,7 +126,7 @@ namespace Text_Based_RPG
         // -------------------------------- Draw -------------------------------
         public void Draw(Map map)
         {
-            ReDraw(oldPlayerX, oldPlayerY);
+           // ReDraw(oldPlayerX, oldPlayerY);
 
             Console.SetCursorPosition(playerX, playerY);
             Console.ForegroundColor = ConsoleColor.Magenta;
@@ -142,8 +137,6 @@ namespace Text_Based_RPG
 
         public void LateUpdate()
         {
-            if (xOffset <= -13 || yOffset < 0) return;
-
             Console.SetWindowPosition(playerX - xOffset, playerY - yOffset);
         }
     }

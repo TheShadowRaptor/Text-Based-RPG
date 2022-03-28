@@ -47,7 +47,7 @@ namespace Text_Based_RPG
                 
             }
 
-            bossEnemy.Start(58, 20);
+            bossEnemy.Start(58, 22);
 
 
         }

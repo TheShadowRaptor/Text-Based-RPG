@@ -47,28 +47,26 @@ namespace Text_Based_RPG
             player.Start();
             enemyManager.Start();
             itemManager.Start();
-            keyItem.Start(92, 55);
-            powerUp.Start(34, 20);
+            keyItem.Start(92, 55);            
             door.Start(46, 20);
 
             // ---------------------- Gameplay Loop -------------------------
-            map.Draw();
+            
             while (player.isAlive || bossEnemy.isAlive)
-            {                
-                hud.Draw(player, weakEnemy, normalEnemy, toughEnemy);
+            {
+                map.Draw(player);               
                 player.Draw(map);
                 enemyManager.Draw();
                 itemManager.Draw();
                 keyItem.Draw('k');
-                powerUp.Draw('#');
                 door.Draw('▓');
+                hud.Draw(player, enemyManager);
                 player.LateUpdate();
 
                 player.Update(map, door, enemyManager);
                 enemyManager.Update(map, player, door);
-                itemManager.Update(player);
+                itemManager.Update(player, weakEnemy);
                 keyItem.Update(player, door);
-                powerUp.Update(player, weakEnemy);
                 if (player.canMove) screen.MoveCamera(player.keyPressed);
             }
 

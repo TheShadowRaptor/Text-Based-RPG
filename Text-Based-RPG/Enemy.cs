@@ -19,8 +19,6 @@ namespace Text_Based_RPG
         public int enemyY;
         public int newEnemyX;
         public int newEnemyY;
-        private int oldEnemyX;
-        private int oldEnemyY;
 
         public bool isTimeStopped;
 
@@ -47,9 +45,6 @@ namespace Text_Based_RPG
                 if (canMove) DetectPlayerChar(player);
                 if (canMove)
                 {
-                    oldEnemyX = enemyX;
-                    oldEnemyY = enemyY;
-
                     enemyX = newEnemyX;
                     enemyY = newEnemyY;
                 }
@@ -95,7 +90,7 @@ namespace Text_Based_RPG
         // ------------------------- Draw --------------------------------------
         public void Draw(char icon)
         {
-            ReDraw(oldEnemyX, oldEnemyY);
+           // ReDraw(oldEnemyX, oldEnemyY);
 
             Console.SetCursorPosition(enemyX, enemyY);           
             Console.ForegroundColor = ConsoleColor.DarkRed;

@@ -12,7 +12,7 @@ namespace Text_Based_RPG
         int randNum;
 
         HealthPotion[] healthPotion = new HealthPotion[25];
-        PowerUp[] powerUp = new PowerUp[6];
+        PowerUp[] powerUp = new PowerUp[2];
        // KeyItem[] keyItem = new KeyItem[10];
        // need to change key functionality for future use
 
@@ -21,15 +21,34 @@ namespace Text_Based_RPG
             for (int i = 0; i < healthPotion.Length; i++)
             {
                 healthPotion[i] = new HealthPotion();
-                if (i < 12) healthPotion[i].Start(35 + i, 25);
+                if (i <= 6) healthPotion[i].Start(35 + i, 25);
+                else if (i == 7) healthPotion[i].Start(48, 64);//
+                else if (i == 8) healthPotion[i].Start(32, 60);//
+                else if (i == 9) healthPotion[i].Start(34, 52); //
+                else if (i == 10) healthPotion[i].Start(55, 22); 
+                else if (i == 11) healthPotion[i].Start(63, 22);
                 else if (i >= 12) healthPotion[i].Start(60 + i, 26);
             }
+
+            for (int i = 0; i < powerUp.Length; i++)
+            {
+                powerUp[i] = new PowerUp();
+
+                if (i > 0) powerUp[i].Start(58, 25 + i);
+                else if (i <= 1) powerUp[i].Start(58, 20 - i);
+            }
+            
         }
-        public void Update(Player player)
+        public void Update(Player player, Enemy enemy)
         {
             for (int i = 0; i < healthPotion.Length; i++)
             {
                 healthPotion[i].Update(player);
+            }
+
+            for (int i = 0; i < powerUp.Length; i++)
+            {
+                powerUp[i].Update(player, enemy);
             }
         }
         public void Draw()
@@ -37,6 +56,11 @@ namespace Text_Based_RPG
             for (int i = 0; i < healthPotion.Length; i++)
             {
                 healthPotion[i].Draw('P');
+            }
+
+            for (int i = 0; i < powerUp.Length; i++)
+            {
+                powerUp[i].Draw('#');
             }
         }
 
