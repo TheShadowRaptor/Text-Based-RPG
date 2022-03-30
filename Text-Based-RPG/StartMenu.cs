@@ -36,7 +36,7 @@ namespace Text_Based_RPG
                         break;
                 }
             }
-            //Console.Clear();
+            Console.Clear();
         }
 
         public void Title()

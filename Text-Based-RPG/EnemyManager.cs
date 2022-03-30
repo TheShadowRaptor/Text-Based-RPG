@@ -70,22 +70,22 @@ namespace Text_Based_RPG
             bossEnemy.Update(map, player, door, this);
         }
 
-        public void Draw()
+        public void Draw(Render render, Camera camera)
         {
             for (int i = 0; i < weakEnemies.Length; i++)
             {              
-                weakEnemies[i].Draw('w');
+                weakEnemies[i].Draw('w', render, camera);
             }
             for (int i = 0; i < normalEnemies.Length; i++)
             {
-                normalEnemies[i].Draw('E');
+                normalEnemies[i].Draw('E', render, camera);
             }
             for (int i = 0; i < toughEnemies.Length; i++)
             {
-                toughEnemies[i].Draw('T');
+                toughEnemies[i].Draw('T', render, camera);
             }
 
-            bossEnemy.Draw('B');
+            bossEnemy.Draw('B', render, camera);
         }
 
     }

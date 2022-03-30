@@ -17,6 +17,9 @@ namespace Text_Based_RPG
         public int rows = newMap.Length;
         public int columns = newMap[0].Length;
 
+        ConsoleColor mapColor;
+        char mapChar;
+
         int mapX;
         int mapY;
 
@@ -25,9 +28,8 @@ namespace Text_Based_RPG
 
         }
 
-        public void Draw(Player player) // creates the map
+        public void Draw(Render render, Camera camera) // creates the map
         {
-            Console.Clear();
             for (int x = 0; x <= rows - 1; x++)
             {
                 for (int y = 0; y <= columns - 1; y++)
@@ -35,11 +37,12 @@ namespace Text_Based_RPG
                     mapX = x;
                     mapY = y;
 
-
                     //Console.SetCursorPosition(mapY, mapX);
                     SetMapColor(mapX, mapY);
-                    Console.Write(newMap[mapX][mapY]);
-                                                                                                                
+                    //Console.Write(newMap[mapX][mapY]);
+                    mapChar = newMap[x][y];
+                    render.Draw(mapY, mapX, mapChar, mapColor, camera);
+
                 }              
                 Console.WriteLine();
             }
@@ -51,28 +54,22 @@ namespace Text_Based_RPG
             
         }
 
-        private bool MapDrawCheck(Player player)
-        {
-            // checks screen for drawing map
-            if (mapX < player.playerX - player.xOffset || mapY < player.playerY - player.yOffset) return false;
-            else if (mapX >= player.playerX + player.xOffset || mapY >= player.playerY + player.yOffset) return false;
-            else if (mapX >= Console.WindowHeight || mapY >= Console.WindowWidth) return false;
-            else return true;
-        }
-
         private void SetMapColor(int x, int y)
         {
             if (newMap[x][y] == '.')
             {
-                Console.ForegroundColor = ConsoleColor.Green;
+                mapColor = ConsoleColor.Green;
+                Console.ForegroundColor = mapColor;
             }
             else if (newMap[x][y] == '^')
             {
-                Console.ForegroundColor = ConsoleColor.DarkGray;
+                mapColor = ConsoleColor.DarkGray;
+                Console.ForegroundColor = mapColor;
             }
             else if (newMap[x][y] == '~')
             {
-                Console.ForegroundColor = ConsoleColor.DarkBlue;
+                mapColor = ConsoleColor.DarkBlue;
+                Console.ForegroundColor = mapColor;
             }           
         }
         // map  bool IsWallAt(map[x,y])  determins walls 

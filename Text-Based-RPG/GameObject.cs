@@ -23,11 +23,11 @@ namespace Text_Based_RPG
             objectY = y;
         }
 
-        public void Draw(char itemIcon)
+        public void Draw(char itemIcon, Render render, Camera camera)
         {
-            Console.SetCursorPosition(objectX, objectY);
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            if (!isPickedUp) Console.Write(itemIcon);
+            if (!isPickedUp) render.Draw(objectX, objectY, itemIcon, ConsoleColor.Cyan, camera);
+            //Console.SetCursorPosition(objectX, objectY);
+            //if (!isPickedUp) Console.Write(itemIcon);
             if (isPickedUp)
             {
                 objectX = 2;

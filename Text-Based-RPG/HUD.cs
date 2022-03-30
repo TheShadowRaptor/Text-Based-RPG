@@ -25,20 +25,20 @@ namespace Text_Based_RPG
         void PlayerHUD(Player player)
         {
             Console.ForegroundColor = ConsoleColor.White;
-            Console.SetCursorPosition(player.playerX + 5, player.playerY - 10);
+            Console.SetCursorPosition(player.playerX + 25, player.playerY - 10);
             Console.WriteLine("Player Stats:");
-            Console.SetCursorPosition(player.playerX + 5, player.playerY - 9);
+            Console.SetCursorPosition(player.playerX + 25, player.playerY - 9);
             Console.WriteLine("Position: " + player.playerX + "," + player.playerY);
-            Console.SetCursorPosition(player.playerX + 5, player.playerY - 8);
+            Console.SetCursorPosition(player.playerX + 25, player.playerY - 8);
             Console.WriteLine("Health: " + player.health + "/" + player.maxHealth);
         }
 
         void EnemyHUD(Player player, EnemyManager enemyManager)
         {
             Console.ForegroundColor = ConsoleColor.Gray;
-            Console.SetCursorPosition(player.playerX + 5, player.playerY - 7);
+            Console.SetCursorPosition(player.playerX + 25, player.playerY - 7);
             Console.WriteLine("Enemy Stats:");
-            Console.SetCursorPosition(player.playerX + 5, player.playerY - 6);
+            Console.SetCursorPosition(player.playerX + 25, player.playerY - 6);
             
 
             for (int i = 0; i < enemyManager.weakEnemies.Length; i++)

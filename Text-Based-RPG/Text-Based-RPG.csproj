@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Boss Enemy.cs" />
+    <Compile Include="Camera.cs" />
     <Compile Include="Door.cs" />
     <Compile Include="EndGame.cs" />
     <Compile Include="Enemy.cs" />
@@ -61,7 +62,7 @@
     <Compile Include="PowerUp.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Screen.cs" />
+    <Compile Include="Render.cs" />
     <Compile Include="StartMenu.cs" />
     <Compile Include="ToughEnemy.cs" />
     <Compile Include="WeakEnemy.cs" />

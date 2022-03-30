@@ -88,13 +88,14 @@ namespace Text_Based_RPG
         }
 
         // ------------------------- Draw --------------------------------------
-        public void Draw(char icon)
+        public void Draw(char icon, Render render, Camera camera)
         {
-           // ReDraw(oldEnemyX, oldEnemyY);
+            // ReDraw(oldEnemyX, oldEnemyY);
 
-            Console.SetCursorPosition(enemyX, enemyY);           
-            Console.ForegroundColor = ConsoleColor.DarkRed;
-            if (isAlive) Console.Write(icon);
+            if (isAlive) render.Draw(enemyX, enemyY, icon, ConsoleColor.DarkRed, camera);
+           // Console.SetCursorPosition(enemyX, enemyY);           
+           // Console.ForegroundColor = ConsoleColor.DarkRed;
+           // if (isAlive) Console.Write(icon);
             if (!isAlive)
             {
                 enemyX = 2;

@@ -25,10 +25,12 @@ namespace Text_Based_RPG
 
             EnemyManager enemyManager = new EnemyManager();
             ItemManager itemManager = new ItemManager();
-            Screen screen = new Screen();
 
             EndGame endGame = new EndGame();
             StartMenu startMenu = new StartMenu();
+
+            Camera camera = new Camera();
+            Render render = new Render();
 
             // GameObjects
             GameObject gameObject = new GameObject();
@@ -42,32 +44,35 @@ namespace Text_Based_RPG
 
             // Game Start
             startMenu.StartGame();
-
-            screen.Start();
+            render.Start();
+            
             player.Start();
             enemyManager.Start();
             itemManager.Start();
             keyItem.Start(92, 55);            
             door.Start(46, 20);
+            Console.SetCursorPosition(0, 0);
 
             // ---------------------- Gameplay Loop -------------------------
             
+
             while (player.isAlive || bossEnemy.isAlive)
             {
-                map.Draw(player);               
-                player.Draw(map);
-                enemyManager.Draw();
-                itemManager.Draw();
-                keyItem.Draw('k');
-                door.Draw('▓');
-                hud.Draw(player, enemyManager);
+                map.Draw(render, camera);
+                player.Draw(render, camera);
+                enemyManager.Draw(render, camera);
+                itemManager.Draw(render, camera);
+                keyItem.Draw('k', render, camera);
+                door.Draw('▓', render, camera);
+                //hud.Draw(player, enemyManager);
                 player.LateUpdate();
+                
 
                 player.Update(map, door, enemyManager);
                 enemyManager.Update(map, player, door);
                 itemManager.Update(player, weakEnemy);
                 keyItem.Update(player, door);
-                if (player.canMove) screen.MoveCamera(player.keyPressed);
+                camera.Update(player);
             }
 
             // -------------------- Game Over ----------------------------

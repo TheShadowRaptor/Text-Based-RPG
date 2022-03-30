@@ -25,14 +25,14 @@ namespace Text_Based_RPG
 
         public void Start()
         {
-            playerX = 50;
-            playerY = 34;
+            playerX = 40;
+            playerY = 20;
             isAlive = true;
 
             health = 100;
             maxHealth = 100;
         }
-
+        // while console.keyavailable console.reakey(true)
         // ---------------------------------- Update ----------------------------------
         public void Update(Map map, Door door, EnemyManager enemyManager)
         {
@@ -124,20 +124,20 @@ namespace Text_Based_RPG
         }
 
         // -------------------------------- Draw -------------------------------
-        public void Draw(Map map)
+        public void Draw(Render render, Camera camera)
         {
-           // ReDraw(oldPlayerX, oldPlayerY);
+            // ReDraw(oldPlayerX, oldPlayerY);
 
-            Console.SetCursorPosition(playerX, playerY);
-            Console.ForegroundColor = ConsoleColor.Magenta;
-            Console.Write('@');
+            //Console.SetCursorPosition(playerX, playerY);
+            // Console.ForegroundColor = ConsoleColor.Magenta;
+            // Console.Write('@');
+            render.Draw(playerX, playerY, '@', ConsoleColor.Magenta, camera);
         }
 
-        // ----------------------------- Late Update ---------------------------
-
+        // ---------------------------------------------------------------------
         public void LateUpdate()
         {
-            Console.SetWindowPosition(playerX - xOffset, playerY - yOffset);
+            Console.SetCursorPosition(0, 0);
         }
     }
 }
