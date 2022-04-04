@@ -10,12 +10,14 @@ namespace Text_Based_RPG
     {   
         public void Start()
         {
-            Console.BufferHeight = 500;
-            Console.BufferWidth = 500;
+            Console.BufferHeight = 400;
+            Console.BufferWidth = 400;
         }
 
         public void Draw(int x, int y, char character, ConsoleColor color, Camera camera)
         {
+            Console.SetCursorPosition(0, 0);
+
             int screenX = x - camera.cameraX;
             int screenY = y - camera.cameraY;
 

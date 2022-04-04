@@ -39,7 +39,7 @@ namespace Text_Based_RPG
 
                     //Console.SetCursorPosition(mapY, mapX);
                     SetMapColor(mapX, mapY);
-                    //Console.Write(newMap[mapX][mapY]);
+                    //Console.Write(newMap[mapX][mapY]);                   
                     mapChar = newMap[x][y];
                     render.Draw(mapY, mapX, mapChar, mapColor, camera);
 

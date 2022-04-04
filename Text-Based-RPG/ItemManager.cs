@@ -39,7 +39,7 @@ namespace Text_Based_RPG
             }
             
         }
-        public void Update(Player player, Enemy enemy)
+        public void Update(Player player, Enemy enemy, EnemyManager enemyManager)
         {
             for (int i = 0; i < healthPotion.Length; i++)
             {
@@ -48,7 +48,7 @@ namespace Text_Based_RPG
 
             for (int i = 0; i < powerUp.Length; i++)
             {
-                powerUp[i].Update(player, enemy);
+                powerUp[i].Update(player, enemyManager);
             }
         }
         public void Draw(Render render, Camera camera)

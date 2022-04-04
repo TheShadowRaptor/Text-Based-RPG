@@ -49,8 +49,8 @@ namespace Text_Based_RPG
             player.Start();
             enemyManager.Start();
             itemManager.Start();
-            keyItem.Start(92, 55);            
-            door.Start(46, 20);
+            keyItem.Start(92, 55);   
+            door.Start(46, 21); // 20 -> 21
             Console.SetCursorPosition(0, 0);
 
             // ---------------------- Gameplay Loop -------------------------
@@ -70,7 +70,7 @@ namespace Text_Based_RPG
 
                 player.Update(map, door, enemyManager);
                 enemyManager.Update(map, player, door);
-                itemManager.Update(player, weakEnemy);
+                itemManager.Update(player, weakEnemy, enemyManager);
                 keyItem.Update(player, door);
                 camera.Update(player);
             }

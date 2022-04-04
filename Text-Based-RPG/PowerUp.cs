@@ -8,24 +8,67 @@ namespace Text_Based_RPG
 {
     class PowerUp : GameObject
     {
-        public void Update(Player player, Enemy enemy)
+        public void Update(Player player, EnemyManager enemyManager)
         {
             if (player.playerX == objectX && player.playerY == objectY)
             {
                 isPickedUp = true;
-                enemy.isTimeStopped = true;
-                countDownTimer = 5;
-            }
-            if (enemy.isTimeStopped == true)
-            {
+
+                // weak enemies
+                for (int i = 0; i < enemyManager.weakEnemies.Length; i++)
+                {
+                    enemyManager.weakEnemies[i].isTimeStopped = true;
+                    countDownTimer = 5;
+
+                    if (enemyManager.weakEnemies[i].isTimeStopped == true)
+                    {
+                        if (countDownTimer <= 0)
+                        {
+                            enemyManager.weakEnemies[i].isTimeStopped = false;
+                            countDownTimer = 0;
+                        }
+                    }
+                }
+                // normal enemies
+                for (int i = 0; i < enemyManager.normalEnemies.Length; i++)
+                {
+                    enemyManager.normalEnemies[i].isTimeStopped = true;
+                    countDownTimer = 5;
+
+                    if (enemyManager.normalEnemies[i].isTimeStopped == true)
+                    {
+                        if (countDownTimer <= 0)
+                        {
+                            enemyManager.normalEnemies[i].isTimeStopped = false;
+                            countDownTimer = 0;
+                        }
+                    }
+                }
+                // tough enemies
+                for (int i = 0; i < enemyManager.toughEnemies.Length; i++)
+                {
+                    enemyManager.toughEnemies[i].isTimeStopped = true;
+                    countDownTimer = 5;
+
+                    if (enemyManager.toughEnemies[i].isTimeStopped == true)
+                    {
+                        if (countDownTimer <= 0)
+                        {
+                            enemyManager.toughEnemies[i].isTimeStopped = false;
+                            countDownTimer = 0;
+                        }                       
+                    }
+                }
+                // boss enemy
+                enemyManager.bossEnemy.isTimeStopped = true;
                 if (countDownTimer <= 0)
                 {
-                    enemy.isTimeStopped = false;
-                    countDownTimer = 0;
+                    enemyManager.bossEnemy.isTimeStopped = false;
                 }
 
                 countDownTimer--;
             }
+
         }
     }
 }
