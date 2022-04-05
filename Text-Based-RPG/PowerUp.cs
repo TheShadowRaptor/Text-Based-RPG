@@ -13,12 +13,16 @@ namespace Text_Based_RPG
             if (player.playerX == objectX && player.playerY == objectY)
             {
                 isPickedUp = true;
+                countDownTimer = 5;
+            }
+
+            if (countDownTimer <= 0)
+            {
 
                 // weak enemies
                 for (int i = 0; i < enemyManager.weakEnemies.Length; i++)
                 {
-                    enemyManager.weakEnemies[i].isTimeStopped = true;
-                    countDownTimer = 5;
+                    enemyManager.weakEnemies[i].isTimeStopped = true;                   
 
                     if (enemyManager.weakEnemies[i].isTimeStopped == true)
                     {
@@ -33,7 +37,6 @@ namespace Text_Based_RPG
                 for (int i = 0; i < enemyManager.normalEnemies.Length; i++)
                 {
                     enemyManager.normalEnemies[i].isTimeStopped = true;
-                    countDownTimer = 5;
 
                     if (enemyManager.normalEnemies[i].isTimeStopped == true)
                     {
@@ -48,7 +51,6 @@ namespace Text_Based_RPG
                 for (int i = 0; i < enemyManager.toughEnemies.Length; i++)
                 {
                     enemyManager.toughEnemies[i].isTimeStopped = true;
-                    countDownTimer = 5;
 
                     if (enemyManager.toughEnemies[i].isTimeStopped == true)
                     {
@@ -56,7 +58,7 @@ namespace Text_Based_RPG
                         {
                             enemyManager.toughEnemies[i].isTimeStopped = false;
                             countDownTimer = 0;
-                        }                       
+                        }
                     }
                 }
                 // boss enemy

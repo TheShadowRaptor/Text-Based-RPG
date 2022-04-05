@@ -45,16 +45,19 @@ namespace Text_Based_RPG
             // Game Start
             startMenu.StartGame();
             render.Start();
-            
+
             player.Start();
             enemyManager.Start();
             itemManager.Start();
             keyItem.Start(92, 55);   
             door.Start(46, 21); // 20 -> 21
-            Console.SetCursorPosition(0, 0);
+
+            // set camera initially
+            camera.Update(player);
+            player.Draw(render, camera);
 
             // ---------------------- Gameplay Loop -------------------------
-            
+
 
             while (player.isAlive || bossEnemy.isAlive)
             {
