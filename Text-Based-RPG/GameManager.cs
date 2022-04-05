@@ -67,9 +67,7 @@ namespace Text_Based_RPG
                 itemManager.Draw(render, camera);
                 keyItem.Draw('k', render, camera);
                 door.Draw('▓', render, camera);
-                //hud.Draw(player, enemyManager);
-                player.LateUpdate();
-                
+                hud.Draw(player, enemyManager);             
 
                 player.Update(map, door, enemyManager);
                 enemyManager.Update(map, player, door);

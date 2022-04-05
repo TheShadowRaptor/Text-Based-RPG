@@ -10,8 +10,8 @@ namespace Text_Based_RPG
     {   
         public void Start()
         {
-            Console.BufferHeight = 400;
-            Console.BufferWidth = 400;
+            Console.BufferHeight = 30;
+            Console.BufferWidth = 120;
             Console.WindowHeight = 20;
             Console.WindowWidth = 60;
         }

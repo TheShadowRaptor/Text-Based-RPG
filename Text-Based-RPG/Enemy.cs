@@ -21,6 +21,7 @@ namespace Text_Based_RPG
         public int newEnemyY;
 
         public bool isTimeStopped;
+        public bool isHit;
 
 
         // ---------------------------------------- Update --------------------------------

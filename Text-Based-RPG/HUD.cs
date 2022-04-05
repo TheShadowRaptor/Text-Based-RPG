@@ -25,25 +25,25 @@ namespace Text_Based_RPG
         void PlayerHUD(Player player)
         {
             Console.ForegroundColor = ConsoleColor.White;
-            Console.SetCursorPosition(player.playerX + 25, player.playerY - 10);
+            Console.SetCursorPosition(0, 0);
             Console.WriteLine("Player Stats:");
-            Console.SetCursorPosition(player.playerX + 25, player.playerY - 9);
+            Console.SetCursorPosition(0, 1);
             Console.WriteLine("Position: " + player.playerX + "," + player.playerY);
-            Console.SetCursorPosition(player.playerX + 25, player.playerY - 8);
+            Console.SetCursorPosition(0, 2);
             Console.WriteLine("Health: " + player.health + "/" + player.maxHealth);
         }
 
         void EnemyHUD(Player player, EnemyManager enemyManager)
         {
             Console.ForegroundColor = ConsoleColor.Gray;
-            Console.SetCursorPosition(player.playerX + 25, player.playerY - 7);
+            Console.SetCursorPosition(0, 3);
             Console.WriteLine("Enemy Stats:");
-            Console.SetCursorPosition(player.playerX + 25, player.playerY - 6);
+            Console.SetCursorPosition(0, 4);
             
 
             for (int i = 0; i < enemyManager.weakEnemies.Length; i++)
             {
-                if (player.newPlayerX == enemyManager.weakEnemies[i].enemyX && player.newPlayerY == enemyManager.weakEnemies[i].enemyY)
+                if (enemyManager.weakEnemies[i].isHit)
                 {
                     Console.WriteLine("Enemy's Health: " + enemyManager.weakEnemies[i].health);
                 }
@@ -51,7 +51,7 @@ namespace Text_Based_RPG
 
             for (int i = 0; i < enemyManager.normalEnemies.Length; i++)
             {
-                if (player.newPlayerX == enemyManager.normalEnemies[i].enemyX && player.newPlayerY == enemyManager.normalEnemies[i].enemyY)
+                if (enemyManager.normalEnemies[i].isHit)
                 {
                     Console.WriteLine("Enemy's Health: " + enemyManager.normalEnemies[i].health);
                 }
@@ -59,13 +59,13 @@ namespace Text_Based_RPG
 
             for (int i = 0; i < enemyManager.toughEnemies.Length; i++)
             {
-                if (player.newPlayerX == enemyManager.toughEnemies[i].enemyX && player.newPlayerY == enemyManager.toughEnemies[i].enemyY)
+                if (enemyManager.toughEnemies[i].isHit)
                 {
                     Console.WriteLine("Enemy's Health: " + enemyManager.toughEnemies[i].health);
                 }
             }
 
-            if (player.newPlayerX == enemyManager.bossEnemy.enemyX && player.newPlayerY == enemyManager.bossEnemy.enemyY)
+            if (enemyManager.bossEnemy.isHit)
             {
                 Console.WriteLine("Enemy's Health: " + enemyManager.bossEnemy.health);
             }

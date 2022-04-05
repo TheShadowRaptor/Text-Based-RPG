@@ -71,14 +71,16 @@ namespace Text_Based_RPG
         }
 
         void DetectEnemyCollision(EnemyManager enemyManager)
-        {
+        {          
             // player collision
             for (int i = 0; i < enemyManager.weakEnemies.Length; i++)
             {
+                enemyManager.weakEnemies[i].isHit = false;
                 if (newPlayerX == enemyManager.weakEnemies[i].enemyX && newPlayerY == enemyManager.weakEnemies[i].enemyY)
                 {
                     canAttack = true;
                     canMove = false;
+                    enemyManager.weakEnemies[i].isHit = true;
                     Console.Beep(1000, 500);
                     enemyManager.weakEnemies[i].health = DealDamage(damageDelt, enemyManager.weakEnemies[i].health);
                 }
@@ -87,10 +89,12 @@ namespace Text_Based_RPG
 
             for (int i = 0; i < enemyManager.normalEnemies.Length; i++)
             {
+                enemyManager.normalEnemies[i].isHit = false;
                 if (newPlayerX == enemyManager.normalEnemies[i].enemyX && newPlayerY == enemyManager.normalEnemies[i].enemyY)
                 {
+                    enemyManager.normalEnemies[i].isHit = true;
                     canAttack = true;
-                    canMove = false;
+                    canMove = false;                  
                     Console.Beep(1000, 500);
                     enemyManager.normalEnemies[i].health = DealDamage(damageDelt, enemyManager.normalEnemies[i].health);
                 }
@@ -99,8 +103,10 @@ namespace Text_Based_RPG
 
             for (int i = 0; i < enemyManager.toughEnemies.Length; i++)
             {
+                enemyManager.toughEnemies[i].isHit = false;
                 if (newPlayerX == enemyManager.toughEnemies[i].enemyX && newPlayerY == enemyManager.toughEnemies[i].enemyY)
                 {
+                    enemyManager.toughEnemies[i].isHit = true;
                     canAttack = true;
                     canMove = false;
                     Console.Beep(1000, 500);
@@ -109,8 +115,10 @@ namespace Text_Based_RPG
                 else canMove = true;
             }
 
+            enemyManager.bossEnemy.isHit = false;
             if (newPlayerX == enemyManager.bossEnemy.enemyX && newPlayerY == enemyManager.bossEnemy.enemyY)
             {
+                enemyManager.bossEnemy.isHit = true;
                 canAttack = true;
                 canMove = false;
                 Console.Beep(1000, 500);
@@ -132,12 +140,6 @@ namespace Text_Based_RPG
             // Console.ForegroundColor = ConsoleColor.Magenta;
             // Console.Write('@');
             render.Draw(playerX, playerY, '@', ConsoleColor.Magenta, camera);
-        }
-
-        // ---------------------------------------------------------------------
-        public void LateUpdate()
-        {
-            Console.SetCursorPosition(0, 0);
         }
     }
 }
