@@ -11,15 +11,16 @@ namespace Text_Based_RPG
         // ---------------------- Determine win/lose --------------------------------------
         public void GameOver(Player player, Boss_Enemy bossEnemy)
         {
+            Console.WindowWidth = 120;
             Console.Clear();
-            if (!player.isAlive)
+            if (player.isAlive == false)
             {
                 LooseGame();
             }
-            else if (!bossEnemy.isAlive)
+            else if (bossEnemy.isAlive == false)
             {
                 WinGame();
-            }
+            }          
         }
 
         // --------------------- win / loose screen -----------------------------------
@@ -42,7 +43,7 @@ namespace Text_Based_RPG
         private void WinGame()
         {
             Console.SetCursorPosition(0, 0);
-            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("____    ____  ______    __    __     ____    __    ____  __  .__   __.     __ ");
             Console.WriteLine("\\   \\  /   / /  __  \\  |  |  |  |    \\   \\  /  \\  /   / |  | |  \\ |  |    |  |");
             Console.WriteLine(" \\   \\/   / |  |  |  | |  |  |  |     \\   \\/    \\/   /  |  | |   \\|  |    |  | ");

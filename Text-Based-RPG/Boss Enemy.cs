@@ -16,14 +16,14 @@ namespace Text_Based_RPG
             enemyY = y;
 
             // Health related variables
-            health = 400;
+            health = 300;
             damageDelt = 20;
             isAlive = true;
 
             // Establish enemy speed / skip distance
             speed = 1;
 
-            // Establish how often enemy moves
+            // Establish how often enemy moves (set 0 for every turn)
             waitTime = 0;
             waitTimeMax = 0;
         }
@@ -31,10 +31,6 @@ namespace Text_Based_RPG
         public void Update(Enemy enemy, Map map, Player player, Door door, EnemyManager enemyManager)
         {
             enemy.Update(map, player, door, enemyManager);
-            if (health <= 0)
-            {
-                isAlive = false;
-            }
         }
     }
 }

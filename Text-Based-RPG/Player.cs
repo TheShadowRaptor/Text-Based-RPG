@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using System.Threading;
 
 namespace Text_Based_RPG
 {
@@ -59,7 +60,7 @@ namespace Text_Based_RPG
             else if (keyPress == ConsoleKey.A)
             {
                 newPlayerX -= 1;
-            }
+            }           
 
             OnCollision(map, newPlayerX, newPlayerY, this, door);
             if (canMove) DetectEnemyCollision(enemyManager);

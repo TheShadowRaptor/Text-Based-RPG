@@ -57,17 +57,15 @@ namespace Text_Based_RPG
             player.Draw(render, camera);
 
             // ---------------------- Gameplay Loop -------------------------
-
-
-            while (player.isAlive || bossEnemy.isAlive)
+            while (enemyManager.bossEnemy.isAlive && player.isAlive)
             {
                 map.Draw(render, camera);
                 player.Draw(render, camera);
-                enemyManager.Draw(render, camera);
                 itemManager.Draw(render, camera);
                 keyItem.Draw('k', render, camera);
-                door.Draw('▓', render, camera);
-                hud.Draw(player, enemyManager);             
+                door.Draw('▓', render, camera);               
+                enemyManager.Draw(render, camera);
+                hud.Draw(player, enemyManager);
 
                 player.Update(map, door, enemyManager);
                 enemyManager.Update(map, player, door);
