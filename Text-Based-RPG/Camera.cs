@@ -10,8 +10,6 @@ namespace Text_Based_RPG
     {
         public int cameraX;
         public int cameraY;
-        public int xOffSet = 37;
-        public int yOffSet = 17;
 
         public void Update(Player player)
         {

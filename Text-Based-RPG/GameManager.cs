@@ -71,6 +71,7 @@ namespace Text_Based_RPG
                 enemyManager.Update(map, player, door);
                 itemManager.Update(player, weakEnemy, enemyManager);
                 keyItem.Update(player, door);
+                powerUp.Update(player, enemyManager);
                 camera.Update(player);
             }
 

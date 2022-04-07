@@ -16,7 +16,7 @@ namespace Text_Based_RPG
                 countDownTimer = 5;
             }
 
-            if (countDownTimer <= 0)
+            if (countDownTimer >= 0)
             {
 
                 // weak enemies
