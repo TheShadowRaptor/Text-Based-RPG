@@ -21,7 +21,8 @@ namespace Text_Based_RPG
                 isPickedUp = true;
                 door.isPickedUp = true;
                 isDoorOpen = true;
-            }
+                countDownTimer = 0; // <- for some reason it needs this, or else every enemy freezes
+            }          
         }
 
         //11,22
