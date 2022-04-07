@@ -22,6 +22,7 @@ namespace Text_Based_RPG
                 door.isPickedUp = true;
                 isDoorOpen = true;
             }
+            countDownTimer = 0;
         }
 
         //11,22

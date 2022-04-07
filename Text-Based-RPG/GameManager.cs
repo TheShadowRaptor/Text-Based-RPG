@@ -50,7 +50,7 @@ namespace Text_Based_RPG
             enemyManager.Start();
             itemManager.Start();
             keyItem.Start(92, 55);   
-            door.Start(46, 21); // 20 -> 21
+            door.Start(46, 20); // 20 -> 21
 
             // set camera initially
             camera.Update(player);
