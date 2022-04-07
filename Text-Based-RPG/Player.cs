@@ -85,7 +85,6 @@ namespace Text_Based_RPG
                     Console.Beep(1000, 500);
                     enemyManager.weakEnemies[i].health = DealDamage(damageDelt, enemyManager.weakEnemies[i].health);
                 }
-                else canMove = true;
             }
 
             for (int i = 0; i < enemyManager.normalEnemies.Length; i++)
@@ -99,7 +98,6 @@ namespace Text_Based_RPG
                     Console.Beep(1000, 500);
                     enemyManager.normalEnemies[i].health = DealDamage(damageDelt, enemyManager.normalEnemies[i].health);
                 }
-                else canMove = true;
             }
 
             for (int i = 0; i < enemyManager.toughEnemies.Length; i++)
@@ -113,7 +111,6 @@ namespace Text_Based_RPG
                     Console.Beep(1000, 500);
                     enemyManager.toughEnemies[i].health = DealDamage(damageDelt, enemyManager.toughEnemies[i].health);
                 }
-                else canMove = true;
             }
 
             enemyManager.bossEnemy.isHit = false;
