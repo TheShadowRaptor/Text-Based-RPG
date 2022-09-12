@@ -28,10 +28,9 @@ namespace Text_Based_RPG
             screenY += Console.WindowHeight / 2;
 
             // range check
-            if (screenX < 0) return;
-            if (screenY < 0) return;
-            if (screenX > Console.WindowWidth) return;
-            if (screenY > Console.WindowHeight) return;
+            if (screenX < 0 || screenY < 0) return;
+            if (screenX > Console.WindowWidth || screenY > Console.WindowHeight) return;
+
 
             Console.SetCursorPosition(screenX, screenY);
             Console.ForegroundColor = color;
