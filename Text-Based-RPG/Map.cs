@@ -30,9 +30,9 @@ namespace Text_Based_RPG
 
         public void Draw(Render render, Camera camera) // creates the map
         {
-            for (int x = 0; x <= 60 - 1; x++)
+            for (int x = 0; x <= rows - 1; x++)
             {
-                for (int y = 0; y <= 60 - 1; y++)
+                for (int y = 0; y <= columns - 1; y++)
                 {
                     mapX = x;
                     mapY = y;
