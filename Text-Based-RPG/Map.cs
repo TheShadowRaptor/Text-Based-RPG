@@ -19,7 +19,6 @@ namespace Text_Based_RPG
 
         ConsoleColor mapColor;
         //char mapChar;
-
         int mapX;
         int mapY;
 
@@ -30,9 +29,9 @@ namespace Text_Based_RPG
 
         public void Draw(Render render, Camera camera) // creates the map
         {
-            for (int x = 0; x <= rows - 1; x++)
+            for (int x = 0; x <= camera.cameraY * 1.2; x++)
             {
-                for (int y = 0; y <= columns - 1; y++)
+                for (int y = 0; y <= camera.cameraX * 1.2; y++)
                 {
                     mapX = x;
                     mapY = y;
@@ -70,7 +69,12 @@ namespace Text_Based_RPG
             {
                 mapColor = ConsoleColor.DarkBlue;
                 Console.ForegroundColor = mapColor;
-            }           
+            }
+            else if (newMap[x][y] == '=')
+            {
+                mapColor = ConsoleColor.DarkYellow;
+                Console.ForegroundColor = mapColor;
+            }
         }
         // map  bool IsWallAt(map[x,y])  determins walls 
     }

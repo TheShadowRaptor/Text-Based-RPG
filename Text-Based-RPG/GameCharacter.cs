@@ -78,6 +78,10 @@ namespace Text_Based_RPG
             {
                 canMove = false;
             }
+            else if (map.collisionMap[y][x] == '=')
+            {
+                canMove = false;
+            }
             else if (player.newPlayerX == door.objectX && player.newPlayerY == door.objectY) // player-door collison
             {
                 canMove = false;
