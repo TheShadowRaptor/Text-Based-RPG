@@ -18,7 +18,7 @@ namespace Text_Based_RPG
         public static Random random = new Random();
 
         // meathod that is called on enemy-player collision
-        protected int DealDamage(int damage, int health)
+        protected float DealDamage(float damage, float health)
         {
             health -= damage;  
 

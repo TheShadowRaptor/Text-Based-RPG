@@ -8,8 +8,8 @@ namespace Text_Based_RPG
 {
     class Enemy : GameCharacter // add enemy array for multiple enemies
     {
-        public int health;
-        public int damageDelt;
+        public float health;
+        public float damageDelt;
 
         public int speed;
         protected int waitTime;

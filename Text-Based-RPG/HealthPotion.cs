@@ -16,14 +16,19 @@ namespace Text_Based_RPG
             if (player.playerX == objectX && player.playerY == objectY)
             {
                 isPickedUp = true;
-                Console.Beep(); // add pickup Beep
-                player.health += healing;
-                
-                // max health clamp
-                if (player.health > player.maxHealth)
-                {
-                    player.health = player.maxHealth;
-                }
+                Console.Beep(); // add pickup Beep         
+                Use(player);
+            }
+        }
+
+        public void Use(Player player)
+        {
+            player.health += healing;
+
+            // max health clamp
+            if (player.health > player.maxHealth)
+            {
+                player.health = player.maxHealth;
             }
         }
     }

@@ -10,9 +10,10 @@ namespace Text_Based_RPG
 {
     class Player : GameCharacter
     {
-        public int health;
-        public int maxHealth;
-        int damageDelt = 25;
+        public float health;
+        public float maxHealth;
+
+        public float damageDelt = 25;
 
         public int playerY;
         public int playerX;
@@ -126,6 +127,14 @@ namespace Text_Based_RPG
             if (health <= 0)
             {
                 isAlive = false;
+            }
+        }
+
+        void DetectShopCollision(Shop shop)
+        {
+            if (newPlayerX == shop.x && newPlayerY == shop.y)
+            {
+                
             }
         }
 

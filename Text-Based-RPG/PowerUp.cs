@@ -16,13 +16,19 @@ namespace Text_Based_RPG
                 countDownTimer = 5;
             }
 
+            Use(enemyManager);
+
+        }
+
+        public void Use(EnemyManager enemyManager)
+        {
             if (countDownTimer >= 0)
             {
 
                 // weak enemies
                 for (int i = 0; i < enemyManager.weakEnemies.Length; i++)
                 {
-                    enemyManager.weakEnemies[i].isTimeStopped = true;                   
+                    enemyManager.weakEnemies[i].isTimeStopped = true;
 
                     if (enemyManager.weakEnemies[i].isTimeStopped == true)
                     {
@@ -70,7 +76,6 @@ namespace Text_Based_RPG
 
                 countDownTimer--;
             }
-
         }
     }
 }
