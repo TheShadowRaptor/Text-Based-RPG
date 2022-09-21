@@ -22,7 +22,7 @@ namespace Text_Based_RPG
         public void Start()
         {
             x = 22;
-            y = 30;
+            y = 29;
 
             item1 = new PowerUp();
             item2 = new IronSword();
