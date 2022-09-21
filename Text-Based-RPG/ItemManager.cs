@@ -13,6 +13,7 @@ namespace Text_Based_RPG
 
         HealthPotion[] healthPotion = new HealthPotion[25];
         PowerUp[] powerUp = new PowerUp[2];
+        Soul[] soul = new Soul[30];
        // KeyItem[] keyItem = new KeyItem[10];
        // need to change key functionality for future use
 
@@ -37,7 +38,14 @@ namespace Text_Based_RPG
                 if (i > 0) powerUp[i].Start(58, 20);
                 else if (i <= 1) powerUp[i].Start(58, 25);
             }
-            
+
+            for (int i = 0; i < soul.Length; i++)
+            {
+                soul[i] = new Soul();
+
+                if (i > 0) soul[i].Start(20, 20);
+            }
+
         }
         public void Update(Player player, Enemy enemy, EnemyManager enemyManager)
         {
@@ -50,6 +58,11 @@ namespace Text_Based_RPG
             {
                 powerUp[i].Update(player, enemyManager);
             }
+
+            for (int i = 0; i < powerUp.Length; i++)
+            {
+                soul[i].Update(player, enemyManager);
+            }
         }
         public void Draw(Render render, Camera camera)
         {
@@ -61,6 +74,11 @@ namespace Text_Based_RPG
             for (int i = 0; i < powerUp.Length; i++)
             {
                 powerUp[i].Draw('#', render, camera);
+            }
+
+            for (int i = 0; i < soul.Length; i++)
+            {
+                soul[i].Draw('&', render, camera);
             }
         }
 

@@ -62,13 +62,13 @@ namespace Text_Based_RPG
             while (enemyManager.bossEnemy.isAlive && player.isAlive)
             {
                 map.Draw(render, camera);
+                shop.Draw(render, camera);
                 player.Draw(render, camera);
                 itemManager.Draw(render, camera);
                 keyItem.Draw('k', render, camera);
                 door.Draw('▓', render, camera);               
                 enemyManager.Draw(render, camera);
                 hud.Draw(player, enemyManager);
-                shop.Draw(render, camera);
 
                 player.Update(map, door, enemyManager, shop);
                 enemyManager.Update(map, player, door);

@@ -37,6 +37,7 @@ namespace Text_Based_RPG
             isAlive = true;
 
             health = 100;
+            health = 100;
             maxHealth = 100;
         }
         // while console.keyavailable console.reakey(true)
