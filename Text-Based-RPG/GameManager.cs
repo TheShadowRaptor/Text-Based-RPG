@@ -12,6 +12,8 @@ namespace Text_Based_RPG
         {
             // Initialisation
 
+            // Inventory
+            Inventory inventory = new Inventory();
             // Maps
             Map map = new Map();
 
@@ -50,8 +52,7 @@ namespace Text_Based_RPG
             player.Start();
             enemyManager.Start();
             itemManager.Start();
-            keyItem.Start(92, 55);   
-            door.Start(46, 20); // 20 -> 21
+            keyItem.Start(92, 55);             
             shop.Start();
 
             // set camera initially
@@ -65,14 +66,13 @@ namespace Text_Based_RPG
                 shop.Draw(render, camera);
                 player.Draw(render, camera);
                 itemManager.Draw(render, camera);
-                keyItem.Draw('k', render, camera);
-                door.Draw('▓', render, camera);               
+                keyItem.Draw('k', render, camera);                              
                 enemyManager.Draw(render, camera);
-                hud.Draw(player, enemyManager);
+                hud.Draw(player, enemyManager, inventory);
 
-                player.Update(map, door, enemyManager, shop);
-                enemyManager.Update(map, player, door);
-                itemManager.Update(player, weakEnemy, enemyManager);
+                player.Update(map, enemyManager, itemManager, shop);
+                enemyManager.Update(map, player, shop, itemManager);
+                itemManager.Update(player, weakEnemy, enemyManager, inventory);
                 keyItem.Update(player, door);
                 powerUp.Update(player, enemyManager);
                 camera.Update(player);

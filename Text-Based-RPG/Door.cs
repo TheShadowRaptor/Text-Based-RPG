@@ -8,5 +8,13 @@ namespace Text_Based_RPG
 {
     class Door : GameObject
     {
+        public void Update(Player player)
+        {
+            // check if player is on Item
+            if (player.playerX == objectX && player.playerY == objectY)
+            {
+                Console.Beep(); // add pickup Beep               
+            }
+        }
     }
 }

@@ -28,9 +28,9 @@ namespace Text_Based_RPG
             waitTimeMax = 0;
         }
 
-        public void Update(Enemy enemy, Map map, Player player, Door door, EnemyManager enemyManager)
+        public void Update(Enemy enemy, Map map, Player player, Shop shop, ItemManager itemManager, EnemyManager enemyManager)
         {
-            enemy.Update(map, player, door, enemyManager);
+            enemy.Update(map, player, shop, itemManager, enemyManager);
         }
     }
 }

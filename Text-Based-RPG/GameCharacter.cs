@@ -58,7 +58,7 @@ namespace Text_Based_RPG
         }
 
         // collision that all game characters adbide by
-        protected void OnCollision(Map map, int x, int y, Player player, Door door)
+        protected void OnCollision(Map map, int x, int y, Player player, Shop shop, ItemManager itemManager)
         {
             dealDmg = false;
 
@@ -81,11 +81,6 @@ namespace Text_Based_RPG
             else if (map.collisionMap[y][x] == '=')
             {
                 canMove = false;
-            }
-            else if (player.newPlayerX == door.objectX && player.newPlayerY == door.objectY) // player-door collison
-            {
-                canMove = false;
-                Console.Beep();
             }
             else
             {

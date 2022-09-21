@@ -13,9 +13,14 @@ namespace Text_Based_RPG
             name = "Souls";
         }
 
-        public void Update(Inventory inventory)
+        public void Update(Inventory inventory, Player player)
         {
-            inventory.currentCurrency = + 1;
+            if (player.playerX == objectX && player.playerY == objectY)
+            {
+                isPickedUp = true;
+                Console.Beep(); // add pickup Beep 
+                inventory.currentCurrency = inventory.currentCurrency + 1;
+            }
         }
     }
 }

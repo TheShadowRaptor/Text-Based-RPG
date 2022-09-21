@@ -11,9 +11,9 @@ namespace Text_Based_RPG
         public void Start()
         {
             Console.BufferHeight = 30;
-            Console.BufferWidth = 220;
-            Console.WindowHeight = 12;
-            Console.WindowWidth = 23;
+            Console.BufferWidth = 120;
+            Console.WindowHeight = 14;
+            Console.WindowWidth = 32;
         }
 
         public void Draw(int x, int y, char character, ConsoleColor color, Camera camera)

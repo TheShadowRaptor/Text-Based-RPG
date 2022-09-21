@@ -42,7 +42,7 @@ namespace Text_Based_RPG
         }
         // while console.keyavailable console.reakey(true)
         // ---------------------------------- Update ----------------------------------
-        public void Update(Map map, Door door, EnemyManager enemyManager, Shop shop)
+        public void Update(Map map, EnemyManager enemyManager, ItemManager itemManager, Shop shop)
         {
             ConsoleKey keyPress = Console.ReadKey(true).Key;
             keyPressed = keyPress;
@@ -69,11 +69,12 @@ namespace Text_Based_RPG
                 newPlayerX -= 1;
             }           
 
-            OnCollision(map, newPlayerX, newPlayerY, this, door);
+            OnCollision(map, newPlayerX, newPlayerY, this, shop, itemManager);
             if (canMove)
             {
                 DetectEnemyCollision(enemyManager);
                 DetectShopCollision(shop, enemyManager);
+                DoorCollision(itemManager);
             }
 
             if (canMove)
@@ -146,7 +147,17 @@ namespace Text_Based_RPG
             if (newPlayerX == shop.x && newPlayerY == shop.y)
             {
                 shop.Update(enemyManager, damageDelt);
+                canMove = false;
             }
+        }
+
+        void DoorCollision(ItemManager itemManager)
+        {
+            if (newPlayerX == itemManager.door.objectX && newPlayerY == itemManager.door.objectY)
+            {
+                Console.Beep();
+                canMove = false;
+            }          
         }
 
         // -------------------------------- Draw -------------------------------

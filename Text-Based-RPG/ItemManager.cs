@@ -14,6 +14,7 @@ namespace Text_Based_RPG
         HealthPotion[] healthPotion = new HealthPotion[25];
         PowerUp[] powerUp = new PowerUp[2];
         Soul[] soul = new Soul[30];
+        public Door door = new Door();
        // KeyItem[] keyItem = new KeyItem[10];
        // need to change key functionality for future use
 
@@ -43,11 +44,12 @@ namespace Text_Based_RPG
             {
                 soul[i] = new Soul();
 
-                if (i > 0) soul[i].Start(20, 20);
+                if (i > 0) soul[i].Start(40, 40);
+                else if (i <= 1) powerUp[i].Start(58, 25);
             }
-
+            door.Start(46, 20);
         }
-        public void Update(Player player, Enemy enemy, EnemyManager enemyManager)
+        public void Update(Player player, Enemy enemy, EnemyManager enemyManager, Inventory inventory)
         {
             for (int i = 0; i < healthPotion.Length; i++)
             {
@@ -59,10 +61,12 @@ namespace Text_Based_RPG
                 powerUp[i].Update(player, enemyManager);
             }
 
-            for (int i = 0; i < powerUp.Length; i++)
+            for (int i = 0; i < soul.Length; i++)
             {
-                soul[i].Update(player, enemyManager);
+                soul[i].Update(inventory, player);
             }
+
+            door.Update(player);
         }
         public void Draw(Render render, Camera camera)
         {
@@ -80,6 +84,7 @@ namespace Text_Based_RPG
             {
                 soul[i].Draw('&', render, camera);
             }
+            door.Draw('▓', render, camera);
         }
 
         protected void RandomiseInt(int min, int max)

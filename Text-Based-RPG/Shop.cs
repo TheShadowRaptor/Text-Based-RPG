@@ -42,14 +42,22 @@ namespace Text_Based_RPG
 
         public void ShowShop(EnemyManager enemyManager, float damageDelt)
         {
-            Console.SetCursorPosition(0, 20);
-            Console.WriteLine("========- Shop -=======");
-            Console.WriteLine("=======================");
-            Console.WriteLine(" = [1] " + item1.name + " $2  ");
-            Console.WriteLine(" = [2] " + item2.name + " 10$ ");
-            Console.WriteLine(" = [3] " + item3.name + " 25$ ");
-            Console.WriteLine(" = [4] Exit ");
-            Console.WriteLine("=======================");
+            Console.SetCursorPosition(0, 0);
+            Console.WriteLine("============- Shop -============");
+            Console.WriteLine("                                ");
+            Console.WriteLine(" = [1] " + item1.name + " $2          ");
+            Console.WriteLine("                                ");
+            Console.WriteLine(" = [2] " + item2.name + " 10$         ");
+            Console.WriteLine("                                ");
+            Console.WriteLine(" = [3] " + item3.name + " 25$         ");
+            Console.WriteLine("                                ");
+            Console.WriteLine(" = [4] Exit                     ");
+            Console.WriteLine("                                ");
+            Console.WriteLine("                                ");
+            Console.WriteLine("                                ");
+            Console.WriteLine("                                ");
+            Console.WriteLine("                                ");                                                        
+            Console.WriteLine("================================");
             Decision(enemyManager, damageDelt);
         }
 

@@ -11,9 +11,9 @@ namespace Text_Based_RPG
         // use a string variable for health and whatnot
         // set enemy function
 
-        public void Draw(Player player, EnemyManager enemyManager) // TEMP
+        public void Draw(Player player, EnemyManager enemyManager, Inventory inventory) // TEMP
         {
-            PlayerHUD(player);
+            PlayerHUD(player, inventory);
             EnemyHUD(player, enemyManager);
         }
 
@@ -22,15 +22,17 @@ namespace Text_Based_RPG
 
         }
 
-        void PlayerHUD(Player player)
+        void PlayerHUD(Player player, Inventory inventory)
         {
             Console.ForegroundColor = ConsoleColor.White;
             Console.SetCursorPosition(0, 0);
             Console.WriteLine("Player Stats:");
             Console.SetCursorPosition(0, 1);
-            Console.WriteLine("Position: " + player.playerX + "," + player.playerY);
+            Console.Write("Position: " + player.playerX + "," + player.playerY);         
+            Console.WriteLine(" Health: " + player.health + "/" + player.maxHealth);
             Console.SetCursorPosition(0, 2);
-            Console.WriteLine("Health: " + player.health + "/" + player.maxHealth);
+            Console.Write("Damage: " + player.damageDelt);
+            Console.WriteLine(" Souls: " + inventory.currentCurrency);   
         }
 
         void EnemyHUD(Player player, EnemyManager enemyManager)

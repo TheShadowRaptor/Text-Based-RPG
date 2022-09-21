@@ -9,7 +9,5 @@ namespace Text_Based_RPG
     class Inventory
     {
         public float currentCurrency;
-
-
     }
 }

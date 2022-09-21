@@ -19,9 +19,10 @@ namespace Text_Based_RPG
             if (player.playerX == objectX && player.playerY == objectY)
             {
                 isPickedUp = true;
-                door.isPickedUp = true;
+                door.isPickedUp = true;  
                 isDoorOpen = true;
                 countDownTimer = 0; // <- for some reason it needs this, or else every enemy freezes
+                //??? - Tobias
             }          
         }
 
