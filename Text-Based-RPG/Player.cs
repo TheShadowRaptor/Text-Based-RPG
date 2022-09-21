@@ -25,6 +25,11 @@ namespace Text_Based_RPG
 
         public ConsoleKey keyPressed;
 
+        public Player()
+        {
+
+        }
+
         public void Start()
         {
             playerX = 40;
@@ -36,7 +41,7 @@ namespace Text_Based_RPG
         }
         // while console.keyavailable console.reakey(true)
         // ---------------------------------- Update ----------------------------------
-        public void Update(Map map, Door door, EnemyManager enemyManager)
+        public void Update(Map map, Door door, EnemyManager enemyManager, Shop shop)
         {
             ConsoleKey keyPress = Console.ReadKey(true).Key;
             keyPressed = keyPress;
@@ -64,7 +69,12 @@ namespace Text_Based_RPG
             }           
 
             OnCollision(map, newPlayerX, newPlayerY, this, door);
-            if (canMove) DetectEnemyCollision(enemyManager);
+            if (canMove)
+            {
+                DetectEnemyCollision(enemyManager);
+                DetectShopCollision(shop, enemyManager);
+            }
+
             if (canMove)
             {
                 playerX = newPlayerX;
@@ -130,11 +140,11 @@ namespace Text_Based_RPG
             }
         }
 
-        void DetectShopCollision(Shop shop)
+        void DetectShopCollision(Shop shop, EnemyManager enemyManager)
         {
             if (newPlayerX == shop.x && newPlayerY == shop.y)
             {
-                
+                shop.Update(enemyManager, damageDelt);
             }
         }
 

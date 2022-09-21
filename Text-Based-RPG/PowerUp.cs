@@ -8,6 +8,11 @@ namespace Text_Based_RPG
 {
     class PowerUp : GameObject
     {
+        public PowerUp()
+        {
+            name = "PowerUp";
+        }
+
         public void Update(Player player, EnemyManager enemyManager)
         {
             if (player.playerX == objectX && player.playerY == objectY)

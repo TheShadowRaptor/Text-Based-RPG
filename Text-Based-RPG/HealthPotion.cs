@@ -10,6 +10,10 @@ namespace Text_Based_RPG
     {
         int healing = 30;
 
+        public HealthPotion()
+        {
+            name = "HealthPotion";
+        }
         public void Update(Player player)
         {
             // check if player is on Item

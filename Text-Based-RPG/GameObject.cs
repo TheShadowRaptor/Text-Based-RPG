@@ -11,6 +11,8 @@ namespace Text_Based_RPG
         public int objectX;
         public int objectY;
 
+        public string name;
+
         protected int countDownTimer;
 
         public bool isPickedUp = false;

@@ -41,6 +41,7 @@ namespace Text_Based_RPG
 
             // HUDs
             HUD hud = new HUD();
+            Shop shop = new Shop();
 
             // Game Start
             startMenu.StartGame();
@@ -51,6 +52,7 @@ namespace Text_Based_RPG
             itemManager.Start();
             keyItem.Start(92, 55);   
             door.Start(46, 20); // 20 -> 21
+            shop.Start();
 
             // set camera initially
             camera.Update(player);
@@ -66,8 +68,9 @@ namespace Text_Based_RPG
                 door.Draw('▓', render, camera);               
                 enemyManager.Draw(render, camera);
                 hud.Draw(player, enemyManager);
+                shop.Draw(render, camera);
 
-                player.Update(map, door, enemyManager);
+                player.Update(map, door, enemyManager, shop);
                 enemyManager.Update(map, player, door);
                 itemManager.Update(player, weakEnemy, enemyManager);
                 keyItem.Update(player, door);

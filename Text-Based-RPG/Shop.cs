@@ -8,15 +8,16 @@ namespace Text_Based_RPG
 {
     class Shop
     {
-        private char shopChar = 'S';
+        private char shopIcon = 'S';
 
-        public float x;
-        public float y;
+        public int x;
+        public int y;
 
-        public GameObject item1;
-        public GameObject item2;
-        public GameObject item3;
-        public GameObject item4;
+        public PowerUp item1;
+        public IronSword item2;
+        public SteelSword item3;
+
+        public ConsoleColor shopColor = ConsoleColor.Yellow;
 
         public void Start()
         {
@@ -28,35 +29,47 @@ namespace Text_Based_RPG
             item3 = new SteelSword();
             
         }
-        public void Update()
+
+        public void Update(EnemyManager enemyManager, float damageDelt)
         {
-            
+            ShowShop(enemyManager, damageDelt);
         }
 
-        private void ShowShop()
+        public void Draw(Render render, Camera camera)
         {
-            Console.WriteLine("===================================================================");
-            Console.WriteLine("= [1] " + item1 + " $2 = = [2] " + item2 + " 10$ = = [3] + " + item3 + " 10$ = =");
-            Console.WriteLine("= [4] Exit                                                        =");
-            Console.WriteLine("===================================================================");
+            render.Draw(x, y, shopIcon, shopColor, camera);
         }
 
-        private void Decision()
+        public void ShowShop(EnemyManager enemyManager, float damageDelt)
+        {
+            Console.SetCursorPosition(0, 20);
+            Console.WriteLine("========- Shop -=======");
+            Console.WriteLine("=======================");
+            Console.WriteLine(" = [1] " + item1.name + " $2  ");
+            Console.WriteLine(" = [2] " + item2.name + " 10$ ");
+            Console.WriteLine(" = [3] + " + item3.name + " 25$ ");
+            Console.WriteLine(" = [4] Exit ");
+            Console.WriteLine("=======================");
+            Decision(enemyManager, damageDelt);
+        }
+
+        private void Decision(EnemyManager enemyManager, float damageDelt)
         {
             ConsoleKey keyPress = Console.ReadKey(true).Key;
 
             if (keyPress == ConsoleKey.D1)
             {
-                
+                item1.Use(enemyManager);
             }
 
             if (keyPress == ConsoleKey.D2)
             {
-
+                item2.Use(damageDelt);
             }
 
             if (keyPress == ConsoleKey.D3)
             {
+                item3.Use(damageDelt);
 
             }
 

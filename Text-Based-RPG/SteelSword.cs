@@ -9,18 +9,22 @@ namespace Text_Based_RPG
     class SteelSword : GameObject
     {
         private float swordDamage = 50;
-        public void Update(Player player, EnemyManager enemyManager)
+        public SteelSword()
+        {
+            name = "SteelSword";
+        }
+        public void Update(Player player, EnemyManager enemyManager, float damageDelt)
         {
             if (player.playerX == objectX && player.playerY == objectY)
             {
                 isPickedUp = true;
-                Use(player);
+                Use(damageDelt);
             }
         }
 
-        public void Use(Player player)
+        public void Use(float damageDelt)
         {
-            player.damageDelt =+ swordDamage;
+            damageDelt =+ swordDamage;
         }
     }
 }

@@ -29,9 +29,9 @@ namespace Text_Based_RPG
 
         public void Draw(Render render, Camera camera) // creates the map
         {
-            for (int x = 0; x <= camera.cameraY * 1.2; x++)
+            for (int x = 0; x <= camera.cameraY * 1.3; x++)
             {
-                for (int y = 0; y <= camera.cameraX * 1.2; y++)
+                for (int y = 0; y <= camera.cameraX * 1.3; y++)
                 {
                     mapX = x;
                     mapY = y;
