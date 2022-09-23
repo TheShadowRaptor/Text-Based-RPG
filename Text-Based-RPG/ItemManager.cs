@@ -44,8 +44,7 @@ namespace Text_Based_RPG
             {
                 soul[i] = new Soul();
 
-                if (i > 0) soul[i].Start(40, 40);
-                else if (i <= 1) powerUp[i].Start(58, 25);
+                if (i > 0) soul[i].Start(30, 30);
             }
             door.Start(46, 20);
         }

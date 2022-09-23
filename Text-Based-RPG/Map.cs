@@ -31,7 +31,7 @@ namespace Text_Based_RPG
         {
             for (int x = 0; x <= camera.cameraX * 1.5; x++)
             {               
-                for (int y = 0; y <= camera.cameraX * 1.5; y++)S
+                for (int y = 0; y <= camera.cameraX * 1.5; y++)
                 {
                     mapX = x;
                     mapY = y;

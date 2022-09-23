@@ -9,5 +9,11 @@ namespace Text_Based_RPG
     class Inventory
     {
         public float currentCurrency;
+        public float WeaponSlot;
+
+        public void InventorySpace()
+        {
+
+        }
     }
 }
