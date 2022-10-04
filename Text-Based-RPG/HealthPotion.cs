@@ -13,6 +13,8 @@ namespace Text_Based_RPG
         public HealthPotion()
         {
             name = "HealthPotion";
+
+            price = 5;
         }
         public void Update(Player player)
         {

@@ -42,7 +42,7 @@ namespace Text_Based_RPG
         }
         // while console.keyavailable console.reakey(true)
         // ---------------------------------- Update ----------------------------------
-        public void Update(Map map, EnemyManager enemyManager, ItemManager itemManager, Shop shop)
+        public void Update(Map map, EnemyManager enemyManager, ItemManager itemManager, Shop shop, Inventory inventory, GameObject gameObject)
         {
             ConsoleKey keyPress = Console.ReadKey(true).Key;
             keyPressed = keyPress;
@@ -67,13 +67,20 @@ namespace Text_Based_RPG
             else if (keyPress == ConsoleKey.A)
             {
                 newPlayerX -= 1;
-            }           
+            }   
+            
+            // ---------------------- Inventory ---------------------
+
+            else if (keyPress == ConsoleKey.I)
+            {
+                inventory.ShowInventory();
+            }
 
             OnCollision(map, newPlayerX, newPlayerY, this, shop, itemManager);
             if (canMove)
             {
                 DetectEnemyCollision(enemyManager);
-                DetectShopCollision(shop, enemyManager);
+                DetectShopCollision(shop, enemyManager, inventory);
                 DoorCollision(itemManager);
             }
 
@@ -142,11 +149,11 @@ namespace Text_Based_RPG
             }
         }
 
-        void DetectShopCollision(Shop shop, EnemyManager enemyManager)
+        void DetectShopCollision(Shop shop, EnemyManager enemyManager, Inventory inventory)
         {
             if (newPlayerX == shop.x && newPlayerY == shop.y)
             {
-                shop.Update(enemyManager, damageDelt);
+                shop.Update(enemyManager, this, damageDelt, inventory);
                 canMove = false;
             }
         }
@@ -163,11 +170,6 @@ namespace Text_Based_RPG
         // -------------------------------- Draw -------------------------------
         public void Draw(Render render, Camera camera)
         {
-            // ReDraw(oldPlayerX, oldPlayerY);
-
-            //Console.SetCursorPosition(playerX, playerY);
-            // Console.ForegroundColor = ConsoleColor.Magenta;
-            // Console.Write('@');
             render.Draw(playerX, playerY, '@', ConsoleColor.Magenta, camera);
         }
     }

@@ -70,12 +70,12 @@ namespace Text_Based_RPG
                 enemyManager.Draw(render, camera);
                 hud.Draw(player, enemyManager, inventory);
 
-                player.Update(map, enemyManager, itemManager, shop);
+                player.Update(map, enemyManager, itemManager, shop, inventory, gameObject);
                 enemyManager.Update(map, player, shop, itemManager);
                 itemManager.Update(player, weakEnemy, enemyManager, inventory);
                 keyItem.Update(player, door);
                 powerUp.Update(player, enemyManager);
-                camera.Update(player);
+                camera.Update(player);       
             }
 
             // -------------------- Game Over ----------------------------

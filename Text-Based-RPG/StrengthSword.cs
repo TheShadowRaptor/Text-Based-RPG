@@ -6,26 +6,26 @@ using System.Threading.Tasks;
 
 namespace Text_Based_RPG
 {
-    class IronSword : GameObject
+    class StrengthPotion : GameObject
     {
         private float swordDamage = 25;
 
-        public IronSword()
+        public StrengthPotion()
         {
-            name = "IronSword";
+            name = "StrengthPotions";
         }
         public void Update(Player player, EnemyManager enemyManager, float damageDelt)
         {
             if (player.playerX == objectX && player.playerY == objectY)
             {
                 isPickedUp = true;
-                Use(damageDelt);
+                Use(player);
             }
         }
 
-        public void Use(float damageDelt)
+        public void Use(Player player)
         {
-            damageDelt =+ swordDamage;
+            player.damageDelt += swordDamage;
         }
     }
 }

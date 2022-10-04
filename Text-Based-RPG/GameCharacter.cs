@@ -36,7 +36,7 @@ namespace Text_Based_RPG
             randNum = random.Next(min, max);
         }
 
-        protected void EnemyMovement(Enemy enemy)
+        protected void Movement(Enemy enemy)
         {
             RandomiseInt(1, 5);
             if (randNum == 1)
@@ -86,13 +86,6 @@ namespace Text_Based_RPG
             {
                 canMove = true;
             }
-        }
-
-        protected void ReDraw(int x, int y)
-        {
-            Console.SetCursorPosition(x, y);
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write('.');
         }
 
         protected int Clamp(int value, int min, int max) // important for Health and whatnot

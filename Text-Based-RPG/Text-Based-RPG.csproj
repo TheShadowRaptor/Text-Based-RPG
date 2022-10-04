@@ -55,11 +55,11 @@
     <Compile Include="HealthPotion.cs" />
     <Compile Include="HUD.cs" />
     <Compile Include="Inventory.cs" />
-    <Compile Include="IronSword.cs" />
     <Compile Include="ItemManager.cs" />
     <Compile Include="KeyItem.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="NormalEnemy.cs" />
+    <Compile Include="Npc.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="PowerUp.cs" />
     <Compile Include="Program.cs" />
@@ -68,7 +68,7 @@
     <Compile Include="Shop.cs" />
     <Compile Include="Soul.cs" />
     <Compile Include="StartMenu.cs" />
-    <Compile Include="SteelSword.cs" />
+    <Compile Include="StrengthPotion.cs" />
     <Compile Include="ToughEnemy.cs" />
     <Compile Include="WeakEnemy.cs" />
   </ItemGroup>

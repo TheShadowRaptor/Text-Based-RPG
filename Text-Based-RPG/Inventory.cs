@@ -9,11 +9,19 @@ namespace Text_Based_RPG
     class Inventory
     {
         public float currentCurrency;
-        public float WeaponSlot;
 
-        public void InventorySpace()
+        List<GameObject> inventorySpace = new List<GameObject>(6);
+        public Inventory()
         {
+            
+        }
 
+        public void ShowInventory()
+        {
+            Console.WriteLine("------Inventory------");
+            Console.WriteLine(inventorySpace[0].name);
+
+            ConsoleKey keyPress = Console.ReadKey(true).Key;
         }
     }
 }

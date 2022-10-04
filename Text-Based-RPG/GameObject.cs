@@ -13,6 +13,8 @@ namespace Text_Based_RPG
 
         public string name;
 
+        public float price; 
+
         protected int countDownTimer;
 
         public bool isPickedUp = false;

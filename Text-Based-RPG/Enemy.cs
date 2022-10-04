@@ -39,7 +39,7 @@ namespace Text_Based_RPG
 
             if (isAlive && !isTimeStopped && waitTime == 0)
             {
-                EnemyMovement(this);
+                Movement(this);
 
                 OnCollision(map, newEnemyX, newEnemyY, player, shop, itemManager);
                 DetectDoorCollision(itemManager, enemyManager);
@@ -91,12 +91,7 @@ namespace Text_Based_RPG
         // ------------------------- Draw --------------------------------------
         public void Draw(char icon, Render render, Camera camera)
         {
-            // ReDraw(oldEnemyX, oldEnemyY);
-
             if (isAlive) render.Draw(enemyX, enemyY, icon, ConsoleColor.DarkRed, camera);
-           // Console.SetCursorPosition(enemyX, enemyY);           
-           // Console.ForegroundColor = ConsoleColor.DarkRed;
-           // if (isAlive) Console.Write(icon);
             if (!isAlive)
             {
                 enemyX = 2;

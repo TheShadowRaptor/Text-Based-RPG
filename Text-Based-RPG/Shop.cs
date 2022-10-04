@@ -13,9 +13,8 @@ namespace Text_Based_RPG
         public int x;
         public int y;
 
-        public PowerUp item1;
-        public IronSword item2;
-        public SteelSword item3;
+        public HealthPotion item1;
+        public StrengthPotion item2;
 
         public ConsoleColor shopColor = ConsoleColor.Yellow;
 
@@ -24,15 +23,14 @@ namespace Text_Based_RPG
             x = 22;
             y = 29;
 
-            item1 = new PowerUp();
-            item2 = new IronSword();
-            item3 = new SteelSword();
+            item1 = new HealthPotion();
+            item2 = new StrengthPotion();
             
         }
 
-        public void Update(EnemyManager enemyManager, float damageDelt)
+        public void Update(EnemyManager enemyManager, Player player, float damageDelt, Inventory inventory)
         {
-            ShowShop(enemyManager, damageDelt);
+            ShowShop(enemyManager, player, damageDelt, inventory);
         }
 
         public void Draw(Render render, Camera camera)
@@ -40,28 +38,22 @@ namespace Text_Based_RPG
             render.Draw(x, y, shopIcon, shopColor, camera);
         }
 
-        public void ShowShop(EnemyManager enemyManager, float damageDelt)
+        public void ShowShop(EnemyManager enemyManager, Player player, float damageDelt, Inventory inventory)
         {
             Console.SetCursorPosition(0, 0);
-            Console.WriteLine("============- Shop -============");
+            Console.WriteLine("============- Shop -===============");
+            Console.WriteLine("                                   ");
+            Console.WriteLine(" = [1] " + item1.name + ": " + item1.price +"$             ");
             Console.WriteLine("                                ");
-            Console.WriteLine(" = [1] " + item1.name + " $2          ");
-            Console.WriteLine("                                ");
-            Console.WriteLine(" = [2] " + item2.name + " 10$         ");
-            Console.WriteLine("                                ");
-            Console.WriteLine(" = [3] " + item3.name + " 25$         ");
-            Console.WriteLine("                                ");
-            Console.WriteLine(" = [4] Exit                     ");
-            Console.WriteLine("                                ");
-            Console.WriteLine("                                ");
-            Console.WriteLine("                                ");
-            Console.WriteLine("                                ");
-            Console.WriteLine("                                ");                                                        
-            Console.WriteLine("================================");
-            Decision(enemyManager, damageDelt);
+            Console.WriteLine(" = [2] " + item2.name + ": " + item2.price +"$             ");
+            Console.WriteLine("                                   ");    
+            Console.WriteLine(" = [3] Exit                        ");
+            Console.WriteLine("                                   ");                                                        
+            Console.WriteLine("===================================");
+            Decision(enemyManager, player, damageDelt, inventory);
         }
 
-        private void Decision(EnemyManager enemyManager, float damageDelt)
+        private void Decision(EnemyManager enemyManager, Player player, float damageDelt, Inventory inventory)
         {
             bool inShop = true; 
 
@@ -69,23 +61,21 @@ namespace Text_Based_RPG
             {
                 ConsoleKey keyPress = Console.ReadKey(true).Key;
 
-                if (keyPress == ConsoleKey.D1)
+                if (keyPress == ConsoleKey.D1 && inventory.currentCurrency >= item1.price)
                 {
-                    item1.Use(enemyManager);
+                    inventory.currentCurrency -= item1.price;
+                    item1.Use(player);
+                    break;
                 }
 
-                if (keyPress == ConsoleKey.D2)
+                if (keyPress == ConsoleKey.D2 && inventory.currentCurrency >= item2.price)
                 {
-                    item2.Use(damageDelt);
+                    inventory.currentCurrency -= item2.price;
+                    item2.Use(player);
+                    break;
                 }
 
                 if (keyPress == ConsoleKey.D3)
-                {
-                    item3.Use(damageDelt);
-
-                }
-
-                if (keyPress == ConsoleKey.D4)
                 {
                     inShop = false;
                     break;

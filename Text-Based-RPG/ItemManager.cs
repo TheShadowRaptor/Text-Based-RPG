@@ -13,7 +13,7 @@ namespace Text_Based_RPG
 
         HealthPotion[] healthPotion = new HealthPotion[25];
         PowerUp[] powerUp = new PowerUp[2];
-        Soul[] soul = new Soul[30];
+        Soul[] soul = new Soul[31];
         public Door door = new Door();
        // KeyItem[] keyItem = new KeyItem[10];
        // need to change key functionality for future use
@@ -45,6 +45,7 @@ namespace Text_Based_RPG
                 soul[i] = new Soul();
 
                 if (i > 0) soul[i].Start(30, 30);
+                
             }
             door.Start(46, 20);
         }
@@ -92,3 +93,5 @@ namespace Text_Based_RPG
         }
     }
 }
+
+
