@@ -18,7 +18,6 @@ namespace Text_Based_RPG
         protected int countDownTimer;
 
         public bool isPickedUp = false;
-        protected bool isDoorOpen = false;
 
         public void Start(int x, int y)
         {
@@ -30,8 +29,7 @@ namespace Text_Based_RPG
         public void Draw(char itemIcon, Render render, Camera camera)
         {
             if (!isPickedUp) render.Draw(objectX, objectY, itemIcon, ConsoleColor.Cyan, camera);
-            //Console.SetCursorPosition(objectX, objectY);
-            //if (!isPickedUp) Console.Write(itemIcon);
+
             if (isPickedUp)
             {
                 objectX = 2;

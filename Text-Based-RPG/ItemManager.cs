@@ -10,11 +10,12 @@ namespace Text_Based_RPG
     {
         public static Random random = new Random();
         int randNum;
+        public Door door = new Door();
 
         HealthPotion[] healthPotion = new HealthPotion[25];
         PowerUp[] powerUp = new PowerUp[2];
         Soul[] soul = new Soul[31];
-        public Door door = new Door();
+        KeyItem key = new KeyItem();
        // KeyItem[] keyItem = new KeyItem[10];
        // need to change key functionality for future use
 
@@ -48,6 +49,7 @@ namespace Text_Based_RPG
                 
             }
             door.Start(46, 20);
+            key.Start(92, 55);
         }
         public void Update(Player player, Enemy enemy, EnemyManager enemyManager, Inventory inventory)
         {
@@ -67,6 +69,7 @@ namespace Text_Based_RPG
             }
 
             door.Update(player);
+            key.Update(player, door);
         }
         public void Draw(Render render, Camera camera)
         {
@@ -85,6 +88,7 @@ namespace Text_Based_RPG
                 soul[i].Draw('&', render, camera);
             }
             door.Draw('▓', render, camera);
+            key.Draw('K', render, camera);
         }
 
         protected void RandomiseInt(int min, int max)

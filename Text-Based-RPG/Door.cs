@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 namespace Text_Based_RPG
 {
     class Door : GameObject
-    {
+    {       
+        protected bool isDoorOpen = false;
+
         public void Update(Player player)
         {
             // check if player is on Item
@@ -15,6 +17,6 @@ namespace Text_Based_RPG
             {
                 Console.Beep(); // add pickup Beep               
             }
-        }
+        }       
     }
 }

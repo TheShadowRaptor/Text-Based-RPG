@@ -39,7 +39,6 @@ namespace Text_Based_RPG
             HealthPotion healthPotion = new HealthPotion();
             KeyItem keyItem = new KeyItem();
             PowerUp powerUp = new PowerUp();
-            Door door = new Door();
 
             // HUDs
             HUD hud = new HUD();
@@ -50,8 +49,7 @@ namespace Text_Based_RPG
 
             player.Start();
             enemyManager.Start();
-            itemManager.Start();
-            keyItem.Start(92, 55);             
+            itemManager.Start();            
             shop.Start();
 
             // set camera initially
@@ -72,7 +70,6 @@ namespace Text_Based_RPG
                 player.Update(map, enemyManager, itemManager, shop, inventory, gameObject, render);
                 enemyManager.Update(map, player, shop, itemManager);
                 itemManager.Update(player, weakEnemy, enemyManager, inventory);
-                keyItem.Update(player, door);
                 powerUp.Update(player, enemyManager);
                 camera.Update(player);       
             }

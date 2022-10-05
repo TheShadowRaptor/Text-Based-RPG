@@ -14,15 +14,12 @@ namespace Text_Based_RPG
             objectY = keyY;
         }
 
-        public void Update(Player player, Door door)
+        public void Update(Player player, GameObject gameObject)
         {
             if (player.playerX == objectX && player.playerY == objectY)
             {
-                isPickedUp = true;
-                door.isPickedUp = true;  
-                isDoorOpen = true;
-                countDownTimer = 0; // <- for some reason it needs this, or else every enemy freezes
-                //??? - Tobias
+                gameObject.isPickedUp = true;  
+                isPickedUp = true;           
             }          
         }
 
