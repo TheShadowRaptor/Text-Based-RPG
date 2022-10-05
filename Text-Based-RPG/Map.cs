@@ -11,6 +11,7 @@ namespace Text_Based_RPG
     {
         // init         // string[i] // map[x,y] = mapData[y][x]
         static string mapPath = @"map.txt";
+        static string name = "BadLand";
         static string[] newMap = File.ReadAllLines(mapPath);
         public string[] collisionMap;
 
@@ -18,33 +19,57 @@ namespace Text_Based_RPG
         public int columns = newMap[0].Length;
 
         ConsoleColor mapColor;
+
+        int mapRenderSizeX = 20;
+        int mapRenderSizeY = 40;
+
         //char mapChar;
         int mapX;
         int mapY;
 
         public void Start()
         {
-
+  
         }
 
         public void Draw(Render render, Camera camera) // creates the map
         {
-            for (int x = 0; x <= camera.cameraX * 1.5; x++)
-            {               
-                for (int y = 0; y <= camera.cameraX * 1.5; y++)
-                {
-                    mapX = x;
-                    mapY = y;
+            // resets cursor
+            Console.SetCursorPosition(0, 0);
 
-                    //Console.SetCursorPosition(mapY, mapX);
-                    SetMapColor(mapX, mapY);
-                    //Console.Write(newMap[mapX][mapY]);                   
-                    //mapChar = newMap[x][y];
-                    render.Draw(mapY, mapX, newMap[mapX][mapY], mapColor, camera);
-
-                }              
-                Console.WriteLine();
+            //------------------Top Map Border--------------------
+            Console.Write("╔");
+            for (int i = 0; i < mapRenderSizeY; i++)
+            {
+                Console.Write("═");
             }
+            Console.Write("╗");
+            Console.WriteLine("");
+            //----------------------------------------------------
+
+            //------------------------Map-------------------------     
+            for (int x = 0; x < mapRenderSizeX; x++)
+            {
+                Console.Write("║");
+                for (int y = 0; y < mapRenderSizeY; y++)
+                {
+                    SetMapColor(x, y, camera);
+                    render.MapDraw(y, x, newMap[x + camera.offSetX][y + camera.offSetY]);                    
+                }              
+                Console.WriteLine("║");
+            }
+            //----------------------------------------------------
+
+            //------------------Bottom Map Border-----------------
+            Console.Write("╚");
+            for (int i = 0; i < mapRenderSizeY; i++)
+            {
+                Console.Write("═");
+            }
+            Console.Write("╝");
+            Console.WriteLine("");
+            Console.WriteLine("Map name = " + "{" + name + "}");
+            //----------------------------------------------------
             collisionMap = newMap;
         }
 
@@ -53,24 +78,24 @@ namespace Text_Based_RPG
             
         }
 
-        private void SetMapColor(int x, int y)
+        private void SetMapColor(int x, int y, Camera camera)
         {
-            if (newMap[x][y] == '.')
+            if (newMap[x + camera.offSetX][y + camera.offSetY] == '.')
             {
                 mapColor = ConsoleColor.Green;
                 Console.ForegroundColor = mapColor;
             }
-            else if (newMap[x][y] == '^')
+            else if (newMap[x + camera.offSetX][y + camera.offSetY] == '^')
             {
                 mapColor = ConsoleColor.DarkGray;
                 Console.ForegroundColor = mapColor;
             }
-            else if (newMap[x][y] == '~')
+            else if (newMap[x + camera.offSetX][y + camera.offSetY] == '~')
             {
                 mapColor = ConsoleColor.DarkBlue;
                 Console.ForegroundColor = mapColor;
             }
-            else if (newMap[x][y] == '=')
+            else if (newMap[x + camera.offSetX][y + camera.offSetY] == '=')
             {
                 mapColor = ConsoleColor.DarkYellow;
                 Console.ForegroundColor = mapColor;

@@ -32,7 +32,7 @@ namespace Text_Based_RPG
             StartMenu startMenu = new StartMenu();
 
             Camera camera = new Camera();
-            Render render = new Render();
+            Render render = new Render(camera);
 
             // GameObjects
             GameObject gameObject = new GameObject();
@@ -47,7 +47,6 @@ namespace Text_Based_RPG
 
             // Game Start
             startMenu.StartGame();
-            render.Start();
 
             player.Start();
             enemyManager.Start();
@@ -70,7 +69,7 @@ namespace Text_Based_RPG
                 enemyManager.Draw(render, camera);
                 hud.Draw(player, enemyManager, inventory);
 
-                player.Update(map, enemyManager, itemManager, shop, inventory, gameObject);
+                player.Update(map, enemyManager, itemManager, shop, inventory, gameObject, render);
                 enemyManager.Update(map, player, shop, itemManager);
                 itemManager.Update(player, weakEnemy, enemyManager, inventory);
                 keyItem.Update(player, door);

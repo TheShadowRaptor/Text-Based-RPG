@@ -20,7 +20,7 @@ namespace Text_Based_RPG
 
         public void Start()
         {
-            x = 22;
+            x = 27;
             y = 29;
 
             item1 = new HealthPotion();

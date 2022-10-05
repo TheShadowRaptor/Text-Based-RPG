@@ -7,35 +7,39 @@ using System.Threading.Tasks;
 namespace Text_Based_RPG
 {
     class Render
-    {   
-        public void Start()
+    {
+        int screenX;
+        int screenY;
+
+        public Camera camera;
+
+        public Render(Camera camera)
         {
-            Console.BufferHeight = 30;
-            Console.BufferWidth = 120;
-            Console.WindowHeight = 14;
-            Console.WindowWidth = 32;
+            this.camera = camera;
         }
 
         public void Draw(int x, int y, char character, ConsoleColor color, Camera camera)
         {
-            Console.SetCursorPosition(0, 0);
+            int posX = x - camera.offSetY;
+            int posY = y - camera.offSetX;
 
-            int screenX = x - camera.cameraX;
-            int screenY = y - camera.cameraY;
+            if (posX < screenX + 2 && posX > 0 && posY < screenY + 2 && posY > 0)
+            {
+                Console.SetCursorPosition(posX + 1, posY + 1);
+                Console.ForegroundColor = color;
+                Console.Write(character);
+                Console.ResetColor();
+                Console.SetCursorPosition(0, 0);
+            }
+        }
 
-            // Ceneter Camera
-            screenX += Console.WindowWidth / 2;
-            screenY += Console.WindowHeight / 2;
+        public void MapDraw(int worldX, int worldY, char character)
+        {
+            screenX = worldX;
+            screenY = worldY;
 
-            // range check
-            if (screenX < 0 || screenY < 0) return;
-            if (screenX > Console.WindowWidth || screenY > Console.WindowHeight) return;
-
-
-            Console.SetCursorPosition(screenX, screenY);
-            Console.ForegroundColor = color;
+            Console.SetCursorPosition(screenX + 1, screenY + 1);
             Console.Write(character);
-            Console.ResetColor();
         }
     }
 }

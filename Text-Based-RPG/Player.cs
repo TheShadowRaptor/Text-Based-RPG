@@ -32,8 +32,8 @@ namespace Text_Based_RPG
 
         public void Start()
         {
-            playerX = 40;
-            playerY = 20;
+            playerX = 25;
+            playerY = 10;
             isAlive = true;
 
             health = 100;
@@ -42,7 +42,7 @@ namespace Text_Based_RPG
         }
         // while console.keyavailable console.reakey(true)
         // ---------------------------------- Update ----------------------------------
-        public void Update(Map map, EnemyManager enemyManager, ItemManager itemManager, Shop shop, Inventory inventory, GameObject gameObject)
+        public void Update(Map map, EnemyManager enemyManager, ItemManager itemManager, Shop shop, Inventory inventory, GameObject gameObject, Render render)
         {
             ConsoleKey keyPress = Console.ReadKey(true).Key;
             keyPressed = keyPress;
@@ -55,18 +55,22 @@ namespace Text_Based_RPG
             if (keyPress == ConsoleKey.W)
             {
                 newPlayerY -= 1;
+                render.camera.preOffSetX -= 1;
             }
             else if (keyPress == ConsoleKey.S) // decision to move
             {
                 newPlayerY += 1;
+                render.camera.preOffSetX += 1;
             }
             else if (keyPress == ConsoleKey.D)
             {
                 newPlayerX += 1;
+                render.camera.preOffSetY += 1;
             }
             else if (keyPress == ConsoleKey.A)
             {
                 newPlayerX -= 1;
+                render.camera.preOffSetY -= 1;
             }   
             
             // ---------------------- Inventory ---------------------
@@ -88,6 +92,15 @@ namespace Text_Based_RPG
             {
                 playerX = newPlayerX;
                 playerY = newPlayerY;
+
+                render.camera.offSetX = render.camera.preOffSetX;
+                render.camera.offSetY = render.camera.preOffSetY;
+            }
+            else
+            {
+                render.camera.preOffSetX = render.camera.offSetX;
+                render.camera.preOffSetY = render.camera.offSetY;
+
             }
         }
 
