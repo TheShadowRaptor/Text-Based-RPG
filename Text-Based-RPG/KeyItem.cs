@@ -8,18 +8,17 @@ namespace Text_Based_RPG
 {
     class KeyItem : GameObject
     {
-        public void Start(int keyX, int keyY)
+        public KeyItem()
         {
-            objectX = keyX;
-            objectY = keyY;
+            name = "Key";
         }
 
-        public void Update(Player player, GameObject gameObject)
+        public void Update(Player player, Inventory inventory)
         {
             if (player.playerX == objectX && player.playerY == objectY)
             {
-                gameObject.isPickedUp = true;  
-                isPickedUp = true;           
+                inventory.AddItem(this);
+                isPickedUp = true;                   
             }          
         }
 

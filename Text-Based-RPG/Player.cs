@@ -174,8 +174,7 @@ namespace Text_Based_RPG
         void DoorCollision(ItemManager itemManager)
         {
             if (newPlayerX == itemManager.door.objectX && newPlayerY == itemManager.door.objectY)
-            {
-                Console.Beep();
+            {               
                 canMove = false;
             }          
         }

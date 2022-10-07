@@ -49,7 +49,7 @@ namespace Text_Based_RPG
                 
             }
             door.Start(46, 20);
-            key.Start(92, 55);
+            key.Start(25, 15); //92, 55
         }
         public void Update(Player player, Enemy enemy, EnemyManager enemyManager, Inventory inventory)
         {
@@ -68,8 +68,8 @@ namespace Text_Based_RPG
                 soul[i].Update(inventory, player);
             }
 
-            door.Update(player);
-            key.Update(player, door);
+            door.Update(player, inventory);
+            key.Update(player, inventory);
         }
         public void Draw(Render render, Camera camera)
         {

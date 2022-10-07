@@ -9,19 +9,35 @@ namespace Text_Based_RPG
     class Inventory
     {
         public float currentCurrency;
+        public int currentSpace;
 
-        List<GameObject> inventorySpace = new List<GameObject>(6);
+        public List<GameObject> space; 
         public Inventory()
         {
-            
+            space = new List<GameObject>(6);
         }
 
         public void ShowInventory()
-        {
-            Console.WriteLine("------Inventory------");
-            Console.WriteLine(inventorySpace[0].name);
+        {           
+            foreach (GameObject item in space)
+            {
+                if (item == null) break;
+                Console.WriteLine("------Inventory------");
+                Console.WriteLine(item.name);
+            }
+            
 
             ConsoleKey keyPress = Console.ReadKey(true).Key;
+        }
+
+        public void AddItem(GameObject gameObject)
+        {
+            space.Add(gameObject);
+        }
+
+        public void RemoveItem(GameObject gameObject)
+        {
+            space.Remove(space[currentSpace]);
         }
     }
 }
