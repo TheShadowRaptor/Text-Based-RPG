@@ -8,10 +8,16 @@ namespace Text_Based_RPG
 {
     class Camera
     {
-        public int preOffSetX = 0;
-        public int preOffSetY = 0;
-        public int offSetX = 0;
-        public int offSetY = 0;
+        public int preOffSetX;
+        public int preOffSetY;
+        public int offSetX = 2;
+        public int offSetY = 5;
+
+        public Camera(Player player)
+        {
+            preOffSetX = offSetX;
+            preOffSetY = offSetY;
+        }
 
         public void Update(Player player)
         {

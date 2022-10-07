@@ -20,8 +20,8 @@ namespace Text_Based_RPG
 
         ConsoleColor mapColor;
 
-        int mapRenderSizeX = 20;
-        int mapRenderSizeY = 40;
+        public int mapRenderSizeX = 17;
+        public int mapRenderSizeY = 37;
 
         //char mapChar;
         int mapX;

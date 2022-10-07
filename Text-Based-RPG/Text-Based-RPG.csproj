@@ -64,6 +64,9 @@
     <Compile Include="PowerUp.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuestManager.cs" />
+    <Compile Include="QuestObject.cs" />
+    <Compile Include="QuestOne.cs" />
     <Compile Include="Render.cs" />
     <Compile Include="Shop.cs" />
     <Compile Include="Soul.cs" />

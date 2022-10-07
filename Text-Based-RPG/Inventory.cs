@@ -18,16 +18,16 @@ namespace Text_Based_RPG
         }
 
         public void ShowInventory()
-        {           
-            foreach (GameObject item in space)
+        {
+            Console.WriteLine("------Inventory------");
+            if (space == null) Console.WriteLine("You have no items bro...");
+            else
             {
-                if (item == null) break;
-                Console.WriteLine("------Inventory------");
-                Console.WriteLine(item.name);
+                foreach (GameObject item in space)
+                {
+                    Console.WriteLine(item.name);
+                }
             }
-            
-
-            ConsoleKey keyPress = Console.ReadKey(true).Key;
         }
 
         public void AddItem(GameObject gameObject)

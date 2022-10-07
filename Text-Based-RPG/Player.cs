@@ -42,7 +42,7 @@ namespace Text_Based_RPG
         }
         // while console.keyavailable console.reakey(true)
         // ---------------------------------- Update ----------------------------------
-        public void Update(Map map, EnemyManager enemyManager, ItemManager itemManager, Shop shop, Inventory inventory, GameObject gameObject, Render render)
+        public void Update(Map map, EnemyManager enemyManager, ItemManager itemManager, QuestManager questManager, Shop shop, Inventory inventory, GameObject gameObject, Render render, Npc npc)
         {
             ConsoleKey keyPress = Console.ReadKey(true).Key;
             keyPressed = keyPress;
@@ -80,12 +80,20 @@ namespace Text_Based_RPG
                 inventory.ShowInventory();
             }
 
+            // ---------------------- QuestChart --------------------
+
+            else if (keyPress == ConsoleKey.Q)
+            {
+                questManager.ShowQuests();
+            }
+
             OnCollision(map, newPlayerX, newPlayerY, this, shop, itemManager);
             if (canMove)
             {
                 DetectEnemyCollision(enemyManager);
                 DetectShopCollision(shop, enemyManager, inventory);
-                DoorCollision(itemManager);
+                DetectDoorCollision(itemManager);
+                DetectNpcCollision(npc);
             }
 
             if (canMove)
@@ -171,12 +179,20 @@ namespace Text_Based_RPG
             }
         }
 
-        void DoorCollision(ItemManager itemManager)
+        void DetectDoorCollision(ItemManager itemManager)
         {
             if (newPlayerX == itemManager.door.objectX && newPlayerY == itemManager.door.objectY)
             {               
                 canMove = false;
             }          
+        }
+
+        void DetectNpcCollision(Npc npc)
+        {
+            if (newPlayerX == npc.npcX && newPlayerY == npc.npcY)
+            {
+                canMove = false;
+            }
         }
 
         // -------------------------------- Draw -------------------------------

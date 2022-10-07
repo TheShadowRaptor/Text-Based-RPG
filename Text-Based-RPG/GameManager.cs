@@ -24,14 +24,17 @@ namespace Text_Based_RPG
             NormalEnemy normalEnemy = new NormalEnemy();
             ToughEnemy toughEnemy = new ToughEnemy();
             Boss_Enemy bossEnemy = new Boss_Enemy();
+            Npc npc = new Npc();
 
+            //Managers
             EnemyManager enemyManager = new EnemyManager();
             ItemManager itemManager = new ItemManager();
+            QuestManager questManager = new QuestManager();
 
             EndGame endGame = new EndGame();
             StartMenu startMenu = new StartMenu();
 
-            Camera camera = new Camera();
+            Camera camera = new Camera(player);
             Render render = new Render(camera);
 
             // GameObjects
@@ -39,6 +42,7 @@ namespace Text_Based_RPG
             HealthPotion healthPotion = new HealthPotion();
             KeyItem keyItem = new KeyItem();
             PowerUp powerUp = new PowerUp();
+            QuestOne questOne = new QuestOne();
 
             // HUDs
             HUD hud = new HUD();
@@ -48,13 +52,14 @@ namespace Text_Based_RPG
             startMenu.StartGame();
 
             player.Start();
+            npc.Start(25, 13);
             enemyManager.Start();
             itemManager.Start();            
             shop.Start();
 
             // set camera initially
             camera.Update(player);
-            player.Draw(render, camera);
+            player.Draw(render, camera);            
 
             // ---------------------- Gameplay Loop -------------------------
             while (enemyManager.bossEnemy.isAlive && player.isAlive)
@@ -62,13 +67,15 @@ namespace Text_Based_RPG
                 map.Draw(render, camera);
                 shop.Draw(render, camera);
                 player.Draw(render, camera);
+                npc.Draw(render, camera);
                 itemManager.Draw(render, camera);
                 keyItem.Draw('k', render, camera);                              
                 enemyManager.Draw(render, camera);
                 hud.Draw(player, enemyManager, inventory);
 
-                player.Update(map, enemyManager, itemManager, shop, inventory, gameObject, render);
-                enemyManager.Update(map, player, shop, itemManager);
+                player.Update(map, enemyManager, itemManager, questManager, shop, inventory, gameObject, render, npc);
+                npc.Update(player, questOne, questManager);
+                enemyManager.Update(map, player, shop, itemManager, npc);
                 itemManager.Update(player, weakEnemy, enemyManager, inventory);
                 powerUp.Update(player, enemyManager);
                 camera.Update(player);       

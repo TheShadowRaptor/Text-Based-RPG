@@ -52,22 +52,22 @@ namespace Text_Based_RPG
 
         }
 
-        public void Update(Map map, Player player, Shop shop, ItemManager itemManager)
+        public void Update(Map map, Player player, Shop shop, ItemManager itemManager, Npc npc)
         {
             for (int i = 0; i < weakEnemies.Length; i++)
             {
-                weakEnemies[i].Update(map, player, shop, itemManager, this);
+                weakEnemies[i].Update(map, player, shop, itemManager, this, npc);
             }
             for (int i = 0; i < normalEnemies.Length; i++)
             {
-                normalEnemies[i].Update(map, player, shop, itemManager, this);
+                normalEnemies[i].Update(map, player, shop, itemManager, this, npc);
             }
             for (int i = 0; i < toughEnemies.Length; i++)
             {
-                toughEnemies[i].Update(map, player, shop, itemManager, this);
+                toughEnemies[i].Update(map, player, shop, itemManager, this, npc);
             }
 
-            bossEnemy.Update(map, player, shop, itemManager, this);
+            bossEnemy.Update(map, player, shop, itemManager, this, npc);
         }
 
         public void Draw(Render render, Camera camera)

@@ -13,6 +13,7 @@ namespace Text_Based_RPG
 
         public void Draw(Player player, EnemyManager enemyManager, Inventory inventory) // TEMP
         {
+            Console.SetCursorPosition(0, 20);
             PlayerHUD(player, inventory);
             EnemyHUD(player, enemyManager);
         }
@@ -25,22 +26,17 @@ namespace Text_Based_RPG
         void PlayerHUD(Player player, Inventory inventory)
         {
             Console.ForegroundColor = ConsoleColor.White;
-            Console.SetCursorPosition(0, 0);
             Console.WriteLine("Player Stats:");
-            Console.SetCursorPosition(0, 1);
             Console.Write("Position: " + player.playerX + "," + player.playerY);         
             Console.WriteLine(" Health: " + player.health + "/" + player.maxHealth);
-            Console.SetCursorPosition(0, 2);
             Console.Write("Damage: " + player.damageDelt);
-            Console.WriteLine(" Souls: " + inventory.currentCurrency);   
+            Console.WriteLine(" Souls: " + inventory.currentCurrency);    
         }
 
         void EnemyHUD(Player player, EnemyManager enemyManager)
         {
             Console.ForegroundColor = ConsoleColor.Gray;
-            Console.SetCursorPosition(0, 3);
             Console.WriteLine("Enemy Stats:");
-            Console.SetCursorPosition(0, 4);
             
 
             for (int i = 0; i < enemyManager.weakEnemies.Length; i++)

@@ -25,7 +25,7 @@ namespace Text_Based_RPG
 
 
         // ---------------------------------------- Update --------------------------------
-        public void Update(Map map, Player player, Shop shop, ItemManager itemManager, EnemyManager enemyManager)
+        public void Update(Map map, Player player, Shop shop, ItemManager itemManager, EnemyManager enemyManager, Npc npc)
         {
             // alive check
             if (health <= 0) isAlive = false;
@@ -43,6 +43,7 @@ namespace Text_Based_RPG
 
                 OnCollision(map, newEnemyX, newEnemyY, player, shop, itemManager);
                 DetectDoorCollision(itemManager, enemyManager);
+                DetectNpcCollision(npc, itemManager, enemyManager);
                 if (canMove) DetectPlayerChar(player);
                 if (canMove)
                 {
@@ -63,6 +64,32 @@ namespace Text_Based_RPG
             }
             else canMove = true;
         }
+
+        protected void DetectNpcCollision(Npc npc, ItemManager itemManager, EnemyManager enemyManager)
+        {
+            for (int i = 0; i < enemyManager.weakEnemies.Length; i++)
+            {
+                if (enemyManager.weakEnemies[i].newEnemyX == itemManager.door.objectX && enemyManager.weakEnemies[i].newEnemyY == itemManager.door.objectY) // enemy-door collision
+                {
+                    canMove = false;
+                }
+            }
+            for (int i = 0; i < enemyManager.normalEnemies.Length; i++)
+            {
+                if (enemyManager.normalEnemies[i].newEnemyX == itemManager.door.objectX && enemyManager.normalEnemies[i].newEnemyY == itemManager.door.objectY) // enemy-door collision
+                {
+                    canMove = false;
+                }
+            }
+            for (int i = 0; i < enemyManager.toughEnemies.Length; i++)
+            {
+                if (enemyManager.toughEnemies[i].newEnemyX == itemManager.door.objectX && enemyManager.toughEnemies[i].newEnemyY == itemManager.door.objectY) // enemy-door collision
+                {
+                    canMove = false;
+                }
+            }
+        }
+
         protected void DetectDoorCollision(ItemManager itemManager, EnemyManager enemyManager)
         {
             for (int i = 0; i < enemyManager.weakEnemies.Length; i++)
