@@ -10,14 +10,9 @@ namespace Text_Based_RPG
     {
         public QuestOne()
         {
-            name = "Evil A Foot";
+            name = "Evil a Foot";
 
-            information = "Defeat The powerful (That One Minion)";
-        }
-
-        public void AcceptQuest(QuestManager questManager)
-        {
-            questManager.GiveQuest(this);
+            information = "Defeat The powerful <That one Minion(!)>";
         }
     }
 }

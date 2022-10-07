@@ -53,8 +53,8 @@ namespace Text_Based_RPG
 
             player.Start();
             npc.Start(25, 13);
-            enemyManager.Start();
-            itemManager.Start();            
+            enemyManager.Start(questOne);
+            itemManager.Start(questOne);            
             shop.Start();
 
             // set camera initially
@@ -68,15 +68,15 @@ namespace Text_Based_RPG
                 shop.Draw(render, camera);
                 player.Draw(render, camera);
                 npc.Draw(render, camera);
-                itemManager.Draw(render, camera);
+                itemManager.Draw(render, camera, questOne);
                 keyItem.Draw('k', render, camera);                              
-                enemyManager.Draw(render, camera);
+                enemyManager.Draw(render, camera, questOne);
                 hud.Draw(player, enemyManager, inventory);
 
                 player.Update(map, enemyManager, itemManager, questManager, shop, inventory, gameObject, render, npc);
                 npc.Update(player, questOne, questManager);
-                enemyManager.Update(map, player, shop, itemManager, npc);
-                itemManager.Update(player, weakEnemy, enemyManager, inventory);
+                enemyManager.Update(map, player, shop, itemManager, npc, questOne);
+                itemManager.Update(player, weakEnemy, enemyManager, inventory, questOne);
                 powerUp.Update(player, enemyManager);
                 camera.Update(player);       
             }

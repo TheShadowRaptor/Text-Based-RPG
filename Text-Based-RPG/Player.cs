@@ -164,6 +164,16 @@ namespace Text_Based_RPG
                 enemyManager.bossEnemy.health = DealDamage(damageDelt, enemyManager.bossEnemy.health);
             }
 
+            enemyManager.thatOneMinion.isHit = false;
+            if (newPlayerX == enemyManager.thatOneMinion.enemyX && newPlayerY == enemyManager.thatOneMinion.enemyY)
+            {
+                enemyManager.thatOneMinion.isHit = true;
+                canAttack = true;
+                canMove = false;
+                Console.Beep(1000, 500);
+                enemyManager.thatOneMinion.health = DealDamage(damageDelt, enemyManager.thatOneMinion.health);
+            }
+
             if (health <= 0)
             {
                 isAlive = false;

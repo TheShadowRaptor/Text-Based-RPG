@@ -19,7 +19,7 @@ namespace Text_Based_RPG
        // KeyItem[] keyItem = new KeyItem[10];
        // need to change key functionality for future use
 
-        public void Start()
+        public void Start(QuestOne questOne)
         {           
             for (int i = 0; i < healthPotion.Length; i++)
             {
@@ -49,9 +49,9 @@ namespace Text_Based_RPG
                 
             }
             door.Start(46, 20);
-            key.Start(25, 15); //92, 55
+            if (questOne.SpawnReward(true)) key.Start(26, 13); //92, 55
         }
-        public void Update(Player player, Enemy enemy, EnemyManager enemyManager, Inventory inventory)
+        public void Update(Player player, Enemy enemy, EnemyManager enemyManager, Inventory inventory, QuestOne questOne)
         {
             for (int i = 0; i < healthPotion.Length; i++)
             {
@@ -69,9 +69,9 @@ namespace Text_Based_RPG
             }
 
             door.Update(player, inventory);
-            key.Update(player, inventory);
+            if (questOne.SpawnReward(true)) key.Update(player, inventory);
         }
-        public void Draw(Render render, Camera camera)
+        public void Draw(Render render, Camera camera, QuestOne questOne)
         {
             for (int i = 0; i < healthPotion.Length; i++)
             {
@@ -88,7 +88,8 @@ namespace Text_Based_RPG
                 soul[i].Draw('&', render, camera);
             }
             door.Draw('▓', render, camera);
-            key.Draw('K', render, camera);
+
+            if (questOne.SpawnReward(true)) key.Draw('K', render, camera);
         }
 
         protected void RandomiseInt(int min, int max)

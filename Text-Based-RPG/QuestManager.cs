@@ -10,13 +10,21 @@ namespace Text_Based_RPG
     {
         public List<QuestObject> quests;
 
+        public int currentQuest;
+
         public QuestManager()
         {
             quests = new List<QuestObject>();
         }
+
         public void GiveQuest(QuestObject questObject)
         {
             quests.Add(questObject);
+        }
+
+        public void RemoveQuest(QuestObject questObject)
+        {
+            quests.Remove(quests[currentQuest]);
         }
 
         public void ShowQuests()
@@ -30,6 +38,7 @@ namespace Text_Based_RPG
                     Console.WriteLine(item.name + ": " + item.information);
                 }
             }
+
         }
     }
 }

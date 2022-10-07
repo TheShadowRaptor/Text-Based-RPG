@@ -12,6 +12,9 @@ namespace Text_Based_RPG
 
         public int npcX;
         public int npcY;
+
+        int currentDialogueNumber;
+
         public Npc()
         {
             name = "QuestGiver1 the third";
@@ -19,7 +22,7 @@ namespace Text_Based_RPG
             icon = 'Q';
 
             npcX = 25;
-            npcY = 16;
+            npcY = 20;
         }
 
         public void Start(int x, int y)
@@ -31,7 +34,7 @@ namespace Text_Based_RPG
 
         public void Draw(Render render, Camera camera)
         {
-            render.Draw(npcX, npcY, '@', ConsoleColor.Magenta, camera);
+            render.Draw(npcX, npcY, 'Q', ConsoleColor.Magenta, camera);
         }
 
         public void Update(Player player, QuestOne questOne, QuestManager questManager)
@@ -50,15 +53,30 @@ namespace Text_Based_RPG
 
         void NpcDialogue(QuestOne questOne, QuestManager questManager)
         {
-            Console.WriteLine("Hello Adventurer");
-            Console.WriteLine("Do you mind taking my epic quest?");
-            Console.WriteLine("");
-            Console.WriteLine("[1]Yes");
-            Console.WriteLine("[2]No");
+            DialogueList(questOne, questManager);
 
             Decision(questOne, questManager);
         }
 
+
+        void DialogueList(QuestOne questOne, QuestManager questManager)
+        {
+            if (currentDialogueNumber == 0)
+            {
+                Console.WriteLine("Hello Adventurer");
+                Console.WriteLine("Do you mind taking my epic quest?");
+                Console.WriteLine("");
+                Console.WriteLine("[1]Yes");
+                Console.WriteLine("[2]No");
+            }
+
+            if (currentDialogueNumber == 1)
+            {
+                Console.WriteLine("Good job, Here is the key...");
+                Console.WriteLine("Why Do I have it?");
+                Console.WriteLine("No idea...");
+            }
+        }
         void Decision(QuestOne questOne, QuestManager questManager)
         {
             bool inDialogue = true;
@@ -67,19 +85,45 @@ namespace Text_Based_RPG
             {
                 ConsoleKey keyPress = Console.ReadKey(true).Key;
 
-                if (keyPress == ConsoleKey.D1)
+                if (currentDialogueNumber == 0)
                 {
-                    questOne.AcceptQuest(questManager);
-                    break;
+                    if (keyPress == ConsoleKey.D1)
+                    {
+                        questOne.AcceptQuest(questManager);
+                        Console.Clear();
+                        break;
+                    }
+
+                    if (keyPress == ConsoleKey.D2)
+                    {
+                        Console.Clear();
+                        break;
+                    }
                 }
 
-                if (keyPress == ConsoleKey.D2) break;
+                else if (currentDialogueNumber == 1)
+                {
+                    int currentNumber = 0;
+                    foreach (QuestObject item in questManager.quests)
+                    {
+                        if (item.name == "Evil a Foot")
+                        {
+                            questManager.RemoveQuest(questManager.quests[currentNumber]);
+                            Console.Beep(50, 50);
+                            break;
+                        }                        
+                        currentNumber += 1;
+                    }
+                    questOne.CompleteQuest(questManager);
+                }
+
+
             }
         }
 
-        void FinishedQuest()
+        public void FinishedQuest()
         {
-
+            currentDialogueNumber = 1;
         }
     }
 }

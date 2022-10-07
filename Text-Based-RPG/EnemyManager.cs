@@ -11,9 +11,10 @@ namespace Text_Based_RPG
         public WeakEnemy[] weakEnemies = new WeakEnemy[25];
         public NormalEnemy[] normalEnemies = new NormalEnemy[10];
         public ToughEnemy[] toughEnemies = new ToughEnemy[3];
+        public ThatOneMinion thatOneMinion = new ThatOneMinion();
         public Boss_Enemy bossEnemy = new Boss_Enemy();
 
-        public void Start()
+        public void Start(QuestOne questOne)
         {
             // loop for creating enemies
             for (int i = 0; i < weakEnemies.Length; i++)
@@ -49,10 +50,13 @@ namespace Text_Based_RPG
 
             bossEnemy.Start(58, 22);
 
+            //Quest Spawn-------------------------------------------------
+            if (questOne.SpawnEnemy(true)) thatOneMinion.Start(25,22);
+
 
         }
 
-        public void Update(Map map, Player player, Shop shop, ItemManager itemManager, Npc npc)
+        public void Update(Map map, Player player, Shop shop, ItemManager itemManager, Npc npc, QuestOne questOne)
         {
             for (int i = 0; i < weakEnemies.Length; i++)
             {
@@ -68,9 +72,12 @@ namespace Text_Based_RPG
             }
 
             bossEnemy.Update(map, player, shop, itemManager, this, npc);
+
+            //Quest Spawn-------------------------------------------------
+            if (questOne.SpawnEnemy(true)) thatOneMinion.Update(map, player, shop, itemManager, this, npc);
         }
 
-        public void Draw(Render render, Camera camera)
+        public void Draw(Render render, Camera camera, QuestOne questOne)
         {
             for (int i = 0; i < weakEnemies.Length; i++)
             {              
@@ -86,6 +93,9 @@ namespace Text_Based_RPG
             }
 
             bossEnemy.Draw('B', render, camera);
+
+            //Quest Spawn-------------------------------------------------
+            if (questOne.SpawnEnemy(true)) thatOneMinion.Draw('!', render, camera);
         }
 
     }

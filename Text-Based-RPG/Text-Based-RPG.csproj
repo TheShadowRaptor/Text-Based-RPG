@@ -72,6 +72,7 @@
     <Compile Include="Soul.cs" />
     <Compile Include="StartMenu.cs" />
     <Compile Include="StrengthPotion.cs" />
+    <Compile Include="ThatOneMinion.cs" />
     <Compile Include="ToughEnemy.cs" />
     <Compile Include="WeakEnemy.cs" />
   </ItemGroup>
